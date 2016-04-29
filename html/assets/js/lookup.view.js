@@ -79,7 +79,7 @@ lookup.view.showSummary = function() {
       var html = lookup.view.summary2table(r.extras.taxbill);
       $('#tbody-summary-taxbill')[0].innerHTML = html.join('');
       var slug = lookup.utils.bbl2slug(r.nycgeo.bbl);
-      $('#link-taxbills-nyc').attr('href','https://taxbills.nyc/'+slug);
+      $('#link-taxbills-nyc').attr('href','http://taxbills.nyc/'+slug);
       $('#section-taxbill-available-true').show();
     }
     else {
