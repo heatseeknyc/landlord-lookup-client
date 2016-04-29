@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>About the Landlord Lookup Tool</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <link rel="stylesheet" href="assets/css/lookup-about.css"/>
+</head>
+<body>
+    <div id="header">
+        <span class="legend">NYC Landlord Lookup</span> &nbsp; &nbsp;
+        <span class="legend2">About</span> &nbsp; 
+        <span class="legend2">Contact</span> &nbsp; 
+    </div>
+    <div id="otherstuff">
+        <p> 
+        <h3>About the NYC Landlord Lookup tool</h3>
+        The <strong>NYC Landlord Lookup</strong> tool was created to provide easy access to
+        3 major open data sets regarding property ownership which are of general interest to NYC residents, 
+        but which (as of early 2016) are not easily accessible via the City's websites.
+
+        It is an open source project sponsored by <a href="https://heatseeknyc.com">Heat Seek NYC</a>
+        and maintained by volunteers.
+        <h3>Data Sources</h3>
+
+        <h4>Taxbill Summaries</h4>
+        ...
+        <h4>DHCR Rent Stablization Status</h4>
+        ...
+        <h4>HPD Registered Contacts</h4>
+        ...
+        <h3>Correctness and Completeness</h3>
+
+        Best efforts have been made to present the city's datasets as-is, and importantly, to avoid
+        innacurate record matches.  That said, the city's datasets themselves are, we have found, simply 
+        broken in various ways for a small but significant portion of properties (around 1-2% for each source, 
+        compounding to about 5% across all sources combined).  To the extent that we've been able to identify 
+        this "brokenness", we've chosen to omit certain properties and buildings from our searches 
+        (rather than return false or ambiguous matches). <p>
+
+        So if you've typed an address that you're pretty sure corresponds to a property you know
+        about directly, but aren't gettting at least lat/lon hit and basic ownership status, that's
+        the most likely reason.  Specific datasets also have gaps in coverage, as detailed in the 
+        section on <strong>Data Sources</strong> above.<p>
+        
+        (Further description of dataset accuracy needed).
+
+        <h3>Technical Details</h3>
+        Please see the writeup on <a href="/technical.html">technical details</a>.
+    </div>
+</body>
+</html>

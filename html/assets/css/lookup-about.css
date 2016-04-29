@@ -1,0 +1,27 @@
+html, body, #otherstuff {
+    height:100%;
+    width:100%;
+    padding:0px;
+    margin:0px;
+}   
+
+body,
+h1, h2, h3, h4, h5, h6 {
+   font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.legend  { font-weight: 700; }
+.legend2 { font-weight: 500; color:#999; }
+
+#header {
+    padding: 11px;
+    width:100%;
+}
+
+#otherstuff  {
+    padding: 11px;
+    font-size: 14px;
+    background:#eee;
+}
+
+

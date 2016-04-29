@@ -1,0 +1,10 @@
+
+Need to make a note about the following external dependencies, which obviously come from elsewhere but which we maintain locally cached copies of: 
+
+  html/vendor/js/jquery.easytabs.js
+  html/vendor/js/jquery.easytabs.min.js
+  html/vendor/js/jquery.geocomplete.js
+  html/vendor/js/jquery.geocomplete.min.js
+  html/vendor/js/jquery.hashchange.min.js
+
+

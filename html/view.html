@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NYC Landlord Lookup</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/images/favicon.ico">
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <link rel="stylesheet" href="assets/css/lookup-app.css"/>
+    <link rel="stylesheet" href="assets/css/lookup-tabs.css"/>
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="lookup.app.run();">
+    <div id="header">
+        <span class="legend">NYC Landlord Lookup</span> &nbsp; &nbsp;
+        <span class="legend2">About</span> &nbsp; 
+        <span class="legend2">Contact</span> &nbsp; 
+    </div>
+    <div id="themap"></div>
+    <div class="panel-corner" id="panel-search">
+      <!-- div class="form-group" id="form-container" -->
+        <form class="form-inline" id="address-form">
+          <div class="form-group" id="form-inner">
+            <input type="text" class="form-control" id="address-input" placeholder="21 west 46 street">
+            <button type="submit" id="address-submit">Go</button>
+            <br>
+          </div>
+        </form>
+      <!-- /div -->
+    </div>
+    <div class="panel-upper" id="panel-message">
+        <div class="popup-control">x</div>
+        <h3>Welcome to the Landlord Lookup tool!</h3>
+        Type an NYC address, and see what happens.
+    </div>
+    <div class="panel-upper" id="panel-error">
+        <br>
+        <span class="errorcaption">Something went wrong!</span><p>
+        <span class="errorbox" id="error-search"></span>
+    </div>
+    <div class="panel-upper" id="panel-summary">
+        <div class="popup-control">x</div>
+        <br>
+        Resolves to BBL = <span id="var-summary-bbl">----------</span>, 
+        BIN = <span id="var-summary-bin">-------</span>.<br>
+        Most recent ownership data for this lot:<p>
+
+        <div id="section-taxbill-available-true">
+          <strong>Taxbill information</strong><p>
+          <table class="tinybox" id="table-summary-taxbill">
+            <tbody id="tbody-summary-taxbill">
+                <tr><td>foo</td><td>bar</td></tr>
+            </tbody>
+          </table>
+          <br>
+          Historical tax receipts are available in PDF form at 
+          <a id="link-taxbills-nyc" target="parent"
+              href="https://taxbills.nyc/N/NNNNN/NNNN">taxbills.nyc</a>.
+        </div>
+
+        <div id="section-taxbill-available-false">
+          <strong>No taxbill information available!</strong><p>
+          This is rather unusual, because the city's GIS tells us that a BBL + BIN 
+          are available -- hence, this must be a valid tax lot.  A small number of city 
+          property records do have broken identifiers (especially BINs) in some databases, 
+          though, so that would be the most likely reason the lookup failed. 
+        </div>
+
+        <br>
+        <strong>HPD Registration</strong><p>
+        <div id="section-nychpd-available-true">
+            <span id="var-nychpd-count">[count summary]</span> available for this tax lot. <br>
+            <form id="form-nychpd">
+            <button type="submit" id="submit-nychpd">View</button>
+            </form>
+        </div>
+        <div id="section-nychpd-available-false">
+          No HPD registration available for this tax lot.  
+        </div>
+
+        <br>
+        <strong>DHCR rent stabilization status</strong><p>
+        <div id="section-dhcr-active-true">
+          This building is rent stabilized, according to a recent (2015) FOIA request.
+          If you live there, congratulations!  However, we encouraged to verify this 
+          information with the DHCR directly.  You might want to obtain copies of your
+          <strong>rent history</strong> with them, also.
+        </div>
+        <div id="section-dhcr-active-false">
+          No rent stabilization information available for this building, according to
+          a recent (2015) FOIA request.  So most likely it isn't rent-stabilized.  
+        </div>
+        <br>
+
+    </div>
+    </div>
+    <div class="panel-lower" id="panel-data">
+      <div class="popup-control">x</div>
+      <div id="tab-container" class="tab-container">
+        <ul class="etabs">
+          <li class="tab"><a href="#tab-contacts">Registered Contacts</a></li>
+          <li class="tab"><a href="#tab-about">(What are these?)</a></li>
+        </ul>
+        <div class="panel-container">
+          <div id="tab-contacts">
+            <table class="rowset" id="table-contacts">
+              <thead id="thead-contacts">
+                <caption>Registered contacts for this address.</caption>
+                <tr>
+                  <th>registration id</th>
+                  <th>contact id</th>
+                  <th>contact name</th>
+                  <th>contact type</th>
+                  <th>description</th>
+                  <th>corporate name</th>
+                  <th>business address</th>
+                </tr> 
+              </thead>
+              <tbody id="tbody-contacts">
+                <tr class="odd">
+                  <td>NNNNNN</td>
+                  <td>NNNNNNNN</td>
+                  <td>J. Pierremont Flathead</td>
+                  <td>Head Officer</td>
+                  <td>CONDO</td>
+                  <td>Alternative Tentacles</td>
+                  <td>666 5th Ave, New York, NY 11111</td>
+                </tr>
+                <tr class="even">
+                  <td>.</td>  <td>.</td>  <td>.</td>  <td>.</td>  <td>.</td>  
+                  <td>.</td>  <td>.</td>  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="tab-about">
+            The NYC Department of <strong>Housing, Preservation, and Development (HPD)</strong>
+            (or more specifically, its Property Registration Unit) maintains a register of 
+            rental properties so that the HPD can reach them in the event of emergency 
+            conditions in their buildings.  NYC Administrative Code (§§ 27-2097 - 27-2109.1) requires 
+            owners of buildings with 3 or more rental units (as well as owners of buildings with 1 or 2 
+            units where an owner or family member does not occupy part of the building) to register with 
+            the HPD, or face fines or significant restrictions (such as the ability to evict their 
+            tenants for non-payment of rent).<p>
+
+            Nonetheless, many owners are still not in compliance with this law: by one estimate, 
+            only 23 percent of residential properties are in compliance, city-wide.  Typically
+            the those buildings not in compliance have 3 units or less; for buildngs with 4 or 
+            more units, the compliance rate exceeds 50%, and exceeds 80% for buildings with
+            50 units or more.
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-lower" id="panel-testdata">
+      <div class="popup-control">x</div>
+      <iframe id="testdata" src="testdata.html"></iframe>
+    </div>
+</body>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+<script src="vendor/js/jquery-1.11.3.min.js"></script>
+<script src="vendor/js/jquery.geocomplete.min.js"></script>
+<script src="vendor/js/jquery.hashchange.min.js"></script>
+<script src="vendor/js/jquery.easytabs.min.js"></script>
+<script src="assets/js/lookup.js"></script>
+<script src="assets/js/lookup.utils.js"></script>
+<script src="assets/js/lookup.geoutils.js"></script>
+<script src="assets/js/lookup.control.js"></script>
+<script src="assets/js/lookup.render.js"></script>
+<script src="assets/js/lookup.view.js"></script>
+<script src="assets/js/lookup.app.js"></script>
+<script type="text/javascript">
+    $(document).ready( function() {
+      $('#tab-container').easytabs();
+    });
+</script>
+</html>

@@ -1,0 +1,33 @@
+// Namespace for all globals specific to the Landlord Lookup application. 
+var lookup = {};
+lookup.version = '002a';
+lookup.model = {}; 
+
+// Application specific configuration.
+lookup.config = {
+    'debug': 2, 
+    'google_autocomplete_active': true 
+};
+
+// var hostname = window.location.hostname;
+// var port = window.location.port;
+lookup.service = {
+  'hybrid':'http://localhost:5002',
+};
+
+// Sets the debug level from a raw string argument (from a query
+// string, say).  If it doesn't parse, no action is taken.
+lookup.set_debug_level = function(x) {
+  debug = parseInt(x);
+  if (debug > 0) {
+    lookup.config.debug = debug
+    lookup.log(0,":: debug => "+debug)
+  }
+};
+
+lookup.log = function(level,msg) {
+  if (lookup.config.debug >= level)  {
+    console.log(msg)
+  }
+};
+
