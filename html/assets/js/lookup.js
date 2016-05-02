@@ -9,10 +9,9 @@ lookup.config = {
     'google_autocomplete_active': true 
 };
 
-// var hostname = window.location.hostname;
-// var port = window.location.port;
 lookup.service = {
-  'hybrid':'http://localhost:5002',
+  'hybrid':'http://' + window.location.hostname + ':6001'
+  // 'hybrid':'http://localhost:5002',
 };
 
 // Sets the debug level from a raw string argument (from a query
