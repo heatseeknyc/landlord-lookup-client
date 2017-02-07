@@ -11,7 +11,7 @@ lookup.config = {
 
 lookup.service = {
   'hybrid':'http://' + window.location.hostname + ':6001'
-  // 'hybrid':'http://localhost:5002',
+  // 'hybrid':'http://localhost:6001',
 };
 
 // Sets the debug level from a raw string argument (from a query
