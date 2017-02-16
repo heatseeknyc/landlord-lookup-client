@@ -1,10 +1,12 @@
 
-Need to make a note about the following external dependencies, which obviously come from elsewhere but which we maintain locally cached copies of: 
+Embedded dependencies are as follows:
 
+  html/vendor/js/jquery-1.11.3.min.js
   html/vendor/js/jquery.easytabs.js
   html/vendor/js/jquery.easytabs.min.js
   html/vendor/js/jquery.geocomplete.js
   html/vendor/js/jquery.geocomplete.min.js
   html/vendor/js/jquery.hashchange.min.js
 
+And there are a few external dependencies encoded in the index.html (most important being Leaflet.js).
 
