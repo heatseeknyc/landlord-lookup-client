@@ -18,7 +18,7 @@ lookup.view.initMap = function(mapname) {
     var map = L.map(mapname,{
         center: center, 
         zoomControl: false,
-        zoom: 15
+        zoom: 18 
     });
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -33,14 +33,16 @@ lookup.view.initMap = function(mapname) {
     return true;
 };
 
-lookup.view.moveMap = function(center) {
+lookup.view.moveMap = function(center,addMarker) {
     var map = lookup.view.map;
     if (map)  {
         if (lookup.view.marker)  {
             map.removeLayer(lookup.view.marker);
         }
         map.panTo(center);
-        lookup.view.marker = L.marker(center).addTo(map);
+        if (addMarker)  {
+            lookup.view.marker = L.marker(center).addTo(map);
+        }
     }
 };
 
@@ -64,6 +66,7 @@ lookup.view.summary2table = function(r) {
 
 
 lookup.view.showSummary = function() {
+    lookup.log(2,'show summary ..');
     var r = lookup.model.summary;
     function _plural(n)  {
         if (n !== 1) { return 's'; }
@@ -106,10 +109,65 @@ lookup.view.showSummary = function() {
         $('#section-dhcr-active-true').hide();
         $('#section-dhcr-active-false').show();
     }
-    if (r.nycgeo)  {
-      lookup.view.moveMap([r.nycgeo.geo_lat,r.nycgeo.geo_lon]);
+    lookup.log(2,'show summary done');
+    lookup.log(2,r);
+    if (r.extras && r.extras.building)  {
+      lookup.view.showBuildings(r.extras.building);
+    }
+    else if (r.nycgeo)  {
+      lookup.view.moveMap([r.nycgeo.geo_lat,r.nycgeo.geo_lon],true);
     }
     $('#panel-summary').show();
+    lookup.log(2,'show summary done');
+};
+
+
+var sift = function(points,parts) {
+    var n = points.length / 2;
+    var q = new Array(parts.length);
+    for (var i=0; i<parts.length; i++)  {
+        if (i+1 < parts.length)  {
+            k = parts[i+1];
+        }  else  {
+            k = n; 
+        }
+        q[i] = new Array(k-i);
+        for (var j=0; j<k-i; j++)  {
+            var off = 2*(i+j);
+            q[i][j] = [points[off+1],points[off]]
+        }
+    }
+    return q;
+};
+
+lookup.view.showBuildings = function(b) {
+    lookup.log(2,'show buildings ..');
+    lookup.log(2,b);
+    var center = [b.lat_ctr,b.lon_ctr];
+    lookup.log(2,'center ..');
+    lookup.log(2,center);
+    lookup.view.moveMap(center,false);
+    var poly = sift(b.points,b.parts);
+    lookup.log(2,'polygons = '+poly.length);
+    lookup.log(2,poly);
+    if (lookup.view.polygons)  {
+        lookup.log(2,'polygon remove ..');
+        // lookup.log(2,'length = '+lookup.view.polygons.length);
+        for (var p of lookup.view.polygons)  {
+            // lookup.log(2,'nuke '+p);
+            lookup.view.map.removeLayer(p);
+        }
+        delete lookup.view["polygons"];
+    }
+    lookup.view.polygons = new Array(poly.length);
+    var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
+    for (var i=0; i<poly.length; i++)  {
+        var polygon = L.polygon(poly[i],spec);
+        // lookup.log(2,"add poly ..");
+        polygon.addTo(lookup.view.map);
+        lookup.view.polygons[i] = polygon;
+    }
+    lookup.log(2,'show buildings done');
 };
 
 lookup.view.showContacts = function() {
