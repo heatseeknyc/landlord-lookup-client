@@ -30,9 +30,9 @@ a:active  { color:#c0f; }
     width:100%;
 }
 
-.panel-corner { position: absolute; z-index: 3; }
-.panel-upper { position: absolute; z-index: 3; }
-.panel-lower { position: absolute; z-index: 3; }
+.panel-corner { position: absolute; z-index: 900; }
+.panel-upper { position: absolute; z-index: 900; }
+.panel-lower { position: absolute; z-index: 900; }
 .panel-upper { 
     padding-left: 10px; 
     padding-right: 10px; 
