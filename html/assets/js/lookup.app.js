@@ -8,5 +8,6 @@ lookup.app.run = function() {
         lookup.view.initPopups();
         lookup.log(1,'happy');
     });
+    $.ajaxSetup(lookup.config.ajaxsetup);
     lookup.log(1,'launched.');
 };

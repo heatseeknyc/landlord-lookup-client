@@ -39,9 +39,17 @@ lookup.control.doAjax = function(base,path,callback) {
             lookup.log(2,':: ajax success!'+r);
             lookup.log(2,r);
         })
-        .fail(function(err){
-            lookup.log(2,':: ajax fail!'+err);
-            // pushError('Network fail!');
+        .fail(function(error){
+            lookup.log(2,':: ajax fail!');
+            lookup.log(2,error);
+            if (error.statusText === "timeout")  {
+                var msg = "Unable to reach lookup service.  Try again in a little while.";
+                lookup.view.showError(msg);
+            }
+            else {
+                var msg = "Unable to reach lookup service, reason: '"+error.statusText+"'";
+                lookup.view.showError(msg);
+            }
         });
 };
 

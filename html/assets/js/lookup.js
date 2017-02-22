@@ -1,16 +1,20 @@
 // Namespace for all globals specific to the Landlord Lookup application. 
 var lookup = {};
-lookup.version = '002a';
+lookup.version = '002b';
 lookup.model = {}; 
 
 // Application specific configuration.
 lookup.config = {
     'debug': 2, 
-    'google_autocomplete_active': true 
+    'google_autocomplete_active': true,
+    'ajaxsetup': {
+        'timeout': 3000
+    }
 };
 
 lookup.service = {
   'hybrid':'http://' + window.location.hostname + ':6001'
+  // 'hybrid':'http://lookup.heatseek.org:6001'
   // 'hybrid':'http://localhost:6001',
 };
 
