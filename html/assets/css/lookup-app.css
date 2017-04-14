@@ -132,13 +132,15 @@ td {
   background: #feb;
 }
 
-span.errorbox {
-  border: 1px solid #ff0000;
+p.errorbox {
+  border: 2px solid;
   border-color: #fb0;
+  font-size: 14px; 
   font-weight: bold;
-  background: #ff9;
+  background: #ffb;
   padding: 4px;
   color: #f00;
+  word-wrap: break-word;
 }  
 
 #testdata  {
