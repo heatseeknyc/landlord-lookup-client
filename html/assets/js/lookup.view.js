@@ -91,10 +91,10 @@ lookup.view.showSummary = function() {
       $('#tbody-summary-taxbill')[0].innerHTML = '<!-- empty table -->';
       $('#section-taxbill-available-false').show();
     }
-    if (r.extras && r.extras.nychpd_contacts)  {
+    if (r.extras && r.extras.nychpd_count)  {
         $('#section-nychpd-available-false').hide();
-        var text = r.extras.nychpd_contacts + " contact record" + 
-            _plural(r.extras.nychpd_contacts);
+        var text = r.extras.nychpd_count + " contact record" + 
+            _plural(r.extras.nychpd_count);
         $('#var-nychpd-count').text(text);
         $('#section-nychpd-available-true').show();
     }
