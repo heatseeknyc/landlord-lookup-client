@@ -78,7 +78,7 @@ lookup.view.showSummary = function() {
     $('#panel-message').hide();
     $('#var-summary-bbl').text(r.nycgeo.bbl)
     $('#var-summary-bin').text(r.nycgeo.bin)
-    if (r.extras)  {
+    if (r.extras && false)  {
       $('#section-taxbill-available-false').hide();
       var html = lookup.view.summary2table(r.extras.taxbill);
       $('#tbody-summary-taxbill')[0].innerHTML = html.join('');
@@ -113,7 +113,7 @@ lookup.view.showSummary = function() {
     lookup.log(2,'show summary done');
     lookup.log(2,r);
     if (r.extras && r.extras.building)  {
-      lookup.view.showBuildings(r.extras.building);
+      lookup.view.showBuilding(r.extras.building);
     }
     else if (r.nycgeo)  {
       lookup.view.moveMap([r.nycgeo.geo_lat,r.nycgeo.geo_lon],true);
@@ -141,8 +141,8 @@ var sift = function(points,parts) {
     return q;
 };
 
-lookup.view.showBuildings = function(b) {
-    lookup.log(2,'show buildings ..');
+lookup.view.showBuilding = function(b) {
+    lookup.log(2,'show building ..');
     lookup.log(2,b);
     var center = [b.lat_ctr,b.lon_ctr];
     lookup.log(2,'center ..');
@@ -168,7 +168,7 @@ lookup.view.showBuildings = function(b) {
         polygon.addTo(lookup.view.map);
         lookup.view.polygons[i] = polygon;
     }
-    lookup.log(2,'show buildings done');
+    lookup.log(2,'show building done');
 };
 
 lookup.view.showContacts = function() {
