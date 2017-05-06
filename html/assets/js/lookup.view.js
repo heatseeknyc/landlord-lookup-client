@@ -111,14 +111,6 @@ lookup.view.showSummary = function() {
     $('#var-summary-bbl').text(r.nycgeo.bbl)
     $('#var-summary-bin').text(r.nycgeo.bin)
     lookup.view.showHPD();
-    if (r.extras && r.extras.dhcr_active)  {
-        $('#section-dhcr-active-false').hide();
-        $('#section-dhcr-active-true').show();
-    }
-    else {
-        $('#section-dhcr-active-true').hide();
-        $('#section-dhcr-active-false').show();
-    }
     lookup.log(2,'show summary done');
     lookup.log(2,r);
     lookup.view.cleanup();
