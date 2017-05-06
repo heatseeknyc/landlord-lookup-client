@@ -173,16 +173,27 @@ lookup.view.showObject = function(b,spec,move) {
         lookup.view.moveMap(center,false);
     }
     var poly = sift(b.points,b.parts);
-    lookup.log(2,'polygons = '+poly.length);
+    lookup.view.addPoly(poly,spec);
+    lookup.log(2,'show object done');
+    return true;
+};
+
+lookup.view.addPoly = function(poly,spec) {
+    lookup.log(2,'add poly ..');
     lookup.log(2,poly);
+    var map = lookup.view.map;
+    if (!map)  {
+        lookup.log(2,'add poly - aborting');
+        return false;
+    }
     lookup.view.polygons = new Array(poly.length);
     for (var i=0; i<poly.length; i++)  {
         var polygon = L.polygon(poly[i],spec);
-        // lookup.log(2,"add poly ..");
-        polygon.addTo(lookup.view.map);
+        polygon.addTo(map);
         lookup.view.polygons[i] = polygon;
     }
-    lookup.log(2,'show object done');
+    lookup.log(2,'add poly done');
+    return true;
 };
 
 lookup.view.showContacts = function() {
