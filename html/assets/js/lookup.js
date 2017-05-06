@@ -15,7 +15,7 @@ lookup.config = {
 lookup.service = {
   'hybrid':'http://' + window.location.hostname
   // 'hybrid':'http://lookup.heatseek.org'
-  // 'hybrid':'http://localhost',
+  // 'hybrid':'http://localhost:8081',
 };
 
 // Sets the debug level from a raw string argument (from a query
