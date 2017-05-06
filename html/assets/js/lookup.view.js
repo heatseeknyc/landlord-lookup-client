@@ -103,7 +103,7 @@ lookup.view.showHPD = function() {
 };
 
 lookup.view.displayShapes = function() {
-    lookup.log(2,'dislpaly shapes ..');
+    lookup.log(2,'display shapes ..');
     var r = lookup.model.summary;
     var x = r.extras;
     if (!x) {
@@ -124,6 +124,12 @@ lookup.view.displayShapes = function() {
     return true;
 };
 
+lookup.view.showPluto = function() {
+    var r = lookup.model.summary;
+    var p = r.extras.pluto;
+    $('#var-pluto-describe-count').text(p.describe_count)
+};
+
 lookup.view.showSummary = function() {
     lookup.log(2,'show summary basics ..');
     var r = lookup.model.summary;
@@ -134,6 +140,7 @@ lookup.view.showSummary = function() {
     $('#var-summary-bin').text(r.nycgeo.bin)
     var slug = lookup.utils.bbl2slug(r.nycgeo.bbl);
     $('#link-taxbills-nyc').attr('href','http://taxbills.nyc/'+slug);
+    lookup.view.showPluto();
     lookup.view.showHPD();
     lookup.view.displayShapes();
     $('#panel-summary').show();
