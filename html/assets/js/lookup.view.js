@@ -65,19 +65,9 @@ lookup.view.summary2table = function(r) {
 };
 
 
-
-lookup.view.showSummary = function() {
-    lookup.log(2,'show summary ..');
+// deprecated
+lookup.view.showTaxbill = function() {
     var r = lookup.model.summary;
-    function _plural(n)  {
-        if (n !== 1) { return 's'; }
-        return '';
-    }
-    $('#panel-data').hide();
-    $('#panel-error').hide();
-    $('#panel-message').hide();
-    $('#var-summary-bbl').text(r.nycgeo.bbl)
-    $('#var-summary-bin').text(r.nycgeo.bin)
     if (r.extras && false)  {
       $('#section-taxbill-available-false').hide();
       var html = lookup.view.summary2table(r.extras.taxbill);
@@ -91,6 +81,20 @@ lookup.view.showSummary = function() {
       $('#tbody-summary-taxbill')[0].innerHTML = '<!-- empty table -->';
       $('#section-taxbill-available-false').show();
     }
+};
+
+lookup.view.showSummary = function() {
+    lookup.log(2,'show summary ..');
+    var r = lookup.model.summary;
+    function _plural(n)  {
+        if (n !== 1) { return 's'; }
+        return '';
+    }
+    $('#panel-data').hide();
+    $('#panel-error').hide();
+    $('#panel-message').hide();
+    $('#var-summary-bbl').text(r.nycgeo.bbl)
+    $('#var-summary-bin').text(r.nycgeo.bin)
     if (r.extras && r.extras.nychpd_count)  {
         $('#section-nychpd-available-false').hide();
         var text = r.extras.nychpd_count + " contact record" + 
