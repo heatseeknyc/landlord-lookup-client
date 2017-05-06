@@ -114,7 +114,8 @@ lookup.view.showSummary = function() {
     lookup.log(2,r);
     lookup.view.cleanup();
     if (r.extras && r.extras.building)  {
-      lookup.view.showObject(r.extras.building);
+      var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
+      lookup.view.showObject(r.extras.building,spec);
     }
     // else if (r.nycgeo)  {
     //  lookup.view.moveMap([r.nycgeo.geo_lat,r.nycgeo.geo_lon],true);
@@ -156,9 +157,10 @@ lookup.view.cleanup = function() {
     }
 };
 
-lookup.view.showObject = function(b) {
+lookup.view.showObject = function(b,spec) {
     lookup.log(2,'show object ..');
     lookup.log(2,b);
+    lookup.log(2,spec);
     var center = [b.lat_ctr,b.lon_ctr];
     lookup.log(2,'center ..');
     lookup.log(2,center);
@@ -167,7 +169,6 @@ lookup.view.showObject = function(b) {
     lookup.log(2,'polygons = '+poly.length);
     lookup.log(2,poly);
     lookup.view.polygons = new Array(poly.length);
-    var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
     for (var i=0; i<poly.length; i++)  {
         var polygon = L.polygon(poly[i],spec);
         // lookup.log(2,"add poly ..");
