@@ -113,6 +113,10 @@ lookup.view.showSummary = function() {
     lookup.log(2,'show summary done');
     lookup.log(2,r);
     lookup.view.cleanup();
+    if (r.extras && r.extras.pluto)  {
+      var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
+      lookup.view.showObject(r.extras.pluto,spec);
+    }
     if (r.extras && r.extras.building)  {
       var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
       lookup.view.showObject(r.extras.building,spec);
