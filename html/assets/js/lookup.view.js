@@ -114,7 +114,7 @@ lookup.view.showSummary = function() {
     lookup.log(2,r);
     lookup.view.cleanup();
     if (r.extras && r.extras.building)  {
-      lookup.view.showBuilding(r.extras.building);
+      lookup.view.showObject(r.extras.building);
     }
     // else if (r.nycgeo)  {
     //  lookup.view.moveMap([r.nycgeo.geo_lat,r.nycgeo.geo_lon],true);
@@ -156,8 +156,8 @@ lookup.view.cleanup = function() {
     }
 };
 
-lookup.view.showBuilding = function(b) {
-    lookup.log(2,'show building ..');
+lookup.view.showObject = function(b) {
+    lookup.log(2,'show object ..');
     lookup.log(2,b);
     var center = [b.lat_ctr,b.lon_ctr];
     lookup.log(2,'center ..');
@@ -174,7 +174,7 @@ lookup.view.showBuilding = function(b) {
         polygon.addTo(lookup.view.map);
         lookup.view.polygons[i] = polygon;
     }
-    lookup.log(2,'show building done');
+    lookup.log(2,'show object done');
 };
 
 lookup.view.showContacts = function() {
