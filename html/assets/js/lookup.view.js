@@ -112,12 +112,13 @@ lookup.view.showSummary = function() {
     }
     lookup.log(2,'show summary done');
     lookup.log(2,r);
+    lookup.view.cleanup();
     if (r.extras && r.extras.building)  {
       lookup.view.showBuilding(r.extras.building);
     }
-    else if (r.nycgeo)  {
-      lookup.view.moveMap([r.nycgeo.geo_lat,r.nycgeo.geo_lon],true);
-    }
+    // else if (r.nycgeo)  {
+    //  lookup.view.moveMap([r.nycgeo.geo_lat,r.nycgeo.geo_lon],true);
+    //}
     $('#panel-summary').show();
     lookup.log(2,'show summary done');
 };
@@ -141,6 +142,20 @@ var sift = function(points,parts) {
     return q;
 };
 
+lookup.view.cleanup = function() {
+    if (lookup.view.polygons)  {
+        lookup.log(2,'polygon cleanup ..');
+        // lookup.log(2,'length = '+lookup.view.polygons.length);
+        for (var p of lookup.view.polygons)  {
+            // lookup.log(2,'nuke '+p);
+            lookup.view.map.removeLayer(p);
+        }
+        delete lookup.view["polygons"];
+        lookup.view.polygons = new Array(0);
+        lookup.log(2,'polygon cleanup done');
+    }
+};
+
 lookup.view.showBuilding = function(b) {
     lookup.log(2,'show building ..');
     lookup.log(2,b);
@@ -151,15 +166,6 @@ lookup.view.showBuilding = function(b) {
     var poly = sift(b.points,b.parts);
     lookup.log(2,'polygons = '+poly.length);
     lookup.log(2,poly);
-    if (lookup.view.polygons)  {
-        lookup.log(2,'polygon remove ..');
-        // lookup.log(2,'length = '+lookup.view.polygons.length);
-        for (var p of lookup.view.polygons)  {
-            // lookup.log(2,'nuke '+p);
-            lookup.view.map.removeLayer(p);
-        }
-        delete lookup.view["polygons"];
-    }
     lookup.view.polygons = new Array(poly.length);
     var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
     for (var i=0; i<poly.length; i++)  {
