@@ -102,29 +102,40 @@ lookup.view.showHPD = function() {
     }
 };
 
+lookup.view.displayShapes = function() {
+    lookup.log(2,'dislpaly shapes ..');
+    var r = lookup.model.summary;
+    var x = r.extras;
+    if (!x) {
+        lookup.log(2,'dislpaly shapes abort');
+        return false;
+    }
+    var pluto = x.pluto;
+    var building = x.building;
+    lookup.view.cleanup();
+    if (pluto)  {
+        var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
+        lookup.view.showObject(pluto,spec,true);
+    }
+    if (building)  {
+        var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
+        lookup.view.showObject(building,spec,true);
+    }
+    return true;
+};
+
 lookup.view.showSummary = function() {
-    lookup.log(2,'show summary ..');
+    lookup.log(2,'show summary basics ..');
     var r = lookup.model.summary;
     $('#panel-data').hide();
     $('#panel-error').hide();
     $('#panel-message').hide();
     $('#var-summary-bbl').text(r.nycgeo.bbl)
     $('#var-summary-bin').text(r.nycgeo.bin)
+    var slug = lookup.utils.bbl2slug(r.nycgeo.bbl);
+    $('#link-taxbills-nyc').attr('href','http://taxbills.nyc/'+slug);
     lookup.view.showHPD();
-    lookup.log(2,'show summary done');
-    lookup.log(2,r);
-    lookup.view.cleanup();
-    if (r.extras && r.extras.pluto)  {
-      var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
-      lookup.view.showObject(r.extras.pluto,spec,true);
-    }
-    if (r.extras && r.extras.building)  {
-      var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
-      lookup.view.showObject(r.extras.building,spec,true);
-    }
-    // else if (r.nycgeo)  {
-    //  lookup.view.moveMap([r.nycgeo.geo_lat,r.nycgeo.geo_lon],true);
-    //}
+    lookup.view.displayShapes();
     $('#panel-summary').show();
     lookup.log(2,'show summary done');
 };
