@@ -115,11 +115,11 @@ lookup.view.showSummary = function() {
     lookup.view.cleanup();
     if (r.extras && r.extras.pluto)  {
       var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
-      lookup.view.showObject(r.extras.pluto,spec);
+      lookup.view.showObject(r.extras.pluto,spec,true);
     }
     if (r.extras && r.extras.building)  {
       var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
-      lookup.view.showObject(r.extras.building,spec);
+      lookup.view.showObject(r.extras.building,spec,true);
     }
     // else if (r.nycgeo)  {
     //  lookup.view.moveMap([r.nycgeo.geo_lat,r.nycgeo.geo_lon],true);
@@ -161,14 +161,17 @@ lookup.view.cleanup = function() {
     }
 };
 
-lookup.view.showObject = function(b,spec) {
+lookup.view.showObject = function(b,spec,move) {
     lookup.log(2,'show object ..');
     lookup.log(2,b);
     lookup.log(2,spec);
-    var center = [b.lat_ctr,b.lon_ctr];
-    lookup.log(2,'center ..');
-    lookup.log(2,center);
-    lookup.view.moveMap(center,false);
+    lookup.log(2,move);
+    if (move)  {
+        var center = [b.lat_ctr,b.lon_ctr];
+        lookup.log(2,'center ..');
+        lookup.log(2,center);
+        lookup.view.moveMap(center,false);
+    }
     var poly = sift(b.points,b.parts);
     lookup.log(2,'polygons = '+poly.length);
     lookup.log(2,poly);
