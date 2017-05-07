@@ -128,6 +128,10 @@ lookup.view.showPluto = function() {
     var r = lookup.model.summary;
     var p = r.extras.pluto;
     $('#var-pluto-bldg-count-label').text(p.bldg_count_label)
+    $('#var-pluto-bldg-class').text(p.bldg_class)
+    $('#var-pluto-bldg-class-label').text(p.bldg_class_label)
+    $('#var-pluto-land-use').text(p.land_use)
+    $('#var-pluto-land-use-label').text(p.land_use_label)
 };
 
 lookup.view.showSummary = function() {

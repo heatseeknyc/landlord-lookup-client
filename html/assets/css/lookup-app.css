@@ -118,6 +118,10 @@ table.tinybox {
   /* layout:auto; */
 }
 
+table.pluto{
+  layout:auto; 
+}
+
 table.rowset{
   layout:auto; 
 }
