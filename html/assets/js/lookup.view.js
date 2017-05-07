@@ -127,7 +127,7 @@ lookup.view.displayShapes = function() {
 lookup.view.showPluto = function() {
     var r = lookup.model.summary;
     var p = r.extras.pluto;
-    $('#var-pluto-describe-count').text(p.describe_count)
+    $('#var-pluto-bldg-count-label').text(p.bldg_count_label)
 };
 
 lookup.view.showSummary = function() {
