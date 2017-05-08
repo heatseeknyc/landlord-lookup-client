@@ -110,12 +110,12 @@ lookup.view.displayShapes = function() {
         lookup.log(2,'dislpaly shapes abort');
         return false;
     }
-    var pluto = x.pluto;
+    var taxlot = x.taxlot;
     var building = x.building;
     lookup.view.cleanup();
-    if (pluto)  {
+    if (taxlot)  {
         var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
-        lookup.view.showObject(pluto,spec,true);
+        lookup.view.showObject(taxlot,spec,true);
     }
     if (building)  {
         var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
