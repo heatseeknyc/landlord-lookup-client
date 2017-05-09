@@ -115,11 +115,12 @@ lookup.view.displayShapes = function() {
     lookup.view.cleanup();
     if (taxlot)  {
         var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
-        lookup.view.showObject(taxlot,spec,true);
+        lookup.view.showObject(taxlot,spec);
+        lookup.view.moveTo(taxlot);
     }
     if (building)  {
         var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
-        lookup.view.showObject(building,spec,true);
+        lookup.view.showObject(building,spec);
     }
     return true;
 };
@@ -184,18 +185,18 @@ lookup.view.cleanup = function() {
     }
 };
 
-lookup.view.showObject = function(b,spec,move) {
+lookup.view.moveTo = function(shape) {
+    var center = [shape.lat_ctr,shape.lon_ctr];
+    lookup.log(2,'center ..');
+    lookup.log(2,center);
+    lookup.view.moveMap(center,false);
+};
+
+lookup.view.showObject = function(shape,spec) {
     lookup.log(2,'show object ..');
-    lookup.log(2,b);
+    lookup.log(2,shape);
     lookup.log(2,spec);
-    lookup.log(2,move);
-    if (move)  {
-        var center = [b.lat_ctr,b.lon_ctr];
-        lookup.log(2,'center ..');
-        lookup.log(2,center);
-        lookup.view.moveMap(center,false);
-    }
-    var poly = sift(b.points,b.parts);
+    var poly = sift(shape.points,shape.parts);
     lookup.view.addPoly(poly,spec);
     lookup.log(2,'show object done');
     return true;
