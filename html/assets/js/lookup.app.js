@@ -6,6 +6,7 @@ lookup.app.run = function() {
         lookup.control.initHandlers();
         lookup.view.initMap('themap');
         lookup.view.initPopups();
+        lookup.view.initLinks();
         lookup.log(1,'happy');
     });
     $.ajaxSetup(lookup.config.ajaxsetup);
