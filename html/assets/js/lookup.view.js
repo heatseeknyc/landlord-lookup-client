@@ -151,8 +151,11 @@ lookup.view.showExternalLinks = function() {
         return false;
     }
     var slug = lookup.utils.bbl2slug(bbl);
+    var acris = lookup.utils.bbl2acris(bbl);
+    var bisweb = lookup.utils.bbl2bisweb(bbl);
     $('#link-taxbills-nyc').attr('href','http://taxbills.nyc/'+slug);
     $('#link-oasis').attr('href','http://www.oasisnyc.net/map.aspx?zoomto=lot:'+bbl);
+    $('#link-bisweb').attr('href','http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?'+bisweb);
     return true;
 };
 
