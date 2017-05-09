@@ -72,8 +72,8 @@ a:active  { color:#c0f; }
     padding: 2px;
     left: 0px;
     bottom: 0px;
-    height: 200px; 
-    width: 100%; 
+    height: 180px; 
+    width: 950px; 
     font-size: 12px;
     background: white; 
     display: none;
@@ -145,7 +145,7 @@ table.nifty {
   padding-right: 2px;
   font-size: 12px; 
   background: #eee;
-  layout:tauto; 
+  layout:auto; 
 }
 
 p.errorbox {
