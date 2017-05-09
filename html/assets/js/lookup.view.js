@@ -141,6 +141,7 @@ lookup.view.showSummary = function() {
     lookup.log(2,'show summary basics ..');
     var r = lookup.model.summary;
     $('#panel-data').hide();
+    // $('#popup-almost').hide();
     $('#panel-error').hide();
     $('#panel-message').hide();
     $('#var-summary-bbl').text(r.nycgeo.bbl)
@@ -254,6 +255,7 @@ lookup.view.showContacts = function() {
     var html = lookup.render.rowset2html(r,keys);
     $("#tbody-contacts")[0].innerHTML = html.join('');
     $("#panel-data").show();
+    // $("#popup-almost").show();
     lookup.log(1,':: pushed (contacts).')
 };
 

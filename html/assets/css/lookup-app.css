@@ -33,6 +33,7 @@ a:active  { color:#c0f; }
 .panel-corner { position: absolute; z-index: 900; }
 .panel-upper { position: absolute; z-index: 900; }
 .panel-lower { position: absolute; z-index: 900; }
+.panel-popup { position: absolute; z-index: 900; }
 
 .panel-upper { 
     padding-left: 10px; 
@@ -78,6 +79,15 @@ a:active  { color:#c0f; }
     display: none;
 }
 
+#popup-almost {
+    height: 250px; 
+    width: 600px; 
+    left: 300px;
+    bottom:300px;
+    font-size: 12px;
+    background: white; 
+    display: none;
+}
 
 #address-input {
     width: 250px;
