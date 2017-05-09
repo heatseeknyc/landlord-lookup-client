@@ -135,6 +135,12 @@ lookup.view.showPluto = function() {
     $('#var-pluto-bldg-class-label').text(p.bldg_class_label)
     $('#var-pluto-land-use').text(p.land_use)
     $('#var-pluto-land-use-label').text(p.land_use_label)
+    if (p.bldg_count > 1)  {
+        $('#switch-view-multi-bldg').show();
+    }
+    else  {
+        $('#switch-view-multi-bldg').hide();
+    }
 };
 
 lookup.view.showSummary = function() {
