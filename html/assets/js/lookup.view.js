@@ -1,4 +1,5 @@
 lookup.view = {};
+lookup.view.polygons = {};
 
 // A simple check to tell whether Leaflet.js has been loaded or not.
 lookup.view.checkLeaflet = function() {
@@ -112,15 +113,16 @@ lookup.view.displayShapes = function() {
     }
     var taxlot = x.taxlot;
     var building = x.building;
-    lookup.view.cleanup();
+    lookup.view.cleanup('taxlot');
+    lookup.view.cleanup('building');
     if (taxlot)  {
         var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
-        lookup.view.showObject(taxlot,spec);
+        lookup.view.showObject('taxlot',taxlot,spec);
         lookup.view.moveTo(taxlot);
     }
     if (building)  {
         var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
-        lookup.view.showObject(building,spec);
+        lookup.view.showObject('building',building,spec);
     }
     return true;
 };
@@ -171,18 +173,25 @@ var sift = function(points,parts) {
     return q;
 };
 
-lookup.view.cleanup = function() {
-    if (lookup.view.polygons)  {
-        lookup.log(2,'polygon cleanup ..');
+lookup.view.cleanup = function(tag) {
+    lookup.log(2,'cleanup '+tag+'..');
+    lookup.log(2,'cleanup before');
+    lookup.log(2,lookup.view.polygons);
+    var list = lookup.view.polygons[tag];
+    lookup.log(2,list);
+    if (list)  {
         // lookup.log(2,'length = '+lookup.view.polygons.length);
-        for (var p of lookup.view.polygons)  {
-            // lookup.log(2,'nuke '+p);
+        lookup.log(2,'nuke ..');
+        for (var i=0; i<list.length; i++)  {
+            var p = list[i];
+            lookup.log(2,p);
             lookup.view.map.removeLayer(p);
         }
-        delete lookup.view["polygons"];
-        lookup.view.polygons = new Array(0);
-        lookup.log(2,'polygon cleanup done');
+        delete lookup.view.polygons[tag];
     }
+    lookup.log(2,'cleanup after');
+    lookup.log(2,lookup.view.polygons);
+    lookup.log(2,'cleanup done');
 };
 
 lookup.view.moveTo = function(shape) {
@@ -192,31 +201,44 @@ lookup.view.moveTo = function(shape) {
     lookup.view.moveMap(center,false);
 };
 
-lookup.view.showObject = function(shape,spec) {
-    lookup.log(2,'show object ..');
+lookup.view.showObject = function(tag,shape,spec) {
+    lookup.log(2,'show object tag='+tag+' ..');
     lookup.log(2,shape);
     lookup.log(2,spec);
     var poly = sift(shape.points,shape.parts);
-    lookup.view.addPoly(poly,spec);
+    lookup.view.addPoly(tag,poly,spec);
     lookup.log(2,'show object done');
     return true;
 };
 
-lookup.view.addPoly = function(poly,spec) {
-    lookup.log(2,'add poly ..');
+lookup.view.addPoly = function(tag,poly,spec) {
+    lookup.log(2,'add poly tag='+tag+' ..');
     lookup.log(2,poly);
     var map = lookup.view.map;
     if (!map)  {
         lookup.log(2,'add poly - aborting');
         return false;
     }
-    lookup.view.polygons = new Array(poly.length);
-    for (var i=0; i<poly.length; i++)  {
-        var polygon = L.polygon(poly[i],spec);
-        polygon.addTo(map);
-        lookup.view.polygons[i] = polygon;
+    var list = lookup.view.polygons[tag];
+    if (list)  {
+        lookup.log(2,'already ='+list.length);
+    }  else  {
+        lookup.view.polygons[tag] = new Array(0);
+        list = lookup.view.polygons[tag];
+        lookup.log(2,'initialized ='+list.length);
     }
-    lookup.log(2,'add poly done');
+    lookup.log(2,'add ..');
+    for (var i=0; i<poly.length; i++)  {
+        var p = L.polygon(poly[i],spec);
+        lookup.log(2,p);
+        p.addTo(map);
+        lookup.log(2,'before='+list.length);
+        lookup.log(2,list);
+        list.push(p);
+        lookup.log(2,'after='+list.length);
+        lookup.log(2,list);
+    }
+    lookup.log(2,'add poly done ['+tag+']');
     return true;
 };
 
