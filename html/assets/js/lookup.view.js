@@ -156,6 +156,7 @@ lookup.view.showExternalLinks = function() {
     $('#link-taxbills-nyc').attr('href','http://taxbills.nyc/'+slug);
     $('#link-oasis').attr('href','http://www.oasisnyc.net/map.aspx?zoomto=lot:'+bbl);
     $('#link-bisweb').attr('href','http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?'+bisweb);
+    $('#link-acris').attr('href','http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?'+acris);
     return true;
 };
 
