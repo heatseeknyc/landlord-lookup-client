@@ -103,7 +103,7 @@ a:active  { color:#c0f; }
 }
 
 
-table {
+table.boring {
   border: 1px solid #f00;
   margin: 0 auto;
   padding-top: 1px;
@@ -112,28 +112,29 @@ table {
   padding-right: 2px;
   font-size: 12px; 
   background: #edb;
-}
-
-table.tinybox {
-  /* layout:auto; */
-}
-
-table.pluto{
   layout:auto; 
 }
 
-table.rowset{
-  layout:auto; 
-}
-
-th {
+th.boring{
   text-align: left;
 }
 
-td {
+td.boring {
   margin-left: 2px;
   margin-right: 2px;
   background: #feb;
+}
+
+table.nifty {
+  border: 1px solid #ddd;
+  margin: 0 auto;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-size: 12px; 
+  background: #eee;
+  layout:tauto; 
 }
 
 p.errorbox {
