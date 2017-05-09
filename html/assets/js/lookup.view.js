@@ -73,7 +73,7 @@ lookup.view.showTaxbill = function() {
       $('#section-taxbill-available-false').hide();
       var html = lookup.view.summary2table(r.extras.taxbill);
       $('#tbody-summary-taxbill')[0].innerHTML = html.join('');
-      var slug = lookup.utils.bbl2slug(r.nycgeo.bbl);
+      var bbl = r.nygeo.bbl;
       $('#link-taxbills-nyc').attr('href','http://taxbills.nyc/'+slug);
       $('#section-taxbill-available-true').show();
     }
@@ -143,6 +143,19 @@ lookup.view.showPluto = function() {
     }
 };
 
+lookup.view.showExternalLinks = function() {
+    var r = lookup.model.summary;
+    var bbl = r.nycgeo.bbl;
+    if (!bbl)  {
+        console.log(2,'show external - no bbl');
+        return false;
+    }
+    var slug = lookup.utils.bbl2slug(bbl);
+    $('#link-taxbills-nyc').attr('href','http://taxbills.nyc/'+slug);
+    $('#link-oasis').attr('href','http://www.oasisnyc.net/map.aspx?zoomto=lot:'+bbl);
+    return true;
+};
+
 lookup.view.showSummary = function() {
     lookup.log(2,'show summary basics ..');
     var r = lookup.model.summary;
@@ -152,8 +165,7 @@ lookup.view.showSummary = function() {
     $('#panel-message').hide();
     $('#var-summary-bbl').text(r.nycgeo.bbl)
     $('#var-summary-bin').text(r.nycgeo.bin)
-    var slug = lookup.utils.bbl2slug(r.nycgeo.bbl);
-    $('#link-taxbills-nyc').attr('href','http://taxbills.nyc/'+slug);
+    lookup.view.showExternalLinks();
     lookup.view.showPluto();
     lookup.view.showHPD();
     lookup.view.displayShapes();
