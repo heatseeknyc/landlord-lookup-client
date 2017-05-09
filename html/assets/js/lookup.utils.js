@@ -36,10 +36,7 @@ lookup.utils.bbl2slug = function(bbl) {
     var _lpad = lookup.utils.lpad;
     var t = lookup.geoutils.splitBBL(bbl);
     return '' + t.boroID + '/' + _lpad(t.block,'0',5) + '/' + _lpad(t.lot,'0',4);
-  } 
-  else {
-    return 'invalid-bbl-string';
-  }
+  } else { return 'invalid-bbl-string'; }
 };
 
 
