@@ -293,6 +293,14 @@ lookup.view.initPopups = function()  {
     });
 };
 
+lookup.view.initLinks = function()  {
+    $('#switch-view-multi-bldg').click(function(){
+        lookup.log(2,"click!");
+        lookup.log(2,"this.id = "+this.id);
+    });
+};
+
+
 lookup.view.initTabs = function()  {
 };
 
