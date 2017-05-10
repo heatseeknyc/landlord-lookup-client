@@ -27,6 +27,7 @@ lookup.control.initViewMore = function() {
     $('#switch-view-multi-bldg').click(function(){
         lookup.log(2,"click!");
         lookup.log(2,"this.id = "+this.id);
+        lookup.control.doBuildings();
     }); 
 };
 
@@ -72,7 +73,7 @@ lookup.control.doAjax = function(base,path,callback) {
     };
 
     function handleContacts(r)  {
-        lookup.log(2,':: handle contacts ='+r);
+        lookup.log(2,':: handle contacts ..');
         lookup.log(2,r);
         if (r.error)  {
             lookup.view.showError(r.error);
@@ -84,14 +85,45 @@ lookup.control.doAjax = function(base,path,callback) {
         lookup.log(2,':: handle contacts done.');
     };
 
+    function fetchBuildings(bbl,callback) {
+        lookup.log(2,':: fetch buildings .. ');
+        lookup.log(2,':: bbl = ' + bbl);
+    };
+
+    function handleBuildings(r)  {
+        lookup.log(2,':: handle buildings ..');
+        lookup.log(2,r);
+        if (r.error)  {
+            lookup.view.showError(r.error);
+        } 
+        else {
+            lookup.model.buildings = r.buildings
+            // lookup.view.showContacts();
+        }
+        lookup.log(2,':: handle buildings done.');
+    };
+
+
     lookup.control.doContacts = function() {
         lookup.log(2,'do contacts ..');
         var r = lookup.model.summary;
         if (r && r.nycgeo)  {
             var keytup = r.nycgeo.bbl + ',' + r.nycgeo.bin
             fetchContacts(keytup,handleContacts);
-        }
-        else if (r)  {
+        } else { lookup.control.showModelError(); }
+    };
+
+    lookup.control.doBuildings = function() {
+        lookup.log(2,'do buildings..');
+        var r = lookup.model.summary;
+        if (r && r.nycgeo)  {
+            fetchBuildings(r.nycgeo.bbl,handleBuildings);
+        } else { lookup.control.showModelError(); }
+    };
+
+    lookup.control.showModelError = function() {
+        var r = lookup.model.summary;
+        if (r)  {
             lookup.log(1,'invalid state (model has summary, but no nycgeo struct)');
             lookup.view.showDefaultError();
         }
