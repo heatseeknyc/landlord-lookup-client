@@ -282,9 +282,14 @@ lookup.view.showContacts = function() {
 };
 
 lookup.view.showBuildings = function() {
-    var b = lookup.model.buildings;
+    var blist = lookup.model.buildings;
     lookup.log(1,'show buildings!');
-    lookup.log(2,b);
+    lookup.log(2,blist);
+    lookup.view.cleanup('building');
+    for (var i=0; i<blist.length; i++)  {
+        var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
+        lookup.view.showObject('building',blist[i],spec);
+    }
     lookup.log(1,':: done show buildings.')
 };
 
