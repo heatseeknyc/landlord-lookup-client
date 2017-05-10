@@ -101,7 +101,7 @@ lookup.control.doAjax = function(base,path,callback) {
         } 
         else {
             lookup.model.buildings = r.buildings
-            // lookup.view.showContacts();
+            lookup.view.showBuildings();
         }
         lookup.log(2,':: handle buildings done.');
     };

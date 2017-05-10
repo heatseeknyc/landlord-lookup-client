@@ -266,7 +266,7 @@ lookup.view.addPoly = function(tag,poly,spec) {
 };
 
 lookup.view.showContacts = function() {
-    r = lookup.model.contacts;
+    var r = lookup.model.contacts;
     $(".panel-lower").hide();
     lookup.log(1,'show contacts!');
     lookup.log(2,r);
@@ -278,8 +278,16 @@ lookup.view.showContacts = function() {
     $("#tbody-contacts")[0].innerHTML = html.join('');
     $("#panel-data").show();
     // $("#popup-almost").show();
-    lookup.log(1,':: pushed (contacts).')
+    lookup.log(1,':: done show contacts.')
 };
+
+lookup.view.showBuildings = function() {
+    var b = lookup.model.buildings;
+    lookup.log(1,'show buildings!');
+    lookup.log(2,b);
+    lookup.log(1,':: done show buildings.')
+};
+
 
 lookup.view.showError = function(msg) {
     $('#panel-message').hide();
