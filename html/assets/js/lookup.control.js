@@ -24,7 +24,12 @@ lookup.control.initViewMore = function() {
         lookup.log(3,':: #form-nychpd.submit at '+ new Date());
         lookup.control.doContacts();
     });
+    $('#switch-view-multi-bldg').click(function(){
+        lookup.log(2,"click!");
+        lookup.log(2,"this.id = "+this.id);
+    }); 
 };
+
 
 // A simple wrapper around the standard json ajax call, 
 // with default error handling + paranoid logging.
