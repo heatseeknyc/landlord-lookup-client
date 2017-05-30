@@ -140,18 +140,9 @@ lookup.control.doAjax = function(base,path,callback) {
         lookup.log(2,'do search ..');
         lookup.model = {}; 
         lookup.log(2,'query =['+query+']');
-        /* var r = lookup.geoutils.processAddress(rawaddr); 
         lookup.log(2,'procform, processed');
         lookup.log(2,r); */
         fetchSummary(query,handleSummary);
-        /* if (r.error) {
-            lookup.log(2,'procform error');
-            lookup.view.showError(r.error); 
-        } else {
-            lookup.log(2,'procform fetch');
-            fetchSummary(r,handleSummary);
-            // pushWait();
-        } */
         lookup.log(2,'procform done.');
     };
 
