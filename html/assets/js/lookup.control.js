@@ -147,12 +147,13 @@ lookup.control.doAjax = function(base,path,callback) {
     };
 
     function fetchSummary(query,callback) {
-        lookup.log(3,':: fetch summary .. ');
+        lookup.log(2,':: fetch summary .. ');
         var base = lookup.service.hybrid; 
         var path = '/lookup/' + query;
         lookup.log(3,':: summary base  = '+base);
         lookup.log(3,':: summary path  = '+path);
         return lookup.control.doAjax(base,path,callback);
+        lookup.log(2,':: fetch summary done.');
     };
 
     function handleSummary(r)  {
