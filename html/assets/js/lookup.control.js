@@ -110,8 +110,8 @@ lookup.control.doAjax = function(base,path,callback) {
     lookup.control.doContacts = function() {
         lookup.log(2,'do contacts ..');
         var r = lookup.model.summary;
-        if (r && r.nycgeo)  {
-            var keytup = r.nycgeo.bbl + ',' + r.nycgeo.bin
+        if (r && r.keytup)  {
+            var keytup = r.keytup.bbl + ',' + r.keytup.bin
             fetchContacts(keytup,handleContacts);
         } else { lookup.control.showModelError(); }
     };
@@ -119,15 +119,15 @@ lookup.control.doAjax = function(base,path,callback) {
     lookup.control.doBuildings = function() {
         lookup.log(2,'do buildings..');
         var r = lookup.model.summary;
-        if (r && r.nycgeo)  {
-            fetchBuildings(r.nycgeo.bbl,handleBuildings);
+        if (r && r.keytup)  {
+            fetchBuildings(r.keytup.bbl,handleBuildings);
         } else { lookup.control.showModelError(); }
     };
 
     lookup.control.showModelError = function() {
         var r = lookup.model.summary;
         if (r)  {
-            lookup.log(1,'invalid state (model has summary, but no nycgeo struct)');
+            lookup.log(1,'invalid state (model has summary, but no keytup struct)');
             lookup.view.showDefaultError();
         }
         else  {

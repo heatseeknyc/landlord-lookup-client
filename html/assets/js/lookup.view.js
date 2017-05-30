@@ -145,7 +145,7 @@ lookup.view.showPluto = function() {
 
 lookup.view.showExternalLinks = function() {
     var r = lookup.model.summary;
-    var bbl = r.nycgeo.bbl;
+    var bbl = r.keytup.bbl;
     if (!bbl)  {
         console.log(2,'show external - no bbl');
         return false;
@@ -167,8 +167,8 @@ lookup.view.showSummary = function() {
     // $('#popup-almost').hide();
     $('#panel-error').hide();
     $('#panel-message').hide();
-    $('#var-summary-bbl').text(r.nycgeo.bbl)
-    $('#var-summary-bin').text(r.nycgeo.bin)
+    $('#var-summary-bbl').text(r.keytup.bbl)
+    $('#var-summary-bin').text(r.keytup.bin)
     lookup.view.showExternalLinks();
     lookup.view.showPluto();
     lookup.view.showHPD();
