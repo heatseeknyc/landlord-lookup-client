@@ -136,14 +136,14 @@ lookup.control.doAjax = function(base,path,callback) {
         }
     };
 
-    lookup.control.doSearch = function(rawaddr) {
+    lookup.control.doSearch = function(query) {
         lookup.log(2,'do search ..');
         lookup.model = {}; 
-        lookup.log(2,'rawaddr ='+rawaddr);
+        lookup.log(2,'query =['+query+']');
         /* var r = lookup.geoutils.processAddress(rawaddr); 
         lookup.log(2,'procform, processed');
         lookup.log(2,r); */
-        fetchSummary(rawaddr,handleSummary);
+        fetchSummary(query,handleSummary);
         /* if (r.error) {
             lookup.log(2,'procform error');
             lookup.view.showError(r.error); 
@@ -155,10 +155,10 @@ lookup.control.doAjax = function(base,path,callback) {
         lookup.log(2,'procform done.');
     };
 
-    function fetchSummary(rawaddr,callback) {
+    function fetchSummary(query,callback) {
         lookup.log(3,':: fetch summary .. ');
         var base = lookup.service.hybrid; 
-        var path = '/lookup/' + rawaddr;
+        var path = '/lookup/' + query;
         lookup.log(3,':: summary base  = '+base);
         lookup.log(3,':: summary path  = '+path);
         return lookup.control.doAjax(base,path,callback);
