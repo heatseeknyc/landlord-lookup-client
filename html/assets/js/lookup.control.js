@@ -140,8 +140,6 @@ lookup.control.doAjax = function(base,path,callback) {
         lookup.log(2,'do search ..');
         lookup.model = {}; 
         lookup.log(2,'query =['+query+']');
-        lookup.log(2,'procform, processed');
-        lookup.log(2,r); */
         fetchSummary(query,handleSummary);
         lookup.log(2,'procform done.');
     };
