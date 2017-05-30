@@ -60,5 +60,20 @@ lookup.utils.bbl2bisweb = function(bbl) {
   } else { return 'invalid-bbl-string'; }
 };
 
-
+// Adapted from https://stackoverflow.com/questions/901115/ (under CC).
+//
+// Returns the requested query string parameter by name from the given URL, using 
+// the current window location as a default).  Doesn't work for multi-valued params 
+// (i.e. repeated instances ofa  given name), but that's OK.  But has advantage
+// of simplicity and a likely high degree of backward compatibility.
+//
+lookup.utils.getQueryStringParam = function(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+};
 
