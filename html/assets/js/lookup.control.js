@@ -11,7 +11,7 @@ lookup.control.initHandlers = function() {
 lookup.control.initSearch = function() {
     $('#address-form').on('submit', function (evt) {
         evt.preventDefault();
-        rawaddr = $('#address-input').val();
+        var rawaddr = $('#address-input').val();
         lookup.log(3,':: #address-form.submit at '+ new Date());
         // hideResults();
         lookup.control.doSearch(rawaddr);
