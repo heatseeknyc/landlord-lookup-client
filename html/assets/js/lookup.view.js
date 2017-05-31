@@ -336,11 +336,10 @@ lookup.view.initTabs = function()  {
 lookup.view.initGoogleAutocomplete = function() {
     var config = lookup.config.autocomplete;
     if (config && config.active)  {
-      // var x = $("#address-input");
-      // lookup.log(1,"x = " + typeof(x));
-      // lookup.log(1,x);
+      lookup.log(2,"autocomplete - active")
       $("#address-input").geocomplete(); 
-      // $.fn.geocomplete("#address-input");
+    } else  {
+      lookup.log(2,"autocomplete - inactive")
     }
 };
 
