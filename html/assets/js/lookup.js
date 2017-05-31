@@ -1,3 +1,5 @@
+(function() {
+
 // Namespace for all globals specific to the Landlord Lookup application. 
 var lookup = {};
 lookup.version = '003a';
@@ -36,4 +38,6 @@ lookup.log = function(level,msg) {
     console.log(msg)
   }
 };
+
+})();
 
