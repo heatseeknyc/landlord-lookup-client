@@ -1,7 +1,7 @@
 (function() {
 
     // Namespace for all globals specific to the Landlord Lookup application. 
-    var lookup = {};
+    lookup = {};
     lookup.version = '003a';
     lookup.model = {}; 
 
