@@ -1,3 +1,5 @@
+(function() {
+
 lookup.view = {};
 lookup.view.polygons = {};
 
@@ -343,6 +345,6 @@ lookup.view.initGoogleAutocomplete = function() {
     }
 };
 
-
+})();
 
 
