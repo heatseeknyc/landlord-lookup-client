@@ -7,10 +7,11 @@ lookup.model = {};
 lookup.config = {
     'debug': 2, 
     'autocomplete': {
-        'active': true
+        'active': true,
+        'bounds': false
     },
     'ajaxsetup': {
-        'timeout': 3000
+        'timeout': 5000
     }
 };
 
