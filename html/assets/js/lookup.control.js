@@ -161,5 +161,10 @@
         lookup.log(2,':: handle summary done.');
     };
 
+    lookup.control.processQueryString = function() {
+        lookup.log(2,':: process query string (if any) ...');
+        lookup.log(2,':: process query string  - done.');
+    };
+
 })();
 
