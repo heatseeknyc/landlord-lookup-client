@@ -3,7 +3,7 @@ lookup.control = {};
 lookup.control.initHandlers = function() {
     lookup.log(1,':: init handlers ..');
     lookup.control.initSearch();
-    lookup.control.initViewMore();
+    lookup.control.initExpandHanders();
     lookup.log(1,':: init handlers done.');
 };
 
@@ -18,7 +18,7 @@ lookup.control.initSearch = function() {
     });
 };
 
-lookup.control.initViewMore = function() {
+lookup.control.initExpandHandlers = function() {
     $('#form-nychpd').on('submit', function (evt) {
         evt.preventDefault();
         lookup.log(3,':: #form-nychpd.submit at '+ new Date());
