@@ -1,12 +1,12 @@
-lookup.control = {};
+(function() {
 
+    lookup.control = {};
     lookup.control.initHandlers = function() {
         lookup.log(1,':: init handlers ..');
         lookup.control.initSearch();
         lookup.control.initExpandHanders();
         lookup.log(1,':: init handlers done.');
     };
-
 
     lookup.control.initSearch = function() {
         $('#address-form').on('submit', function (evt) {
@@ -29,7 +29,6 @@ lookup.control = {};
             lookup.control.doBuildings();
         }); 
     };
-
 
     // A simple wrapper around the standard json ajax call, 
     // with default error handling + paranoid logging.
@@ -57,9 +56,6 @@ lookup.control = {};
                 }
             });
     };
-
-(function() {
-    
 
     function fetchContacts(keytup,callback) {
         lookup.log(2,':: fetch contacts .. ');
@@ -104,7 +100,6 @@ lookup.control = {};
         }
         lookup.log(2,':: handle buildings done.');
     };
-
 
     lookup.control.doContacts = function() {
         lookup.log(2,'do contacts ..');
