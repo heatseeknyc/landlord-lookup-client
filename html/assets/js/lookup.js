@@ -6,16 +6,18 @@ lookup.model = {};
 // Application specific configuration.
 lookup.config = {
     'debug': 2, 
-    'google_autocomplete_active': true,
+    'autocomplete': {
+        'active': true
+    },
     'ajaxsetup': {
         'timeout': 3000
     }
 };
 
 lookup.service = {
-  'hybrid':'http://' + window.location.hostname
+  // 'hybrid':'http://' + window.location.hostname
   // 'hybrid':'http://lookup.heatseek.org'
-  // 'hybrid':'http://localhost:8081',
+  'hybrid':'http://localhost:8081',
 };
 
 // Sets the debug level from a raw string argument (from a query

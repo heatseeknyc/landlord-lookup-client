@@ -334,7 +334,8 @@ lookup.view.initTabs = function()  {
 };
 
 lookup.view.initGoogleAutocomplete = function() {
-    if (lookup.config.google_autocomplete_active) {
+    var config = lookup.config.autocomplete;
+    if (config && config.active)  {
       // var x = $("#address-input");
       // lookup.log(1,"x = " + typeof(x));
       // lookup.log(1,x);
