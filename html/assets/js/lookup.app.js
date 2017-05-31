@@ -1,3 +1,4 @@
+(function() {
 lookup.app = {};
 lookup.app.run = function() {
     lookup.log(1,'version = '+lookup.version);
@@ -11,3 +12,4 @@ lookup.app.run = function() {
     $.ajaxSetup(lookup.config.ajaxsetup);
     lookup.log(1,'launched.');
 };
+})();
