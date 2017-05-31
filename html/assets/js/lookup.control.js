@@ -4,7 +4,7 @@
     lookup.control.initHandlers = function() {
         lookup.log(1,':: init handlers ..');
         lookup.control.initSearch();
-        lookup.control.initExpandHanders();
+        lookup.control.initExpandHandlers();
         lookup.log(1,':: init handlers done.');
     };
 
