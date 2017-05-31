@@ -1,63 +1,62 @@
 lookup.control = {};
 
-lookup.control.initHandlers = function() {
-    lookup.log(1,':: init handlers ..');
-    lookup.control.initSearch();
-    lookup.control.initExpandHanders();
-    lookup.log(1,':: init handlers done.');
-};
+    lookup.control.initHandlers = function() {
+        lookup.log(1,':: init handlers ..');
+        lookup.control.initSearch();
+        lookup.control.initExpandHanders();
+        lookup.log(1,':: init handlers done.');
+    };
 
 
-lookup.control.initSearch = function() {
-    $('#address-form').on('submit', function (evt) {
-        evt.preventDefault();
-        var query = $('#address-input').val().trim();
-        lookup.log(3,':: #address-form.submit at '+ new Date());
-        // hideResults();
-        lookup.control.doSearch(query);
-    });
-};
-
-lookup.control.initExpandHandlers = function() {
-    $('#form-nychpd').on('submit', function (evt) {
-        evt.preventDefault();
-        lookup.log(3,':: #form-nychpd.submit at '+ new Date());
-        lookup.control.doContacts();
-    });
-    $('#switch-view-multi-bldg').click(function(){
-        lookup.log(2,"click!");
-        lookup.log(2,"this.id = "+this.id);
-        lookup.control.doBuildings();
-    }); 
-};
-
-
-// A simple wrapper around the standard json ajax call, 
-// with default error handling + paranoid logging.
-lookup.control.doAjax = function(base,path,callback) {
-    lookup.log(2,':: ajax base = ['+base+']');
-    lookup.log(2,':: ajax path = ['+path+']');
-    var encpath = lookup.utils.encode_nicely(path);
-    var url = base + encpath;
-    lookup.log(2,':: ajax url =['+url+']');
-    return $.getJSON(url,callback)
-        .success(function(r){
-            lookup.log(2,':: ajax success!'+r);
-            lookup.log(2,r);
-        })
-        .fail(function(error){
-            lookup.log(2,':: ajax fail!');
-            lookup.log(2,error);
-            if (error.statusText === "timeout")  {
-                var msg = "Unable to reach lookup service.  Try again in a little while.";
-                lookup.view.showError(msg);
-            }
-            else {
-                var msg = "Unable to reach lookup service, reason: '"+error.statusText+"'";
-                lookup.view.showError(msg);
-            }
+    lookup.control.initSearch = function() {
+        $('#address-form').on('submit', function (evt) {
+            evt.preventDefault();
+            var query = $('#address-input').val().trim();
+            lookup.log(3,':: #address-form.submit at '+ new Date());
+            lookup.control.doSearch(query);
         });
-};
+    };
+
+    lookup.control.initExpandHandlers = function() {
+        $('#form-nychpd').on('submit', function (evt) {
+            evt.preventDefault();
+            lookup.log(3,':: #form-nychpd.submit at '+ new Date());
+            lookup.control.doContacts();
+        });
+        $('#switch-view-multi-bldg').click(function(){
+            lookup.log(2,"click!");
+            lookup.log(2,"this.id = "+this.id);
+            lookup.control.doBuildings();
+        }); 
+    };
+
+
+    // A simple wrapper around the standard json ajax call, 
+    // with default error handling + paranoid logging.
+    lookup.control.doAjax = function(base,path,callback) {
+        lookup.log(2,':: ajax base = ['+base+']');
+        lookup.log(2,':: ajax path = ['+path+']');
+        var encpath = lookup.utils.encode_nicely(path);
+        var url = base + encpath;
+        lookup.log(2,':: ajax url =['+url+']');
+        return $.getJSON(url,callback)
+            .success(function(r){
+                lookup.log(2,':: ajax success!'+r);
+                lookup.log(2,r);
+            })
+            .fail(function(error){
+                lookup.log(2,':: ajax fail!');
+                lookup.log(2,error);
+                if (error.statusText === "timeout")  {
+                    var msg = "Unable to reach lookup service.  Try again in a little while.";
+                    lookup.view.showError(msg);
+                }
+                else {
+                    var msg = "Unable to reach lookup service, reason: '"+error.statusText+"'";
+                    lookup.view.showError(msg);
+                }
+            });
+    };
 
 (function() {
     
