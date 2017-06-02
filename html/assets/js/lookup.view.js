@@ -200,13 +200,13 @@ var sift = function(points,parts) {
 
 lookup.view.cleanup = function(tag) {
     lookup.log(2,'cleanup '+tag+'..');
-    lookup.log(2,'cleanup before');
-    lookup.log(2,lookup.view.polygons);
+    lookup.log(3,'cleanup before');
+    lookup.log(3,lookup.view.polygons);
     var list = lookup.view.polygons[tag];
-    lookup.log(2,list);
+    lookup.log(3,list);
     if (list)  {
         // lookup.log(2,'length = '+lookup.view.polygons.length);
-        lookup.log(2,'nuke ..');
+        lookup.log(3,'nuke ..');
         for (var i=0; i<list.length; i++)  {
             var p = list[i];
             lookup.log(2,p);
@@ -214,8 +214,8 @@ lookup.view.cleanup = function(tag) {
         }
         delete lookup.view.polygons[tag];
     }
-    lookup.log(2,'cleanup after');
-    lookup.log(2,lookup.view.polygons);
+    lookup.log(3,'cleanup after');
+    lookup.log(3,lookup.view.polygons);
     lookup.log(2,'cleanup done');
 };
 
@@ -241,27 +241,27 @@ lookup.view.addPoly = function(tag,poly,spec) {
     lookup.log(2,poly);
     var map = lookup.view.map;
     if (!map)  {
-        lookup.log(2,'add poly - aborting');
+        lookup.log(3,'add poly - aborting');
         return false;
     }
     var list = lookup.view.polygons[tag];
     if (list)  {
-        lookup.log(2,'already ='+list.length);
+        lookup.log(3,'already ='+list.length);
     }  else  {
         lookup.view.polygons[tag] = new Array(0);
         list = lookup.view.polygons[tag];
-        lookup.log(2,'initialized ='+list.length);
+        lookup.log(3,'initialized ='+list.length);
     }
-    lookup.log(2,'add ..');
+    lookup.log(2,'add '+poly.length+' ..');
     for (var i=0; i<poly.length; i++)  {
         var p = L.polygon(poly[i],spec);
-        lookup.log(2,p);
+        lookup.log(3,p);
         p.addTo(map);
-        lookup.log(2,'before='+list.length);
-        lookup.log(2,list);
+        lookup.log(3,'before='+list.length);
+        lookup.log(3,list);
         list.push(p);
-        lookup.log(2,'after='+list.length);
-        lookup.log(2,list);
+        lookup.log(3,'after='+list.length);
+        lookup.log(3,list);
     }
     lookup.log(2,'add poly done ['+tag+']');
     return true;
