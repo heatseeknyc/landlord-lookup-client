@@ -1,4 +1,6 @@
 // requires: lookup.utils
+(function() {
+
 lookup.geoutils = {}; 
 
 // Takes a string representing a (perhaps multi-part) city name,
@@ -121,4 +123,4 @@ lookup.geoutils.genMapURL = function(geolat,geolon) {
   return 'http://www.openstreetmap.org' + suburl
 };
 
-
+})();

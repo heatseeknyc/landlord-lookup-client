@@ -1,6 +1,8 @@
 // 
 // Generic string utils and such.
 // 
+(function() {
+
 lookup.utils = {}
 
 // Strips leading and trailing whitespace from a string. 
@@ -77,3 +79,4 @@ lookup.utils.getQueryStringParam = function(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 };
 
+})();

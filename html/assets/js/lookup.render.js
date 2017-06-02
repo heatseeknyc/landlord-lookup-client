@@ -1,3 +1,5 @@
+(function() {
+
 lookup.render = {}
 // Simple display wrapper for null record values.
 lookup.render._shownull = function(x) {
@@ -27,4 +29,5 @@ lookup.render.rowset2html = function(rowset,keys) {
   return html;
 };
 
+})();
 
