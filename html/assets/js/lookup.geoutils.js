@@ -1,4 +1,3 @@
-// requires: lookup.utils
 (function() {
 
     lookup.geoutils = {}; 
@@ -12,7 +11,7 @@
     // Our assumption is that the final "word" in this string will 
     // be a state abbreviation iff it's two letters in length.
     lookup.geoutils.splitCity = function(s) {
-        var t = lookup.utils.strip(s).split(/\s+/);
+        var t = s.trim().split(/\s+/);
         var n = t.length;
         if (n < 1) { return null; }
         if (n === 1) { return {'city':t[0],'state':null}; }
@@ -64,7 +63,7 @@
     //
     lookup.geoutils.processAddress = function(rawaddr) {
         var r = {};
-        r.rawaddr = lookup.utils.strip(rawaddr); 
+        r.rawaddr = rawaddr.trim();
         var terms = r.rawaddr.split(/\s*,\s*/);
         var re = new RegExp(/^(\S+)\s+(.*)$/);
         var m = re.exec(terms[0]);
@@ -120,5 +119,6 @@
         var suburl = '/export/embed.html?bbox='+boxtup+'&layer=mapnik&marker='+marker;
         return 'http://www.openstreetmap.org' + suburl
     };
+
 
 })();

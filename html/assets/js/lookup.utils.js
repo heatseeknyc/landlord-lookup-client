@@ -5,10 +5,10 @@
 
     lookup.utils = {}
 
-    // Strips leading and trailing whitespace from a string. 
-    lookup.utils.strip = function(s) {
-        return s.replace(/^\s+/,'').replace(/\s+$/,'');
-    };
+    // deprecated
+    // lookup.utils.strip = function(s) {
+    //    return s.replace(/^\s+/,'').replace(/\s+$/,'');
+    // };
 
     // We're not happy with what encodeURIComponent does to typical URL paths
     // (as it encodes way too many symbols that aren't strictly necessary to 
