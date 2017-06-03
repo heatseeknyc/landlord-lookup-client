@@ -163,7 +163,18 @@
 
     lookup.control.processQueryString = function() {
         lookup.log(2,':: process query string (if any) ...');
-        lookup.log(2,':: process query string  - done.');
+        var bbl = lookup.utils.getQueryStringParam('bbl')
+        lookup.log(2,':: process query string - bbl = ' + bbl);
+        if (bbl)  {
+            if (bbl.match(/^\d{9}$/))  {
+                lookup.view.showError("yes!");
+            }
+            else  {
+                lookup.view.showError("invalid bbl!");
+            }
+        }
+        lookup.log(2,':: process query string - done.');
+
     };
 
 })();
