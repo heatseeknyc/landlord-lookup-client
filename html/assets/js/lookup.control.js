@@ -166,15 +166,15 @@
         var bbl = lookup.utils.getQueryStringParam('bbl')
         lookup.log(2,':: process query string - bbl = ' + bbl);
         if (bbl)  {
-            if (bbl.match(/^\d{9}$/))  {
-                lookup.view.showError("yes!");
+            if (bbl.match(/^\d{10}$/))  {
+                lookup.log(2,':: process query string - yes! ' + bbl);
+                lookup.control.doSearch(query);
             }
             else  {
                 lookup.view.showError("invalid bbl!");
             }
         }
         lookup.log(2,':: process query string - done.');
-
     };
 
 })();
