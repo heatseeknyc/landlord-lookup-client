@@ -79,4 +79,24 @@
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     };
 
+    // Returns the local component of the window location, minus the origin.
+    lookup.utils.getLocalPath = function() {
+        var loc = window.location;
+        var j = loc.origin.length;
+        var n = loc.href.length;
+        return loc.href.substr(j,n);
+    };
+
+    // If the local component of the window location
+    lookup.utils.getPathVar = function(name,path) {
+        if (!path) path = lookup.utils.getLocalPath();
+        lookup.log(2,'path = ['+path+']');
+        var regex = new RegExp('^/'+name+'/(.*)$');
+        results = regex.exec(path);
+        lookup.log(2,results);
+        if (!results) return null;
+        if (!results[1]) return '';
+        return results[1];
+    };
+
 })();

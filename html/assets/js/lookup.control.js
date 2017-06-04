@@ -161,20 +161,23 @@
         lookup.log(2,':: handle summary done.');
     };
 
-    lookup.control.processQueryString = function() {
-        lookup.log(2,':: process query string (if any) ...');
-        var bbl = lookup.utils.getQueryStringParam('bbl')
-        lookup.log(2,':: process query string - bbl = ' + bbl);
+    lookup.control.processLocalPath = function() {
+        lookup.log(2,':: localpath ...');
+        var bbl = lookup.utils.getPathVar('taxlot')
+        lookup.log(2,':: localpath - taxlot = ' + bbl);
         if (bbl)  {
             if (bbl.match(/^\d{10}$/))  {
-                lookup.log(2,':: process query string - yes! ' + bbl);
-                lookup.control.doSearch(query);
+                lookup.log(2,':: localpath - lets do it ..');
+                lookup.control.doSearch(bbl);
             }
             else  {
+                lookup.log(2,':: localpath - no good!');
                 lookup.view.showError("invalid bbl!");
             }
+        }  else  {
+            lookup.log(2,':: localpath - no match');
         }
-        lookup.log(2,':: process query string - done.');
+        lookup.log(2,':: localpath - done.');
     };
 
 })();
