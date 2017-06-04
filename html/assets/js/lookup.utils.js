@@ -87,7 +87,8 @@
         return loc.href.substr(j,n);
     };
 
-    // If the local component of the window location
+    // If the local component of the window location is of the form
+    // '/name/variable', we return the 'variable' part.
     lookup.utils.getPathVar = function(name,path) {
         if (!path) path = lookup.utils.getLocalPath();
         lookup.log(2,'path = ['+path+']');
