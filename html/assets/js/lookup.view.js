@@ -74,7 +74,7 @@
     var r = lookup.model.summary;
     if (r.taxlot && false)  {
       $('#section-taxbill-available-false').hide();
-      var html = lookup.view.summary2table(r.extras.taxbill);
+      var html = lookup.view.summary2table(r.taxlot.taxbill);
       $('#tbody-summary-taxbill')[0].innerHTML = html.join('');
       var bbl = r.nygeo.bbl;
       $('#link-taxbills-nyc').attr('href','http://taxbills.nyc/'+slug);
