@@ -109,19 +109,17 @@
     lookup.view.displayShapes = function() {
         lookup.log(2,'display shapes ..');
         var r = lookup.model.summary;
-        var x = r.taxlot;
-        if (!x) {
+        if (!r.taxlot) {
             lookup.log(2,'display shapes abort');
             return false;
         }
-        var taxlot = x.taxlot;
         var building = x.building;
         lookup.view.cleanup('taxlot');
         lookup.view.cleanup('building');
-        if (taxlot)  {
+        if (r.taxlot)  {
         var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
-            lookup.view.showObject('taxlot',taxlot,spec);
-            lookup.view.moveTo(taxlot);
+            lookup.view.showObject('taxlot',r.taxlot,spec);
+            lookup.view.moveTo(r.taxlot);
         }
         if (building)  {
             var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
