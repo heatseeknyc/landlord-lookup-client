@@ -117,7 +117,7 @@
         lookup.view.cleanup('taxlot');
         lookup.view.cleanup('building');
         if (r.taxlot)  {
-        var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
+            var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
             lookup.view.showObject('taxlot',r.taxlot,spec);
             lookup.view.moveTo(r.taxlot);
         }
