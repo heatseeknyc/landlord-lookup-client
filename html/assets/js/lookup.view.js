@@ -106,25 +106,23 @@
         }
     };
 
-    lookup.view.displayShapes = function() {
-        lookup.log(2,'display shapes ..');
+    lookup.view.displayTaxlot = function() {
+        lookup.log(2,'display taxlot..');
         var r = lookup.model.summary;
         if (!r.taxlot) {
-            lookup.log(2,'display shapes abort');
+            lookup.log(2,'display taxlot abort');
             return false;
         }
         // var building = x.building;
-        lookup.view.cleanup('taxlot');
         // lookup.view.cleanup('building');
-        if (r.taxlot)  {
-            var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
-            lookup.view.showObject('taxlot',r.taxlot,spec);
-            lookup.view.moveTo(r.taxlot);
-        }
-        if (false && building)  {
-            var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
-            lookup.view.showObject('building',building,spec);
-        }
+        lookup.view.cleanup('taxlot');
+        var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
+        lookup.view.showObject('taxlot',r.taxlot,spec);
+        lookup.view.moveTo(r.taxlot);
+        // if (false && building)  {
+        //    var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
+        //    lookup.view.showObject('building',building,spec);
+        // }
         return true;
     };
 
@@ -173,7 +171,7 @@
         lookup.view.showExternalLinks();
         lookup.view.showPluto();
         lookup.view.showHPD();
-        lookup.view.displayShapes();
+        lookup.view.displayTaxlot();
         $('#panel-summary').show();
         lookup.log(2,'show summary done');
     };
