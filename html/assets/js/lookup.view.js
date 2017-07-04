@@ -113,15 +113,15 @@
             lookup.log(2,'display shapes abort');
             return false;
         }
-        var building = x.building;
+        // var building = x.building;
         lookup.view.cleanup('taxlot');
-        lookup.view.cleanup('building');
+        // lookup.view.cleanup('building');
         if (r.taxlot)  {
             var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
             lookup.view.showObject('taxlot',r.taxlot,spec);
             lookup.view.moveTo(r.taxlot);
         }
-        if (building)  {
+        if (false && building)  {
             var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
             lookup.view.showObject('building',building,spec);
         }
