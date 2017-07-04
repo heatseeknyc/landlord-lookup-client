@@ -72,7 +72,7 @@
     // deprecated
     lookup.view.showTaxbill = function() {
     var r = lookup.model.summary;
-    if (r.extras && false)  {
+    if (r.taxlot && false)  {
       $('#section-taxbill-available-false').hide();
       var html = lookup.view.summary2table(r.extras.taxbill);
       $('#tbody-summary-taxbill')[0].innerHTML = html.join('');
@@ -93,7 +93,7 @@
             if (n !== 1) { return 's'; }
             return '';
         }
-        if (r.taxlot && r.extras.nychpd_count)  {
+        if (r.taxlot && r.taxlot.nychpd_count)  {
             $('#section-nychpd-available-false').hide();
             var text = r.taxlot.nychpd_count + " contact record" + 
                 _plural(r.taxlot.nychpd_count);
