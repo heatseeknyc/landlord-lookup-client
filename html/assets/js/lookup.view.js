@@ -93,10 +93,10 @@
             if (n !== 1) { return 's'; }
             return '';
         }
-        if (r.extras && r.extras.nychpd_count)  {
+        if (r.taxlot && r.extras.nychpd_count)  {
             $('#section-nychpd-available-false').hide();
-            var text = r.extras.nychpd_count + " contact record" + 
-                _plural(r.extras.nychpd_count);
+            var text = r.taxlot.nychpd_count + " contact record" + 
+                _plural(r.taxlot.nychpd_count);
             $('#var-nychpd-count').text(text);
             $('#section-nychpd-available-true').show();
         }
@@ -109,9 +109,9 @@
     lookup.view.displayShapes = function() {
         lookup.log(2,'display shapes ..');
         var r = lookup.model.summary;
-        var x = r.extras;
+        var x = r.taxlot;
         if (!x) {
-            lookup.log(2,'dislpaly shapes abort');
+            lookup.log(2,'display shapes abort');
             return false;
         }
         var taxlot = x.taxlot;
@@ -132,13 +132,13 @@
 
     lookup.view.showPluto = function() {
         var r = lookup.model.summary;
-        var p = r.extras.pluto;
+        var p = r.taxlot
         $('#var-pluto-bldg-count-label').text(p.bldg_count_label)
         $('#var-pluto-bldg-class').text(p.bldg_class)
         $('#var-pluto-bldg-class-label').text(p.bldg_class_label)
         $('#var-pluto-land-use').text(p.land_use)
         $('#var-pluto-land-use-label').text(p.land_use_label)
-        if (p.bldg_count > 1)  {
+        if (p.building_count > 1)  {
             $('#switch-view-multi-bldg').show();
         }
         else  {
