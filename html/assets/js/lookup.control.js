@@ -121,11 +121,11 @@
     lookup.control.showModelError = function() {
         var r = lookup.model.summary;
         if (r)  {
-            lookup.log(1,'invalid state (model has summary, but no keytup struct)');
+            lookup.log(1,'invalid state (model has lookup , but no keytup struct)');
             lookup.view.showDefaultError();
         }
         else  {
-            lookup.log(1,'invalid state (model has no summary)');
+            lookup.log(1,'invalid state (model has no lookup)');
             lookup.view.showDefaultError();
         }
     };
@@ -134,31 +134,31 @@
         lookup.log(2,'do search ..');
         lookup.model = {}; 
         lookup.log(2,'query =['+query+']');
-        fetchSummary(query,handleSummary);
+        fetchLookup(query,handleLookup);
         lookup.log(2,'procform done.');
     };
 
-    function fetchSummary(query,callback) {
-        lookup.log(2,':: fetch summary .. ');
+    function fetchLookup(query,callback) {
+        lookup.log(2,':: fetch lookup.. ');
         var base = lookup.service.hybrid; 
         var path = '/lookup/' + query;
-        lookup.log(3,':: summary base  = '+base);
-        lookup.log(3,':: summary path  = '+path);
+        lookup.log(3,':: lookup base  = '+base);
+        lookup.log(3,':: lookup path  = '+path);
         return lookup.control.doAjax(base,path,callback);
-        lookup.log(2,':: fetch summary done.');
+        lookup.log(2,':: fetch lookup done.');
     };
 
-    function handleSummary(r)  {
-        lookup.log(2,':: handle summary r ='+r);
+    function handleLookup(r)  {
+        lookup.log(2,':: handle Lookup r ='+r);
         lookup.log(2,r);
         if (r.error)  {
             lookup.view.showError(r.error);
         } 
         else {
             lookup.model.summary = r;
-            lookup.view.showSummary();
+            lookup.view.showLookup();
         }
-        lookup.log(2,':: handle summary done.');
+        lookup.log(2,':: handle lookup done.');
     };
 
     // stub for now
