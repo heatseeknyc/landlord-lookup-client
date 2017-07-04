@@ -161,6 +161,13 @@
         lookup.log(2,':: handle summary done.');
     };
 
+    // stub for now
+    function handleBuilding(r)  {
+        lookup.log(2,':: handle building ..');
+        lookup.log(2,r);
+        lookup.log(2,':: handle building done.');
+    };
+
     lookup.control.processLocalPath = function() {
         lookup.log(2,':: localpath ...');
         var bbl = lookup.utils.getPathVar('taxlot')
