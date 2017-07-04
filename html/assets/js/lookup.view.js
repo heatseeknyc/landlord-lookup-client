@@ -71,20 +71,20 @@
 
     // deprecated
     lookup.view.showTaxbill = function() {
-    var r = lookup.model.summary;
-    if (r.taxlot && false)  {
-      $('#section-taxbill-available-false').hide();
-      var html = lookup.view.summary2table(r.taxlot.taxbill);
-      $('#tbody-summary-taxbill')[0].innerHTML = html.join('');
-      var bbl = r.nygeo.bbl;
-      $('#link-taxbills-nyc').attr('href','http://taxbills.nyc/'+slug);
-      $('#section-taxbill-available-true').show();
-    }
-    else {
-      $('#section-taxbill-available-true').hide();
-      $('#tbody-summary-taxbill')[0].innerHTML = '<!-- empty table -->';
-      $('#section-taxbill-available-false').show();
-    }
+      var r = lookup.model.summary;
+      if (r.taxlot && false)  {
+        $('#section-taxbill-available-false').hide();
+        var html = lookup.view.summary2table(r.taxlot.taxbill);
+        $('#tbody-summary-taxbill')[0].innerHTML = html.join('');
+        var bbl = r.nygeo.bbl;
+        $('#link-taxbills-nyc').attr('href','http://taxbills.nyc/'+slug);
+        $('#section-taxbill-available-true').show();
+      }
+      else {
+        $('#section-taxbill-available-true').hide();
+        $('#tbody-summary-taxbill')[0].innerHTML = '<!-- empty table -->';
+        $('#section-taxbill-available-false').show();
+      }
     };
 
     lookup.view.showHPD = function() {
