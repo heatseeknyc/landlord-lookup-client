@@ -128,7 +128,7 @@
 
     lookup.view.showPluto = function() {
         var r = lookup.model.summary;
-        var p = r.taxlot
+        var p = r.taxlot.pluto
         $('#var-pluto-bldg-count-label').text(p.bldg_count_label)
         $('#var-pluto-bldg-class').text(p.bldg_class)
         $('#var-pluto-bldg-class-label').text(p.bldg_class_label)
