@@ -159,8 +159,8 @@
         return true;
     };
 
-    lookup.view.showSummary = function() {
-        lookup.log(2,'show summary basics ..');
+    lookup.view.showLookup = function() {
+        lookup.log(2,'show lookup basics ..');
         var r = lookup.model.summary;
         $('#panel-data').hide();
         // $('#popup-almost').hide();
@@ -173,7 +173,7 @@
         lookup.view.showHPD();
         lookup.view.displayTaxlot();
         $('#panel-summary').show();
-        lookup.log(2,'show summary done');
+        lookup.log(2,'show lookup done');
     };
 
 
