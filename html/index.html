@@ -39,34 +39,39 @@
         <p class="errorbox" id="error-search"></p>
         Go ahead, try again. 
     </div>
+    <!-- 
+       If it's in this DIV, the BBL is at least recognized;
+       that is, confirmed to be in Pluto, ACRIS (or both) -->
     <div class="panel-upper" id="panel-summary">
         <div class="popup-control">&times;</div>
+
+        <div id="section-pluto">
         <br>
-        Resolves to BBL = <span id="var-summary-bbl">----------</span>, 
-        BIN = <span id="var-summary-bin">-------</span><br>
+
+        <strong>Physical Address</strong>: <span id="var-pluto-address">---</span>,
+            <span id="var-pluto-borough">---</span><br>
+            <strong>BBL</strong>: <span id="var-meta-bbl">---</span> (block N, lot N)<br>
+
         <span 
             id="var-pluto-bldg-count-label">-------</span><span 
             id="switch-view-multi-bldg"> <a href="#">(view all)</a></span>.<br>
 
-        <div id="section-pluto">
 
           <br> 
-          <strong>Property Summary</strong><p>
+          <strong>Main Characteristics</strong><p>
           <table class="nifty" id="pluto-details">
             <tr>
-              <td><strong>Bldg&nbsp;Class</td>
-              <td><span id="var-pluto-bldg-class">---</span></td>
-              <td><span id="var-pluto-bldg-class-label">-------</span></td>
+              <td><strong>Land&nbsp;Use</td>
+              <td><span id="var-pluto-land-use-label">-------</span></td>
             </tr>
             <tr>
-              <td><strong>Land&nbsp;Use</td>
-              <td><span id="var-pluto-land-use">---</span></td>
-              <td><span id="var-pluto-land-use-label">-------</span></td>
+              <td><strong>Bldg&nbsp;Class</td>
+              <td><span id="var-pluto-bldg-class-label">-------</span></td>
             </tr>
           </table>
 
           <br>
-          Detailed property characteristics available at
+          Detailed property summary available at
           <a id="link-oasis" target="parent"
               href="http://www.oasisnyc.net/map.aspx?zoomto=lot:unknown">OASIS</a> &amp; the
           <a id="link-bisweb" target="parent"
