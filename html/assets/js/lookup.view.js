@@ -131,17 +131,20 @@
         return true;
     };
 
+    lookup.view.describePluto = function(pluto) {
+    };
+
     lookup.view.describeTaxlot = function() {
-        var r = lookup.model.summary;
-        var p = r.taxlot.pluto;
-        $('#var-pluto-address').text(p.address)
+        var rr = lookup.model.summary;
+        var r = rr.taxlot.pluto;
+        $('#var-pluto-address').text(r.address)
         $('#var-pluto-borough').text('Manhattan')
-        $('#var-pluto-bldg-count-label').text(p.bldg_count_label)
-        $('#var-pluto-bldg-class').text(p.bldg_class)
-        $('#var-pluto-bldg-class-label').text(p.bldg_class_label)
-        $('#var-pluto-land-use').text(p.land_use)
-        $('#var-pluto-land-use-label').text(p.land_use_label)
-        if (p.building_count > 1)  {
+        $('#var-pluto-bldg-count-label').text(r.bldg_count_label)
+        $('#var-pluto-bldg-class').text(r.bldg_class)
+        $('#var-pluto-bldg-class-label').text(r.bldg_class_label)
+        $('#var-pluto-land-use').text(r.land_use)
+        $('#var-pluto-land-use-label').text(r.land_use_label)
+        if (r.building_count > 1)  {
             $('#switch-view-multi-bldg').show();
         }
         else  {
