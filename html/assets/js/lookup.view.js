@@ -131,15 +131,27 @@
         return true;
     };
 
-    lookup.view.showACRIS = function(r) {
+
+    lookup.view.showTaxlot = function() {
+        var r = lookup.model.summary;
+        var pluto = r.taxlot.pluto;
+        var acris = r.taxlot.acris;
+        $('#section-pluto').hide();
+        $('#section-acris').hide();
+        if (pluto)  {
+            lookup.view.showPluto(pluto);
+        }
+        else if (acris)  {
+            lookup.log(2,'show what!');
+            lookup.view.showACRIS(acris);
+        }
+        else {
+            lookup.view.showError('invalid frontend state')
+        }
     };
 
     lookup.view.showPluto = function(r) {
-    };
-
-    lookup.view.showTaxlot = function() {
-        var rr = lookup.model.summary;
-        var r = rr.taxlot.pluto;
+        lookup.log(2,'show pluto ..');
         $('#var-pluto-address').text(r.address)
         $('#var-pluto-borough').text('Manhattan')
         $('#var-pluto-bldg-count-label').text(r.bldg_count_label)
@@ -154,6 +166,12 @@
             $('#switch-view-multi-bldg').hide();
         }
         lookup.view.showHPD();
+        $('#section-pluto').show();
+    };
+
+    lookup.view.showACRIS = function(r) {
+        lookup.log(2,'show acris ..');
+        $('#section-acris').show();
     };
 
     lookup.view.showExternalLinks = function() {
@@ -184,7 +202,6 @@
         // $('#var-meta-bin').text(r.keytup.bin)
         lookup.view.showExternalLinks();
         lookup.view.showTaxlot();
-        lookup.view.displayTaxlot();
         $('#panel-summary').show();
         lookup.log(2,'show lookup done');
     };
