@@ -65,6 +65,8 @@ a:active  { color:#c0f; }
 }
 
 #panel-summary { display: none; }
+#section-pluto { display: none; }
+#section-acris { display: none; }
 
 .panel-lower {
     padding: 2px;
