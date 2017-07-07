@@ -131,10 +131,10 @@
         return true;
     };
 
-    lookup.view.describePluto = function(pluto) {
+    lookup.view.showPluto = function(pluto) {
     };
 
-    lookup.view.describeTaxlot = function() {
+    lookup.view.showTaxlot = function() {
         var rr = lookup.model.summary;
         var r = rr.taxlot.pluto;
         $('#var-pluto-address').text(r.address)
@@ -180,7 +180,7 @@
         $('#var-meta-bbl').text(r.keytup.bbl)
         // $('#var-meta-bin').text(r.keytup.bin)
         lookup.view.showExternalLinks();
-        lookup.view.describeTaxlot();
+        lookup.view.showTaxlot();
         lookup.view.displayTaxlot();
         $('#panel-summary').show();
         lookup.log(2,'show lookup done');
