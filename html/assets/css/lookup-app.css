@@ -64,9 +64,7 @@ a:active  { color:#c0f; }
     display: none;
 }
 
-#panel-summary {
-    display: none;
-}
+#panel-summary { display: none; }
 
 .panel-lower {
     padding: 2px;
