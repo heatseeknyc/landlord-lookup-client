@@ -131,9 +131,9 @@
         return true;
     };
 
-    lookup.view.showPluto = function() {
+    lookup.view.describeTaxlot = function() {
         var r = lookup.model.summary;
-        var p = r.taxlot.pluto
+        var p = r.taxlot.pluto;
         $('#var-pluto-address').text(p.address)
         $('#var-pluto-borough').text('Manhattan')
         $('#var-pluto-bldg-count-label').text(p.bldg_count_label)
@@ -177,7 +177,7 @@
         $('#var-meta-bbl').text(r.keytup.bbl)
         // $('#var-meta-bin').text(r.keytup.bin)
         lookup.view.showExternalLinks();
-        lookup.view.showPluto();
+        lookup.view.describeTaxlot();
         lookup.view.displayTaxlot();
         $('#panel-summary').show();
         lookup.log(2,'show lookup done');
