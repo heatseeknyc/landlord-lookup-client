@@ -131,7 +131,10 @@
         return true;
     };
 
-    lookup.view.showPluto = function(pluto) {
+    lookup.view.showACRIS = function(r) {
+    };
+
+    lookup.view.showPluto = function(r) {
     };
 
     lookup.view.showTaxlot = function() {
