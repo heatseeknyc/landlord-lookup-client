@@ -147,6 +147,7 @@
         else  {
             $('#switch-view-multi-bldg').hide();
         }
+        lookup.view.showHPD();
     };
 
     lookup.view.showExternalLinks = function() {
@@ -177,7 +178,6 @@
         // $('#var-meta-bin').text(r.keytup.bin)
         lookup.view.showExternalLinks();
         lookup.view.showPluto();
-        lookup.view.showHPD();
         lookup.view.displayTaxlot();
         $('#panel-summary').show();
         lookup.log(2,'show lookup done');
