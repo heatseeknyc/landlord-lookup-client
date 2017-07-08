@@ -165,8 +165,8 @@
         lookup.view.hide('section-acris-owner');
         lookup.view.hide('section-pluto-header');
         lookup.view.hide('section-pluto-owner');
-        taxlot.deco = nycprop.split_bbl(taxlot.meta.bbl);
-        lookup.log(2,deco); 
+        taxlot.deco = nycprop.bbl_info(taxlot.meta.bbl);
+        lookup.log(2,taxlot.deco); 
         if (taxlot.pluto)  {
             lookup.view.render('section-pluto-header',taxlot);
             return true;
