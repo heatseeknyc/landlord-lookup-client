@@ -13,7 +13,9 @@
     lookup.view.initDust = function() {
         lookup.log(1,':: getting dusty...');
         dusty.load('section-acris-header');
+        dusty.load('section-acris-owner');
         dusty.load('section-pluto-header');
+        dusty.load('section-pluto-owner');
         lookup.log(1,':: all dusty now.');
     };
 
@@ -155,16 +157,23 @@
 
 
     lookup.view.showTaxlot = function(taxlot) {
+        lookup.log(2,'show taxlot ..'); 
         if (!taxlot)  {
             return false;
         };
         lookup.view.hide('section-acris-header');
+        lookup.view.hide('section-acris-owner');
         lookup.view.hide('section-pluto-header');
+        lookup.view.hide('section-pluto-owner');
+        taxlot.deco = nycprop.split_bbl(taxlot.meta.bbl);
+        lookup.log(2,deco); 
         if (taxlot.pluto)  {
-            return lookup.view.render('section-pluto-header',taxlot);
+            lookup.view.render('section-pluto-header',taxlot);
+            return true;
         }
         if (taxlot.acris)  {
-            return lookup.view.render('section-acris-header',taxlot);
+            lookup.view.render('section-acris-header',taxlot);
+            return true;
         }
         lookup.view.showError('invalid frontend state')
         return false;
