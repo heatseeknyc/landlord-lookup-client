@@ -189,11 +189,6 @@
         // $('#section-pluto-header').show();
     };
 
-    lookup.view.showACRIS = function(r) {
-        lookup.log(2,'show acris ..');
-        $('#section-acris-header').show();
-    };
-
     lookup.view.showExternalLinks = function() {
         var r = lookup.model.summary;
         var bbl = r.keytup.bbl;
