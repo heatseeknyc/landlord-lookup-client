@@ -11,8 +11,10 @@
     // Very soon we'll find a way to discover these templates, rather than 
     // having to specify them here.  But for now, we'll just repeat ourselves.
     lookup.view.initDust = function() {
+        lookup.log(1,':: getting dusty...');
         dusty.load('section-acris-header');
-        dusty.load('section-acris-pluto');
+        dusty.load('section-pluto-header');
+        lookup.log(1,':: all dusty now.');
     };
 
     lookup.view.initMap = function(mapname) {
@@ -144,7 +146,7 @@
         var keytup = r.keytup;
         var pluto = r.taxlot.pluto;
         var acris = r.taxlot.acris;
-        $('#section-pluto').hide();
+        $('#section-pluto-header').hide();
         $('#section-acris-header').hide();
         if (pluto)  {
             lookup.view.showPluto(pluto);
@@ -175,7 +177,8 @@
             $('#switch-view-multi-bldg').hide();
         }
         lookup.view.showHPD();
-        $('#section-pluto').show();
+        dusty.render('section-pluto-header',r);
+        $('#section-pluto-header').show();
     };
 
     lookup.view.showACRIS = function(r) {
