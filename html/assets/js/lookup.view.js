@@ -149,7 +149,7 @@
         $('#section-pluto-header').hide();
         $('#section-acris-header').hide();
         if (pluto)  {
-            lookup.view.showPluto(pluto);
+            lookup.view.showPluto(r);
         }
         else if (acris)  {
             lookup.log(2,'show acris ..');
@@ -163,6 +163,7 @@
 
     lookup.view.showPluto = function(r) {
         lookup.log(2,'show pluto ..');
+        /*
         $('#var-pluto-address').text(r.address)
         $('#var-pluto-borough').text('Manhattan')
         $('#var-pluto-bldg-count-label').text(r.bldg_count_label)
@@ -175,7 +176,7 @@
         }
         else  {
             $('#switch-view-multi-bldg').hide();
-        }
+        }*/
         lookup.view.showHPD();
         dusty.render('section-pluto-header',r);
         $('#section-pluto-header').show();
