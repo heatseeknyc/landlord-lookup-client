@@ -23,6 +23,13 @@
         return true;
     };
 
+    // A trivial wrapper which allow us to hide a div via 'un-sigiled' name.
+    // Makes for a more consistent calling syntax. 
+    lookup.view.hide = function(divname) {
+        $('#'+divname).hide();
+        return true;
+    };
+
     lookup.view.initMap = function(mapname) {
         lookup.log(1,':: init map');
         var stat = lookup.view.checkLeaflet();
@@ -151,6 +158,8 @@
         if (!taxlot)  {
             return false;
         };
+        lookup.view.hide('section-acris-header');
+        lookup.view.hide('section-pluto-header');
         if (taxlot.pluto)  {
             return lookup.view.render('section-pluto-header',taxlot);
         }

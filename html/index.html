@@ -197,8 +197,8 @@
    BBL = <strong>{meta.bbl}</strong> is an "ACRIS-only" lot.<br>
 </script>
 <script id="tmpl-section-pluto-header" type="text/html">
-   <strong>Physical Address</strong>: {pluto.address}, Manhttan <br> 
-   <strong>BBL</strong>: {meta.bbl}, {pluto.borough} (block N, lot N)<br>
+   <strong>Primary Address</strong>: {pluto.address}, Manhttan <br> 
+   <strong>BBL</strong>: {meta.bbl}, {meta.borough} (block {meta.block}, lot {meta.lot})<br>
 </script>
 <xscript src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></xscript>
 <script async defer type="text/javascript"
