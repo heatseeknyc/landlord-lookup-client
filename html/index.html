@@ -47,8 +47,10 @@
 
         <br>
         <div id="section-acris-header"></div>
-        <div id="section-acris-owner"></div>
         <div id="section-pluto-header"></div>
+
+        <h3>Ownership</h3>
+        <div id="section-acris-owner"></div>
         <div id="section-pluto-owner"></div>
 
 
@@ -79,9 +81,6 @@
               href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?unknown">DOB</a>.
 
           <br>
-          Historical tax bills available in PDF form at
-          <a id="link-taxbills-nyc" target="parent"
-              href="https://taxbills.nyc/N/NNNNN/NNNN">taxbills.nyc</a>.
 
           <br>
           Property transaction records available from
@@ -209,7 +208,6 @@
 </script>
 
 <script id="tmpl-section-pluto-owner" type="text/html">
-   <strong>Ownership</strong><p>
    <strong>Name</strong>: {pluto.owner}<br> (from Pluto) 
    This lot isn't in ACRIS, so that's all we know. 
 </script>
@@ -218,6 +216,13 @@
    <strong>Name</strong>: {acris.owner <br> 
    <strong>Address</strong>: {acris.address1} <br> 
    Transfered on {acris.transfer_date} for ${acris.amount}<br>
+</script>
+
+<!-- stubs or in progress  -->
+
+<script id="tmpl-section-taxbill" type="text/html">
+   Historical tax bills available in PDF form at
+   <a id="link-taxbills-nyc" target="parent" href="https://taxbills.nyc/{slug.taxbill}">taxbills.nyc</a>.
 </script>
 
 <xscript src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></xscript>
