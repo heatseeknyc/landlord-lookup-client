@@ -20,6 +20,7 @@
     lookup.view.render = function(divname,object) {
         dusty.render(divname,object);
         $('#'+divname).show();
+        return true;
     };
 
     lookup.view.initMap = function(mapname) {
@@ -146,25 +147,18 @@
     };
 
 
-    lookup.view.showTaxlot = function() {
-        var r = lookup.model.summary;
-        var keytup = r.keytup;
-        var pluto = r.taxlot.pluto;
-        var acris = r.taxlot.acris;
-        $('#section-pluto-header').hide();
-        $('#section-acris-header').hide();
-        if (pluto)  {
-            lookup.view.showPluto(r);
+    lookup.view.showTaxlot = function(taxlot) {
+        if (!taxlot)  {
+            return false;
+        };
+        if (taxlot.pluto)  {
+            return lookup.view.render('section-pluto-header',taxlot);
         }
-        else if (acris)  {
-            lookup.log(2,'show acris ..');
-            lookup.view.render('section-acris-header',keytup);
-            // dusty.render('section-acris-header',keytup);
-            // $('#section-acris-header').show();
+        if (taxlot.acris)  {
+            return lookup.view.render('section-acris-header',taxlot);
         }
-        else {
-            lookup.view.showError('invalid frontend state')
-        }
+        lookup.view.showError('invalid frontend state')
+        return false;
     };
 
     lookup.view.showPluto = function(r) {
@@ -218,7 +212,7 @@
         $('#var-keytup-bbl').text(''+r.keytup.bbl)
         // $('#var-meta-bin').text(r.keytup.bin)
         lookup.view.showExternalLinks();
-        lookup.view.showTaxlot();
+        lookup.view.showTaxlot(r.taxlot);
         $('#panel-summary').show();
         lookup.log(2,'show lookup done');
     };
