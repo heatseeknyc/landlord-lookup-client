@@ -45,10 +45,8 @@
     <div class="panel-upper" id="panel-summary">
         <div class="popup-control">&times;</div>
 
-        <div id="section-acris">
-          <br>
-          BBL = <strong><span id="var-keytup-bbl">---</span></strong> is an "ACRIS-only" lot.
-        </div>
+        <br>
+        <div id="section-acris"></div>
 
         <div id="section-pluto">
         <br>
@@ -191,6 +189,17 @@
       <iframe id="testdata" src="/testdata.html"></iframe>
     </div>
 </body>
+<script id="tmpl-fancy" type="text/html">
+<h4>{title}</h4>
+<ul>
+    {#names}
+    <li>{name} rocks!</li>{~n}
+    {/names}
+</ul>
+</script>
+<script id="tmpl-section-acris" type="text/html">
+   BBL = <strong>{bbl}</strong> is an "ACRIS-only" lot.
+</script>
 <xscript src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></xscript>
 <script async defer type="text/javascript"
     src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCIKgEfAq3__FnK3Rg9OlOTrA3QAudPWFw&sensor=false&libraries=places"></script>

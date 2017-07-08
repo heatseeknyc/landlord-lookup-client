@@ -6,6 +6,7 @@
         $(document).ready(function () {
             lookup.view.initGoogleAutocomplete();
             lookup.control.initHandlers();
+            lookup.view.initDust();
             lookup.view.initMap('themap');
             lookup.view.initPopups();
             lookup.control.processLocalPath();

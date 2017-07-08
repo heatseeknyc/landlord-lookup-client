@@ -8,6 +8,12 @@
         return window.L !== undefined;
     };
 
+    // Very soon we'll find a way to discover these templates, rather than 
+    // having to specify them here.  But for now, we'll just repeat ourselves.
+    lookup.view.initDust = function() {
+        dusty.load('section-acris');
+    };
+
     lookup.view.initMap = function(mapname) {
         lookup.log(1,':: init map');
         var stat = lookup.view.checkLeaflet();
@@ -134,6 +140,7 @@
 
     lookup.view.showTaxlot = function() {
         var r = lookup.model.summary;
+        var keytup = r.keytup;
         var pluto = r.taxlot.pluto;
         var acris = r.taxlot.acris;
         $('#section-pluto').hide();
@@ -142,8 +149,9 @@
             lookup.view.showPluto(pluto);
         }
         else if (acris)  {
-            lookup.log(2,'show what!');
-            lookup.view.showACRIS(acris);
+            lookup.log(2,'show acris ..');
+            dusty.render('section-acris',keytup);
+            $('#section-acris').show();
         }
         else {
             lookup.view.showError('invalid frontend state')
@@ -198,7 +206,9 @@
         // $('#popup-almost').hide();
         $('#panel-error').hide();
         $('#panel-message').hide();
-        $('#var-meta-bbl').text(r.keytup.bbl)
+        lookup.log(2,'keytup ..');
+        lookup.log(2,r.keytup);
+        $('#var-keytup-bbl').text(''+r.keytup.bbl)
         // $('#var-meta-bin').text(r.keytup.bin)
         lookup.view.showExternalLinks();
         lookup.view.showTaxlot();

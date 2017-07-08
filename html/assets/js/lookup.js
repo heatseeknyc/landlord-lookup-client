@@ -9,7 +9,7 @@
     lookup.config = {
         'debug': 3, 
         'autocomplete': {
-            'active': true, 
+            'active': false, 
             'bounds': false
         },
         'ajaxsetup': {
