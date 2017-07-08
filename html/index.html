@@ -47,14 +47,10 @@
 
         <br>
         <div id="section-acris-header"></div>
+        <div id="section-pluto-header"></div>
 
-        <div id="section-pluto">
-        <br>
 
-        <strong>Physical Address</strong>: <span id="var-pluto-address">---</span>,
-            <span id="var-pluto-borough">---</span><br>
-            <strong>BBL</strong>: <span id="var-keytup-bbl">---</span> (block N, lot N)<br>
-
+        <div id="section-pluto-body">
         <span 
             id="var-pluto-bldg-count-label">-------</span><span 
             id="switch-view-multi-bldg"> <a href="#">(view all)</a></span>.<br>
@@ -199,6 +195,10 @@
 </script>
 <script id="tmpl-section-acris-header" type="text/html">
    BBL = <strong>{bbl}</strong> is an "ACRIS-only" lot.
+</script>
+<script id="tmpl-section-pluto-header" type="text/html">
+   <strong>Physical Address</strong>: {pluto.address}, Manhttan <br> 
+   <strong>BBLs</strong>: {keytup.bbl}, {pluto.borough} (block N, lot N)<br>
 </script>
 <xscript src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></xscript>
 <script async defer type="text/javascript"

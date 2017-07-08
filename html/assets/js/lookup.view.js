@@ -12,6 +12,7 @@
     // having to specify them here.  But for now, we'll just repeat ourselves.
     lookup.view.initDust = function() {
         dusty.load('section-acris-header');
+        dusty.load('section-acris-pluto');
     };
 
     lookup.view.initMap = function(mapname) {
