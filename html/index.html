@@ -47,7 +47,9 @@
 
         <br>
         <div id="section-acris-header"></div>
+        <div id="section-acris-owner"></div>
         <div id="section-pluto-header"></div>
+        <div id="section-pluto-owner"></div>
 
 
         <div id="section-pluto-body">
@@ -200,6 +202,16 @@
    <strong>Primary Address</strong>: {pluto.address}, Manhttan <br> 
    <strong>BBL</strong>: {meta.bbl}, {meta.borough} (block {meta.block}, lot {meta.lot})<br>
 </script>
+<script id="tmpl-section-owner-pluto" type="text/html">
+   <strong>Ownership</strong><p>
+   <strong>Name</strong>: {pluto.owner}<br> (from Pluto) 
+   This lot isn't in ACRIS, so that's all we know. 
+</script>
+<script id="tmpl-section-owner-acris" type="text/html">
+   <strong>Name</strong>: {acris.owner <br> 
+   <strong>Address</strong>: {acris.address1} <br> 
+   Transfered on {acris.transfer_date} for ${acris.amount}<br>
+</script>
 <xscript src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></xscript>
 <script async defer type="text/javascript"
     src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCIKgEfAq3__FnK3Rg9OlOTrA3QAudPWFw&sensor=false&libraries=places"></script>
@@ -209,6 +221,7 @@
 <script src="/vendor/js/jquery.hashchange.min.js"></script>
 <script src="/vendor/js/jquery.easytabs.min.js"></script>
 <script src="/vendor/js/dust-full-0.3.0.min.js"></script>
+<script src="/assets/js/dusty.js"></script>
 <script src="/assets/js/lookup.js"></script>
 <script src="/assets/js/lookup.utils.js"></script>
 <script src="/assets/js/lookup.geoutils.js"></script>
@@ -216,7 +229,6 @@
 <script src="/assets/js/lookup.render.js"></script>
 <script src="/assets/js/lookup.view.js"></script>
 <script src="/assets/js/lookup.app.js"></script>
-<script src="/assets/js/dusty.js"></script>
 <script type="text/javascript">
     $(document).ready( function() {
       $('#tab-container').easytabs();
