@@ -11,7 +11,7 @@
     // Very soon we'll find a way to discover these templates, rather than 
     // having to specify them here.  But for now, we'll just repeat ourselves.
     lookup.view.initDust = function() {
-        dusty.load('section-acris');
+        dusty.load('section-acris-header');
     };
 
     lookup.view.initMap = function(mapname) {
@@ -144,14 +144,14 @@
         var pluto = r.taxlot.pluto;
         var acris = r.taxlot.acris;
         $('#section-pluto').hide();
-        $('#section-acris').hide();
+        $('#section-acris-header').hide();
         if (pluto)  {
             lookup.view.showPluto(pluto);
         }
         else if (acris)  {
             lookup.log(2,'show acris ..');
-            dusty.render('section-acris',keytup);
-            $('#section-acris').show();
+            dusty.render('section-acris-header',keytup);
+            $('#section-acris-header').show();
         }
         else {
             lookup.view.showError('invalid frontend state')
@@ -179,7 +179,7 @@
 
     lookup.view.showACRIS = function(r) {
         lookup.log(2,'show acris ..');
-        $('#section-acris').show();
+        $('#section-acris-header').show();
     };
 
     lookup.view.showExternalLinks = function() {
