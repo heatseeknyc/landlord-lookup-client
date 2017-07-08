@@ -74,11 +74,6 @@
           </table>
 
           <br>
-          Detailed property summary available at
-          <a id="link-oasis" target="parent"
-              href="http://www.oasisnyc.net/map.aspx?zoomto=lot:unknown">OASIS</a> &amp; the
-          <a id="link-bisweb" target="parent"
-              href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?unknown">DOB</a>.
 
           <br>
 
@@ -216,6 +211,17 @@
    <strong>Name</strong>: {acris.owner <br> 
    <strong>Address</strong>: {acris.address1} <br> 
    Transfered on {acris.transfer_date} for ${acris.amount}<br>
+</script>
+
+<script id="tmpl-section-pluto-body" type="text/html">
+   <h3>Lot Description</h3>
+   <strong>Land Use</strong>: {pluto.land_use_label}<br>
+   <strong>Bldg Class</strong>: {pluto.bldg_class_label}<br>
+   Detailed property summary available at
+     <a id="link-oasis" target="parent"
+        href="http://www.oasisnyc.net/map.aspx?zoomto=lot:unknown">OASIS</a> &amp; the
+     <a id="link-bisweb" target="parent"
+        href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?unknown">DOB</a>.
 </script>
 
 <!-- stubs or in progress  -->
