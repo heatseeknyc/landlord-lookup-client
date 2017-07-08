@@ -205,16 +205,16 @@
 
 <script id="tmpl-section-pluto-header" type="text/html">
    <strong>Primary Address</strong>: {pluto.address}, Manhttan <br> 
-   <strong>BBL</strong>: {meta.bbl}, {meta.borough} (block {meta.block}, lot {meta.lot})<br>
+   <strong>BBL</strong>: {meta.bbl}, {deco.borough} (block {deco.block}, lot {deco.lot})<br>
 </script>
 
-<script id="tmpl-section-owner-pluto" type="text/html">
+<script id="tmpl-section-pluto-owner" type="text/html">
    <strong>Ownership</strong><p>
    <strong>Name</strong>: {pluto.owner}<br> (from Pluto) 
    This lot isn't in ACRIS, so that's all we know. 
 </script>
 
-<script id="tmpl-section-owner-acris" type="text/html">
+<script id="tmpl-section-acris-owner" type="text/html">
    <strong>Name</strong>: {acris.owner <br> 
    <strong>Address</strong>: {acris.address1} <br> 
    Transfered on {acris.transfer_date} for ${acris.amount}<br>
