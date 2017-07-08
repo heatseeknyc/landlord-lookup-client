@@ -17,6 +17,11 @@
         lookup.log(1,':: all dusty now.');
     };
 
+    lookup.view.render = function(divname,object) {
+        dusty.render(divname,object);
+        $('#'+divname).show();
+    };
+
     lookup.view.initMap = function(mapname) {
         lookup.log(1,':: init map');
         var stat = lookup.view.checkLeaflet();
@@ -153,8 +158,9 @@
         }
         else if (acris)  {
             lookup.log(2,'show acris ..');
-            dusty.render('section-acris-header',keytup);
-            $('#section-acris-header').show();
+            lookup.view.render('section-acris-header',keytup);
+            // dusty.render('section-acris-header',keytup);
+            // $('#section-acris-header').show();
         }
         else {
             lookup.view.showError('invalid frontend state')
@@ -178,8 +184,9 @@
             $('#switch-view-multi-bldg').hide();
         }*/
         lookup.view.showHPD();
-        dusty.render('section-pluto-header',r);
-        $('#section-pluto-header').show();
+        lookup.view.render('section-pluto-header',r);
+        // dusty.render('section-pluto-header',r);
+        // $('#section-pluto-header').show();
     };
 
     lookup.view.showACRIS = function(r) {
