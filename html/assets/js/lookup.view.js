@@ -95,7 +95,7 @@
     };
 
 
-    // deprecated
+    // DEPRECATED
     lookup.view.showTaxbill = function() {
       var r = lookup.model.summary;
       if (r.taxlot && false)  {
@@ -113,7 +113,8 @@
       }
     };
 
-    lookup.view.showHPD = function() {
+    // DEPRECATED
+    lookup.view.__showHPD = function() {
         var r = lookup.model.summary;
         function _plural(n)  {
             if (n !== 1) { return 's'; }
