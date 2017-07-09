@@ -183,14 +183,13 @@
         if (taxlot.pluto)  {
             lookup.view.render('section-pluto-header',taxlot);
             lookup.view.render('section-pluto-body',taxlot);
-            return true;
-        }
-        if (taxlot.acris)  {
+        } else if (taxlot.acris)  {
             lookup.view.render('section-acris-header',taxlot);
-            return true;
+        } else {
+            lookup.view.showError('invalid frontend state')
+            return false;
         }
-        lookup.view.showError('invalid frontend state')
-        return false;
+        return true;
     };
 
     // DEPRECATED
