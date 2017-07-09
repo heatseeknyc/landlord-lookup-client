@@ -158,16 +158,19 @@
         return true;
     };
 
+    lookup.view.showResi = function(taxlot) {
+        lookup.view.hide('section-residential');
+        if (taxlot.meta.residential)  {
+            lookup.view.render('section-residential',taxlot);
+        }; 
+    };
 
     lookup.view.showTaxlot = function(taxlot) {
         lookup.log(2,'show taxlot ..'); 
         if (!taxlot)  {
             return false;
         };
-        lookup.view.hide('section-residential');
-        if (taxlot.meta.residential)  {
-            lookup.view.render('section-residential',taxlot);
-        }; 
+        lookup.view.showResi(taxlot);
         lookup.view.hide('section-acris-header');
         lookup.view.hide('section-acris-owner');
         lookup.view.hide('section-pluto-header');
