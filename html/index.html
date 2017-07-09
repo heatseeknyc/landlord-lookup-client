@@ -46,16 +46,16 @@
         <div class="popup-control">&times;</div>
 
         <br>
-        <div id="section-acris-header"></div>
-        <div id="section-pluto-header"></div>
+        <div class="section" id="section-acris-header"></div>
+        <div class="section" id="section-pluto-header"></div>
 
         <h3>Ownership</h3>
-        <div id="section-owner-acris"></div>
-        <div id="section-owner-pluto"></div>
+        <div class="section" id="section-owner-acris"></div>
+        <div class="section" id="section-owner-pluto"></div>
 
-        <div id="section-pluto-body"></div>
-        <div id="section-residential"></div>
-        <div id="section-compliance"></div>
+        <div class="section" id="section-pluto-body"></div>
+        <div class="section" id="section-residential"></div>
+        <div class="section" id="section-compliance"></div>
         <p>
     </div>
 
@@ -158,38 +158,50 @@
 </script>
 
 <script id="tmpl-section-owner-pluto" type="text/html">
-   - {pluto.owner} (from Pluto)<br>
+   <p class="section">
+   {pluto.owner} (from Pluto)<br>
+   </p>
 </script>
 
 <script id="tmpl-section-owner-acris" type="text/html">
-   - {acris.owner}<br> 
-   - {acris.address1}, {acris.address2}<br> 
-   - Transfered on {acris.transfer_date} for ${acris.amount}<br>
+   <p class="section">
+   {acris.owner}<br> 
+   {acris.address1}, {acris.address2}<br> 
+   Transfered on {acris.transfer_date} for ${acris.amount}<br>
+   </p>
 </script>
 
 <script id="tmpl-section-pluto-body" type="text/html">
    <h3>Lot Description</h3>
+   <p class="section">
    <strong>Land Use</strong>: {pluto.land_use_label} ({pluto.land_use}) <br>
    <strong>Bldg Class</strong>: {pluto.bldg_class_label} ({pluto.bldg_class})<br>
    Detailed characteristics available from <a id="link-oasis" target="parent"
        href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{meta.bbl}">OASIS</a> &amp; 
        the <a id="link-bisweb" target="parent"
          href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?{slug.bisweb}">DOB</a>.
+   </p>
 </script>
 
 <script id="tmpl-section-owner-nobody" type="text/html">
+   <p class="section">
    No ownership information available for this lot.
+   </p>
 </script>
 
 <script id="tmpl-section-residential" type="text/html">
    <h3>Residential Summary </h3>
+   <p class="section">
    There are {hpd.contact} HPD contacts available for this lot.<br>
    This building is [meta.stabilized] rent stabilized blah blah.<br>
+   </p>
 </script>
 
 <script id="tmpl-section-compliance" type="text/html">
    <h3>Compliance & Litigation</h3>
+   <p class="section">
    Watch this space.
+   </p>
 </script>
 
 <!-- stubs or in progress  -->

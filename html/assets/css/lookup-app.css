@@ -65,9 +65,14 @@ a:active  { color:#c0f; }
 }
 
 #panel-summary { display: none; }
-.section { 
+div.section { 
     display: none; 
     background: #eee;
+}
+
+p.section {
+    background: #ffe;
+    padding-left: 8px;
 }
 
 .panel-lower {
