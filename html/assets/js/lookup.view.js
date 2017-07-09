@@ -198,7 +198,7 @@
         var p = taxlot.pluto; 
         if (p)  {
             if (p.year_built > 0)  { p._built = 1; }
-            if (p.bldg_count > 1)  { p._multi_bldg = 1; }
+            if (p.bldg_count > 1)  { p._bldg_multi = 1; }
         } 
     };
 

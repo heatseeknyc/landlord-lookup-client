@@ -151,10 +151,9 @@
 <script id="tmpl-section-pluto-header" type="text/html">
    <strong>Primary Address</strong>: {pluto.address}, {deco.borough}<br>
    <strong>BBL</strong> = {meta.bbl} <span class="detail">(block {deco.block}, lot {deco.lot})</span><br>
-   {pluto.bldg_count_label}.
-        <span 
-            id="var-pluto-bldg-count-label">-------</span><span 
-            id="switch-view-multi-bldg"> <a href="#">(view all)</a></span>.<br>
+   {pluto.bldg_count_label}
+   {?pluto._bldg_multi}&nbsp;<a href="/taxlot/{meta.bbl}">(view all)</a>{/pluto._bldg_multi}
+   <br>
 </script>
 
 <script id="tmpl-section-owner-pluto" type="text/html">
