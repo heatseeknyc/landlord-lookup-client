@@ -62,6 +62,13 @@
         } else { return 'invalid-bbl-string'; }
     };
 
+    lookup.utils.slugify = function(bbl) {
+        var taxbill = lookup.utils.bbl2slug(bbl);
+        var acris   = lookup.utils.bbl2acris(bbl);
+        var bisweb  = lookup.utils.bbl2bisweb(bbl);
+        return {taxbill:taxbill, acris:acris, bisweb:bisweb};
+    };
+
     // Adapted from https://stackoverflow.com/questions/901115/ (under CC).
     //
     // Returns the requested query string parameter by name from the given URL, using 

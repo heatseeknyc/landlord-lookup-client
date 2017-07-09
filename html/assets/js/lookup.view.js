@@ -16,6 +16,7 @@
         dusty.load('section-acris-owner');
         dusty.load('section-pluto-header');
         dusty.load('section-pluto-owner');
+        dusty.load('section-pluto-body');
         lookup.log(1,':: all dusty now.');
     };
 
