@@ -189,7 +189,8 @@
         return false;
     };
 
-    lookup.view.showPluto = function(r) {
+    // DEPRECATED
+    lookup.view.__showPluto = function(r) {
         lookup.log(2,'show pluto ..');
         /*
         $('#var-pluto-address').text(r.address)
@@ -211,7 +212,8 @@
         // $('#section-pluto-header').show();
     };
 
-    lookup.view.showExternalLinks = function() {
+    // DEPRECATED
+    lookup.view.__showExternalLinks = function() {
         var r = lookup.model.summary;
         var bbl = r.keytup.bbl;
         if (!bbl)  {
