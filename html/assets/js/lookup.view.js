@@ -18,6 +18,7 @@
         dusty.load('section-pluto-owner');
         dusty.load('section-pluto-body');
         dusty.load('section-residential');
+        dusty.load('section-compliance');
         lookup.log(1,':: all dusty now.');
     };
 
@@ -189,6 +190,7 @@
             return false;
         }
         lookup.view.showResi(taxlot);
+        lookup.view.render('section-compliance',taxlot);
         return true;
     };
 
