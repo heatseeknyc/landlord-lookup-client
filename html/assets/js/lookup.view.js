@@ -14,7 +14,7 @@
         lookup.log(1,':: getting dusty...');
         dusty.load('section-acris-header');
         dusty.load('section-pluto-header');
-        dusty.load('section-pluto-body');
+        dusty.load('section-pluto-landuse');
         dusty.load('section-owner-nobody');
         dusty.load('section-owner-acris');
         dusty.load('section-owner-pluto');
@@ -189,14 +189,14 @@
         };
         lookup.view.hide('section-acris-header');
         lookup.view.hide('section-pluto-header');
-        lookup.view.hide('section-pluto-body');
+        lookup.view.hide('section-pluto-landuse');
         taxlot.deco = nycprop.bbl_info(taxlot.meta.bbl);
         lookup.log(2,taxlot.deco); 
         taxlot.slug = lookup.utils.slugify(taxlot.meta.bbl);
         lookup.log(2,taxlot.slug); 
         if (taxlot.pluto)  {
             lookup.view.render('section-pluto-header',taxlot);
-            lookup.view.render('section-pluto-body',taxlot);
+            lookup.view.render('section-pluto-landuse',taxlot);
         } else if (taxlot.acris)  {
             lookup.view.render('section-acris-header',taxlot);
         } else {
