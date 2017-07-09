@@ -9,11 +9,10 @@ html, body, #themap, #testdata {
     background:#ccc;
 }
 
-body,
-h1, h2, h3, h4, h5, h6 {
+body {
    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-   /* font-weight: 700; */
 }
+/* h1, h2, h3, h4, h5, h6 {} */
 
 a { font-weight: bold; text-decoration: none; }
 a:link    { color:#f00; }
