@@ -67,12 +67,10 @@ a:active  { color:#c0f; }
 #panel-summary { display: none; }
 div.section { 
     display: none; 
-    background: #eee;
 }
 
 p.section {
-    background: #ffe;
-    padding-left: 8px;
+    padding-left: 5px;
 }
 
 .panel-lower {
