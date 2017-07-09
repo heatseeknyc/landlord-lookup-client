@@ -193,13 +193,13 @@
 <script id="tmpl-section-pluto-landuse" type="text/html">
    <h3>Land Use + Physical Characteristics</h3>
    <p class="section">
-   <strong>Zoning</strong> : {pluto.zone_dist1} 
-   {?pluto._built}&nbsp;&nbsp;&nbsp;<strong>Built</strong> : {pluto.year_built}{/pluto._built}<br>
+   <strong>Zoning</strong> : {pluto.zone_dist1}<br>
    <strong>Land Use</strong> : {pluto.land_use_label} <span class="detail">({pluto.land_use})</span><br>
    <strong>Bldg Class</strong> : {pluto.bldg_class_label} <span class="detail">({pluto.bldg_class})</span><br>
    {?pluto._built}
    <strong>Floors</strong> : {pluto.floors} &nbsp;&nbsp;&nbsp;
-   <strong>Units Total</strong> : {pluto.units_total} 
+   <strong>Units Total</strong> : {pluto.units_total} &nbsp;&nbsp;&nbsp;
+   <strong>Built</strong> : {pluto.year_built} 
    {/pluto._built}<br>
    Way more detail available at <a id="link-oasis" target="parent"
        href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{meta.bbl}">OASIS</a> &amp; 
