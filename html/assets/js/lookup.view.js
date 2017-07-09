@@ -182,6 +182,26 @@
         }; 
     };
 
+    lookup.utils.augment_taxlot = function(taxlot) {
+        taxlot.deco = nycprop.bbl_info(taxlot.meta.bbl);
+        lookup.log(2,taxlot.deco); 
+        taxlot.slug = lookup.utils.slugify(taxlot.meta.bbl);
+        lookup.log(2,taxlot.slug); 
+        lookup.utils.add_control_flags(taxlot);
+    };
+
+    // Augments the pluto dict with control flags to assist the templating 
+    // system (dustjs), which checks for existence (not true-ness).  Rather than
+    // create a new top-level struct, we prefer to mangle the pluto struct slightly,
+    // using a convention whereby a leading underscore means "derived boolean flag".
+    lookup.utils.add_control_flags = function(taxlot) {
+        var p = taxlot.pluto; 
+        if (p)  {
+            if (p.year_built > 0)  { p._built = 1; }
+            if (p.bldg_count > 1)  { p._multi_bldg = 1; }
+        } 
+    };
+
     lookup.view.showTaxlot = function(taxlot) {
         lookup.log(2,'show taxlot ..'); 
         if (!taxlot)  {
@@ -190,10 +210,7 @@
         lookup.view.hide('section-acris-header');
         lookup.view.hide('section-pluto-header');
         lookup.view.hide('section-pluto-landuse');
-        taxlot.deco = nycprop.bbl_info(taxlot.meta.bbl);
-        lookup.log(2,taxlot.deco); 
-        taxlot.slug = lookup.utils.slugify(taxlot.meta.bbl);
-        lookup.log(2,taxlot.slug); 
+        lookup.utils.augment_taxlot(taxlot);
         if (taxlot.pluto)  {
             lookup.view.render('section-pluto-header',taxlot);
             lookup.view.render('section-pluto-landuse',taxlot);
