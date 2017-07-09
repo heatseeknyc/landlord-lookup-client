@@ -170,7 +170,6 @@
         if (!taxlot)  {
             return false;
         };
-        lookup.view.showResi(taxlot);
         lookup.view.hide('section-acris-header');
         lookup.view.hide('section-acris-owner');
         lookup.view.hide('section-pluto-header');
@@ -189,6 +188,7 @@
             lookup.view.showError('invalid frontend state')
             return false;
         }
+        lookup.view.showResi(taxlot);
         return true;
     };
 
