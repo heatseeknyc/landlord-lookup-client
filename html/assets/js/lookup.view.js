@@ -13,11 +13,11 @@
     lookup.view.initDust = function() {
         lookup.log(1,':: getting dusty...');
         dusty.load('section-acris-header');
-        dusty.load('section-acris-owner');
         dusty.load('section-pluto-header');
-        dusty.load('section-pluto-owner');
         dusty.load('section-pluto-body');
         dusty.load('section-owner-nobody');
+        dusty.load('section-owner-acris');
+        dusty.load('section-owner-pluto');
         dusty.load('section-residential');
         dusty.load('section-compliance');
         lookup.log(1,':: all dusty now.');
@@ -163,14 +163,14 @@
     lookup.view.showOwner = function(taxlot) {
         var acris = taxlot.acris;
         var pluto = taxlot.pluto;
-        lookup.view.hide('section-acris-owner');
-        lookup.view.hide('section-pluto-owner');
+        lookup.view.hide('section-owner-acris');
+        lookup.view.hide('section-owner-pluto');
         if (acris && acris.party_count)  {
-            lookup.view.render('section-acris-owner',taxlot);
+            lookup.view.render('section-owner-acris',taxlot);
         } else if (pluto && pluto.owner)  {
-            lookup.view.render('section-pluto-owner',taxlot);
+            lookup.view.render('section-owner-pluto',taxlot);
         } else {
-            lookup.view.render('section-owner-nobdy',taxlot);
+            lookup.view.render('section-owner-nobody',taxlot);
         }
     };
 

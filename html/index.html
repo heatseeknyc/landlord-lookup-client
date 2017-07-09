@@ -50,8 +50,8 @@
         <div id="section-pluto-header"></div>
 
         <h3>Ownership</h3>
-        <div id="section-acris-owner"></div>
-        <div id="section-pluto-owner"></div>
+        <div id="section-owner-acris"></div>
+        <div id="section-owner-pluto"></div>
 
         <div id="section-pluto-body"></div>
         <div id="section-residential"></div>
@@ -157,15 +157,15 @@
             id="switch-view-multi-bldg"> <a href="#">(view all)</a></span>.<br>
 </script>
 
-<script id="tmpl-section-pluto-owner" type="text/html">
+<script id="tmpl-section-owner-pluto" type="text/html">
    <strong>Owner Name</strong>: {pluto.owner} (from Pluto) <br>
    This lot [is/not] in ACRIS, so there. 
 </script>
 
-<script id="tmpl-section-acris-owner" type="text/html">
-   <strong>Owner Name</strong>: {acris.owner} (from ACRIS)<br> 
-   <strong>Address</strong>: {acris.address1} <br> 
-   Transfered on {acris.transfer_date} for ${acris.amount}<br>
+<script id="tmpl-section-owner-acris" type="text/html">
+   - {acris.owner}<br> 
+   - {acris.address1}, {acris.address2}<br> 
+   - Transfered on {acris.transfer_date} for ${acris.amount}<br>
 </script>
 
 <script id="tmpl-section-pluto-body" type="text/html">
