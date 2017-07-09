@@ -86,16 +86,10 @@
             lookup.log(2,'display abort - no pluto struct');
             return false;
         }
-        // var building = x.building;
-        // lookup.view.cleanup('building');
         lookup.view.cleanup('taxlot');
         var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
         lookup.view.showObject('taxlot',pluto,spec);
         lookup.view.moveTo(pluto);
-        // if (false && building)  {
-        //    var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
-        //    lookup.view.showObject('building',building,spec);
-        // }
         return true;
     };
     
