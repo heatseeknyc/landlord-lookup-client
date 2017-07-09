@@ -167,6 +167,28 @@
    {acris.owner}<br> 
    {acris.address1}, {acris.address2}<br> 
    Transfered on {acris.transfer_date} for ${acris.amount}<br>
+   Detailed transaction history available from <a id="link-acris" target="parent"
+              href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?{meta.bbl}">ACRIS</A>
+</script>
+
+<script id="tmpl-section-pluto-header" type="text/html">
+   <strong>Primary Address</strong>: {pluto.address}, {deco.borough}<br>
+   <strong>BBL</strong> = {meta.bbl} <span class="detail">(boro {deco.boro}, block {deco.block}, lot {deco.lot})</span><br>
+   {pluto.bldg_count_label}
+   {?pluto._bldg_multi}&nbsp;<a href="/taxlot/{meta.bbl}">(view all)</a>{/pluto._bldg_multi}
+   <br>
+</script>
+
+<script id="tmpl-section-owner-pluto" type="text/html">
+   <p class="section">
+   {pluto.owner} (from Pluto)<br>
+   </p>
+</script>
+
+<script id="tmpl-section-owner-acris" type="text/html">
+   <p class="section">
+   {acris.owner}<br> 
+   {acris.address1}, {acris.address2}<br> 
    </p>
 </script>
 
