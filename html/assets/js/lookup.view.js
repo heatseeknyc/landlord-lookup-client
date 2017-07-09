@@ -168,8 +168,11 @@
         lookup.view.hide('section-pluto-owner');
         taxlot.deco = nycprop.bbl_info(taxlot.meta.bbl);
         lookup.log(2,taxlot.deco); 
+        taxlot.slug = lookup.utils.slugify(taxlot.meta.bbl);
+        lookup.log(2,taxlot.slug); 
         if (taxlot.pluto)  {
             lookup.view.render('section-pluto-header',taxlot);
+            lookup.view.render('section-pluto-body',taxlot);
             return true;
         }
         if (taxlot.acris)  {
