@@ -17,6 +17,7 @@
         dusty.load('section-pluto-header');
         dusty.load('section-pluto-owner');
         dusty.load('section-pluto-body');
+        dusty.load('section-residential');
         lookup.log(1,':: all dusty now.');
     };
 
@@ -162,10 +163,15 @@
         if (!taxlot)  {
             return false;
         };
+        lookup.view.hide('section-residential');
+        if (taxlot.meta.residential)  {
+            lookup.view.render('section-residential',taxlot);
+        }; 
         lookup.view.hide('section-acris-header');
         lookup.view.hide('section-acris-owner');
         lookup.view.hide('section-pluto-header');
         lookup.view.hide('section-pluto-owner');
+        lookup.view.hide('section-pluto-body');
         taxlot.deco = nycprop.bbl_info(taxlot.meta.bbl);
         lookup.log(2,taxlot.deco); 
         taxlot.slug = lookup.utils.slugify(taxlot.meta.bbl);

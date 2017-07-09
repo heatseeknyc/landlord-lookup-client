@@ -53,62 +53,9 @@
         <div id="section-acris-owner"></div>
         <div id="section-pluto-owner"></div>
 
+        <div id="section-pluto-body"></div>
+        <div id="section-residential"></div>
 
-        <div id="section-pluto-body">
-        <span 
-            id="var-pluto-bldg-count-label">-------</span><span 
-            id="switch-view-multi-bldg"> <a href="#">(view all)</a></span>.<br>
-
-
-          <br> 
-          <strong>Main Characteristics</strong><p>
-          <table class="nifty" id="pluto-details">
-            <tr>
-              <td><strong>Land&nbsp;Use</td>
-              <td><span id="var-pluto-land-use-label">-------</span></td>
-            </tr>
-            <tr>
-              <td><strong>Bldg&nbsp;Class</td>
-              <td><span id="var-pluto-bldg-class-label">-------</span></td>
-            </tr>
-          </table>
-
-          <br>
-
-          <br>
-
-          <br>
-          Property transaction records available from
-          <a id="link-acris" target="parent"
-              href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?unknown">ACRIS</A>.
-          <br>
-        </div>
-
-        <div id="section-residential">
-
-          <div id="section-nychpd-available-true">
-            <strong>HPD Registration</strong><p>
-            <span id="var-nychpd-count">[count summary]</span> available for this tax lot. 
-            <!-- form id="form-nychpd">
-            <button type="submit" id="submit-nychpd">View</button>
-            </form -->
-          </div>
-          <div id="section-nychpd-available-false">
-            No HPD registration available for this tax lot.  
-            <br>
-          </div>
-
-          <strong>Rent stabilization status</strong><p>
-          <div id="section-stabilized-true">
-              This building is rent stabilized ?!? <br>
-          </div>
-          <div id="section-stabilized-false">
-              This building is NOT rent stabilized! <br>
-          </div>
-
-        </div>
-
-        <br>
     </div>
 
     <div class="panel-popup" id="popup-almost">
@@ -195,12 +142,18 @@
 
 <script id="tmpl-section-acris-header" type="text/html">
    BBL = <strong>{meta.bbl}</strong> is an "ACRIS-only" lot.<br>
+          Property transaction records available from
+          <a id="link-acris" target="parent"
+              href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?unknown">ACRIS</A>.
 </script>
 
 <script id="tmpl-section-pluto-header" type="text/html">
    <strong>Primary Address</strong>: {pluto.address}, {deco.borough}<br>
    <strong>BBL</strong> = {meta.bbl} (block {deco.block}, lot {deco.lot})<br>
    {pluto.bldg_count_label}.
+        <span 
+            id="var-pluto-bldg-count-label">-------</span><span 
+            id="switch-view-multi-bldg"> <a href="#">(view all)</a></span>.<br>
 </script>
 
 <script id="tmpl-section-pluto-owner" type="text/html">
@@ -222,6 +175,14 @@
        href="http://www.oasisnyc.net/map.aspx?zoomto=lot:{meta.bbl}">OASIS</a> &amp; 
        the <a id="link-bisweb" target="parent"
          href="http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?{slug.bisweb}">DOB</a>.
+</script>
+
+<script id="tmpl-section-residential" type="text/html">
+   <strong>HPD Registration</strong><p>
+   There are {hpd.contact_label} available for this lot.<p>
+
+   <strong>Rent Stabilization</strong><p>
+   Watch this space.
 </script>
 
 <!-- stubs or in progress  -->
