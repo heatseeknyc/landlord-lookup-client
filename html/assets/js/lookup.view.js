@@ -276,6 +276,7 @@
         // lookup.view.showExternalLinks();
         lookup.view.showTaxlot(r.taxlot);
         $('#panel-summary').show();
+        lookup.view.displayTaxlot(r.taxlot);
         lookup.log(2,'show lookup done');
     };
 
