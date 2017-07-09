@@ -17,6 +17,7 @@
         dusty.load('section-pluto-header');
         dusty.load('section-pluto-owner');
         dusty.load('section-pluto-body');
+        dusty.load('section-owner-nobody');
         dusty.load('section-residential');
         dusty.load('section-compliance');
         lookup.log(1,':: all dusty now.');
@@ -158,6 +159,21 @@
         // }
         return true;
     };
+    
+    lookup.view.showOwner = function(taxlot) {
+        var acris = taxlot.acris;
+        var pluto = taxlot.pluto;
+        lookup.view.hide('section-acris-owner');
+        lookup.view.hide('section-pluto-owner');
+        if (acris && acris.party_count)  {
+            lookup.view.render('section-acris-owner',taxlot);
+        } else if (pluto && pluto.owner)  {
+            lookup.view.render('section-pluto-owner',taxlot);
+        } else {
+            lookup.view.render('section-owner-nobdy',taxlot);
+        }
+    };
+
 
     lookup.view.showResi = function(taxlot) {
         lookup.view.hide('section-residential');
@@ -172,9 +188,7 @@
             return false;
         };
         lookup.view.hide('section-acris-header');
-        lookup.view.hide('section-acris-owner');
         lookup.view.hide('section-pluto-header');
-        lookup.view.hide('section-pluto-owner');
         lookup.view.hide('section-pluto-body');
         taxlot.deco = nycprop.bbl_info(taxlot.meta.bbl);
         lookup.log(2,taxlot.deco); 
@@ -189,6 +203,7 @@
             lookup.view.showError('invalid frontend state')
             return false;
         }
+        lookup.view.showOwner(taxlot);
         lookup.view.showResi(taxlot);
         lookup.view.render('section-compliance',taxlot);
         return true;
