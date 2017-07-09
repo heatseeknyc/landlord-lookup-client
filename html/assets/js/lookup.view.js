@@ -135,14 +135,9 @@
         }
     };
 
-    lookup.view.displayTaxlot = function() {
+    lookup.view.displayTaxlot = function(taxlot) {
         lookup.log(2,'display taxlot..');
-        var r = lookup.model.summary;
-        if (!r.taxlot) {
-            lookup.log(2,'display abort - no taxlot struct');
-            return false;
-        }
-        pluto = r.taxlot.pluto;
+        pluto = taxlot.pluto;
         if (!pluto)  {
             lookup.log(2,'display abort - no pluto struct');
             return false;
