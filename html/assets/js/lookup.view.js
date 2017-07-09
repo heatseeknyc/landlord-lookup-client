@@ -413,7 +413,7 @@
         lookup.view.showError("Something went wrong! Reload the page and try your search again.");
     };
 
-    lookup.view.showTestPanel = function() {
+    lookup.view.showTest = function() {
         $('.panel-lower').hide();
         $('#panel-testdata').show();
     };
