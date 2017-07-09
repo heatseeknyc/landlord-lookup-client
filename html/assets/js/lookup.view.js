@@ -78,62 +78,6 @@
         }
     };
 
-    // deprecated
-    lookup.view.summary2table = function(r) {
-        var html = [], z = 0;
-        html[z++] = "<tr>";
-        html[z++] = "<th>Active&nbsp;Date</th>";
-        html[z++] = "<td>" + r.active_date + "</td>";
-        html[z++] = "</tr>";
-        html[z++] = "<tr>";
-        html[z++] = "<th>Owner&nbsp;Name</th>";
-        html[z++] = "<td>" + r.owner_name + "</td>";
-        html[z++] = "</tr>";
-        html[z++] = "<tr>";
-        html[z++] = "<th>Mailng&nbsp;Address</th>";
-        html[z++] = "<td>" + r.owner_address.join(', ') + "</td>";
-        html[z++] = "</tr>";
-        return html;
-    };
-
-
-    // DEPRECATED
-    lookup.view.showTaxbill = function() {
-      var r = lookup.model.summary;
-      if (r.taxlot && false)  {
-        $('#section-taxbill-available-false').hide();
-        var html = lookup.view.summary2table(r.taxlot.taxbill);
-        $('#tbody-summary-taxbill')[0].innerHTML = html.join('');
-        var bbl = r.nygeo.bbl;
-        $('#link-taxbills-nyc').attr('href','http://taxbills.nyc/'+slug);
-        $('#section-taxbill-available-true').show();
-      }
-      else {
-        $('#section-taxbill-available-true').hide();
-        $('#tbody-summary-taxbill')[0].innerHTML = '<!-- empty table -->';
-        $('#section-taxbill-available-false').show();
-      }
-    };
-
-    // DEPRECATED
-    lookup.view.__showHPD = function() {
-        var r = lookup.model.summary;
-        function _plural(n)  {
-            if (n !== 1) { return 's'; }
-            return '';
-        }
-        if (r.taxlot && r.taxlot.nychpd_count)  {
-            $('#section-nychpd-available-false').hide();
-            var text = r.taxlot.nychpd_count + " contact record" + 
-                _plural(r.taxlot.nychpd_count);
-            $('#var-nychpd-count').text(text);
-            $('#section-nychpd-available-true').show();
-        }
-        else {
-            $('#section-nychpd-available-true').hide();
-            $('#section-nychpd-available-false').show();
-        }
-    };
 
     lookup.view.displayTaxlot = function(taxlot) {
         lookup.log(2,'display taxlot..');
