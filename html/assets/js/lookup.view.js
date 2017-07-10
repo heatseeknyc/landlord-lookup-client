@@ -86,6 +86,7 @@
             lookup.log(2,'display abort - no pluto struct');
             return false;
         }
+        lookup.view.cleanup('building');
         lookup.view.cleanup('taxlot');
         var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
         lookup.view.showObject('taxlot',pluto,spec);
