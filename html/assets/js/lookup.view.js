@@ -18,6 +18,7 @@
         dusty.load('section-owner-nobody');
         dusty.load('section-owner-acris');
         dusty.load('section-owner-pluto');
+        dusty.load('section-owner-hpdreg');
         dusty.load('section-residential');
         dusty.load('section-compliance');
         lookup.log(1,':: all dusty now.');
