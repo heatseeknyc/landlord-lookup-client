@@ -90,6 +90,7 @@
         var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
         lookup.view.showObject('taxlot',pluto,spec);
         lookup.view.moveTo(pluto);
+        lookup.view.initTaxlotLinks();
         return true;
     };
     
@@ -115,6 +116,7 @@
     };
 
     lookup.view.initTaxlotLinks = function()  {
+        lookup.log(2,'taxlot links ');
         $('#link-multi-bldg').click(function(){
             lookup.log(2,"click!");
             lookup.log(2,"this.id = "+this.id);
@@ -259,33 +261,33 @@
     };
 
     lookup.view.addPoly = function(tag,poly,spec) {
-        lookup.log(2,'add poly tag='+tag+' ..');
-        lookup.log(2,poly);
+        lookup.log(3,'add poly tag='+tag+' ..');
+        lookup.log(3,poly);
         var map = lookup.view.map;
         if (!map)  {
-            lookup.log(3,'add poly - aborting');
+            lookup.log(4,'add poly - aborting');
             return false;
         }
         var list = lookup.view.polygons[tag];
         if (list)  {
-            lookup.log(3,'already ='+list.length);
+            lookup.log(4,'already ='+list.length);
         }  else  {
             lookup.view.polygons[tag] = new Array(0);
             list = lookup.view.polygons[tag];
-            lookup.log(3,'initialized ='+list.length);
+            lookup.log(4,'initialized ='+list.length);
         }
-        lookup.log(2,'add '+poly.length+' ..');
+        lookup.log(3,'add '+poly.length+' ..');
         for (var i=0; i<poly.length; i++)  {
             var p = L.polygon(poly[i],spec);
-            lookup.log(3,p);
+            lookup.log(4,p);
             p.addTo(map);
-            lookup.log(3,'before='+list.length);
-            lookup.log(3,list);
+            lookup.log(4,'before='+list.length);
+            lookup.log(4,list);
             list.push(p);
-            lookup.log(3,'after='+list.length);
-            lookup.log(3,list);
+            lookup.log(4,'after='+list.length);
+            lookup.log(4,list);
         }
-        lookup.log(2,'add poly done ['+tag+']');
+        lookup.log(3,'add poly done ['+tag+']');
         return true;
     };
 
