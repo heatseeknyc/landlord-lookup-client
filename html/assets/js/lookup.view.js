@@ -346,7 +346,6 @@
         });
     };
 
-
     lookup.view.initTabs = function()  {
     };
 
