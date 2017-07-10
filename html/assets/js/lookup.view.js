@@ -115,6 +115,13 @@
         }; 
     };
 
+    lookup.view.initTaxlotLinks = function()  {
+        $('#link-multi-bldg').click(function(){
+            lookup.log(2,"click!");
+            lookup.log(2,"this.id = "+this.id);
+        });
+    };
+
     lookup.utils.augment_taxlot = function(taxlot) {
         taxlot.deco = nycprop.bbl_info(taxlot.meta.bbl);
         lookup.log(2,taxlot.deco); 
@@ -336,13 +343,6 @@
             var target = $(this).parent()[0];
             lookup.log(3,"target.id = "+target.id);
             $(target).hide();
-        });
-    };
-
-    lookup.view.initTaxlotLinks = function()  {
-        $('#link-multi-bldg').click(function(){
-            lookup.log(2,"click!");
-            lookup.log(2,"this.id = "+this.id);
         });
     };
 
