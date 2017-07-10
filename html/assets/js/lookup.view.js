@@ -121,7 +121,7 @@
         $('#link-multi-bldg').click(function(){
             lookup.log(2,"click!");
             lookup.log(2,"this.id = "+this.id);
-            lookup.control.doBuildings();
+            lookup.control.doBuildings(true);
         });
     };
 
@@ -313,7 +313,7 @@
         var blist = lookup.model.buildings;
         lookup.log(1,':: show buildings!');
         lookup.log(2,blist);
-        // lookup.view.cleanup('building');
+        lookup.view.cleanup('building');
         for (var i=0; i<blist.length; i++)  {
             var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
             lookup.view.showObject('building',blist[i],spec);

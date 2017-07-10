@@ -67,20 +67,21 @@
         lookup.log(2,':: handle contacts done.');
     };
 
-    function keyarg(keytup)  {
-        if (!keytup.bin)  {
+    function keyarg(keytup,flag)  {
+        if (!keytup.bbl)  {
             return 'BADKEYTUP';
         }
         var q = ''+keytup.bbl;
+        if (flag)  { return q; } 
         if (keytup.bin)  {
             q = q + ','+keytup.bin;
         } 
         return q; 
     };
 
-    function fetchBuildings(keytup,callback) {
+    function fetchBuildings(keytup,flag,callback) {
         lookup.log(2,':: fetch buildings .. ');
-        var q = keyarg(keytup);
+        var q = keyarg(keytup,flag);
         lookup.log(2,':: keyarg = '+q); 
         var base = lookup.service.hybrid; 
         var path = '/buildings/'+q;
@@ -109,11 +110,11 @@
         } else { lookup.control.showModelError(); }
     };
 
-    lookup.control.doBuildings = function() {
+    lookup.control.doBuildings = function(flag) {
         lookup.log(2,'do-buildings ..');
         var r = lookup.model.summary;
         if (r && r.keytup)  {
-            fetchBuildings(r.keytup,handleBuildings);
+            fetchBuildings(r.keytup,flag,handleBuildings);
         } else { lookup.control.showModelError(); }
         lookup.log(2,'do-buildings done');
     };
@@ -171,7 +172,7 @@
         else {
             lookup.model.summary = r;
             lookup.view.showLookup();
-            lookup.control.doBuildings();
+            lookup.control.doBuildings(false);
         }
         lookup.log(2,':: handle lookup done.');
     };
