@@ -13,7 +13,7 @@
             evt.preventDefault();
             var query = $('#address-input').val().trim();
             lookup.log(3,':: #address-form.submit at '+ new Date());
-            lookup.control.doTaxlot(query);
+            lookup.control.doSearch(query);
         });
     };
 
@@ -120,7 +120,15 @@
 
     lookup.control.doSearch = function(query) {
         lookup.log(2,'do-search ..');
-        $.when(lookup.control.doTaxlot(query)).then(lookup.control.doBuildings());
+        // $.when(lookup.control.doTaxlot(query)).then(lookup.control.doBuildings());
+        $.when(lookup.control.doTaxlot(query)).done(
+            function(){
+                lookup.log(1,'YOW');
+                var r = lookup.model.summary;
+                lookup.log(1,r);
+                lookup.log(1,'OOK');
+            }
+        );
         lookup.log(2,'do-search done');
     };
 
@@ -151,6 +159,7 @@
         else {
             lookup.model.summary = r;
             lookup.view.showLookup();
+            lookup.control.doBuildings();
         }
         lookup.log(2,':: handle lookup done.');
     };
