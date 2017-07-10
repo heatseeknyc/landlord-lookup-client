@@ -13,7 +13,7 @@
             evt.preventDefault();
             var query = $('#address-input').val().trim();
             lookup.log(3,':: #address-form.submit at '+ new Date());
-            lookup.control.doSearch(query);
+            lookup.control.doTaxlot(query);
         });
     };
 
@@ -67,11 +67,23 @@
         lookup.log(2,':: handle contacts done.');
     };
 
-    function fetchBuildings(bbl,callback) {
+    function keyarg(keytup)  {
+        if (!keytup.bin)  {
+            return 'BADKEYTUP';
+        }
+        var q = ''+keytup.bbl;
+        if (keytup.bin)  {
+            q = q + ','+keytup.bin;
+        } 
+        return q; 
+    };
+
+    function fetchBuildings(keytup,callback) {
         lookup.log(2,':: fetch buildings .. ');
-        lookup.log(2,':: bbl = ' + bbl);
+        var q = keyarg(keytup);
+        lookup.log(2,':: keyarg = '+q); 
         var base = lookup.service.hybrid; 
-        var path = '/buildings/'+bbl;
+        var path = '/buildings/'+q;
         return lookup.control.doAjax(base,path,callback);
     };
 
@@ -101,7 +113,7 @@
         lookup.log(2,'do-buildings ..');
         var r = lookup.model.summary;
         if (r && r.keytup)  {
-            fetchBuildings(r.keytup.bbl,handleBuildings);
+            fetchBuildings(r.keytup,handleBuildings);
         } else { lookup.control.showModelError(); }
         lookup.log(2,'do-buildings done');
     };

@@ -311,9 +311,9 @@
 
     lookup.view.showBuildings = function() {
         var blist = lookup.model.buildings;
-        lookup.log(1,'show buildings!');
+        lookup.log(1,':: show buildings!');
         lookup.log(2,blist);
-        lookup.view.cleanup('building');
+        // lookup.view.cleanup('building');
         for (var i=0; i<blist.length; i++)  {
             var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
             lookup.view.showObject('building',blist[i],spec);
