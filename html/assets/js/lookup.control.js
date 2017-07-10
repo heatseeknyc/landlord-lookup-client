@@ -117,12 +117,18 @@
         }
     };
 
+    lookup.control.doSearch = function(query) {
+        lookup.log(2,'do-search ..');
+        $.when(lookup.control.doTaxlot(query)).then(lookup.control.doBuildings());
+        lookup.log(2,'do-search done');
+    };
+
     lookup.control.doTaxlot = function(query) {
-        lookup.log(2,'do search ..');
+        lookup.log(2,'do-taxlot ..');
         lookup.model = {}; 
         lookup.log(2,'query =['+query+']');
         fetchLookup(query,handleLookup);
-        lookup.log(2,'procform done.');
+        lookup.log(2,'do-taxlot done');
     };
 
     function fetchLookup(query,callback) {
