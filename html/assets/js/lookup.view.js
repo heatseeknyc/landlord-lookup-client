@@ -160,29 +160,6 @@
     };
 
     // DEPRECATED
-    lookup.view.__showPluto = function(r) {
-        lookup.log(2,'show pluto ..');
-        /*
-        $('#var-pluto-address').text(r.address)
-        $('#var-pluto-borough').text('Manhattan')
-        $('#var-pluto-bldg-count-label').text(r.bldg_count_label)
-        $('#var-pluto-bldg-class').text(r.bldg_class)
-        $('#var-pluto-bldg-class-label').text(r.bldg_class_label)
-        $('#var-pluto-land-use').text(r.land_use)
-        $('#var-pluto-land-use-label').text(r.land_use_label)
-        if (r.building_count > 1)  {
-            $('#switch-view-multi-bldg').show();
-        }
-        else  {
-            $('#switch-view-multi-bldg').hide();
-        }*/
-        lookup.view.showHPD();
-        lookup.view.render('section-pluto-header',r);
-        // dusty.render('section-pluto-header',r);
-        // $('#section-pluto-header').show();
-    };
-
-    // DEPRECATED
     lookup.view.__showExternalLinks = function() {
         var r = lookup.model.summary;
         var bbl = r.keytup.bbl;
