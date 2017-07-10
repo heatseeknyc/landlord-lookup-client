@@ -17,19 +17,6 @@
         });
     };
 
-    lookup.control.initExpandHandlers = function() {
-        $('#form-nychpd').on('submit', function (evt) {
-            evt.preventDefault();
-            lookup.log(3,':: #form-nychpd.submit at '+ new Date());
-            lookup.control.doContacts();
-        });
-        $('#switch-view-multi-bldg').click(function(){
-            lookup.log(2,"click!");
-            lookup.log(2,"this.id = "+this.id);
-            lookup.control.doBuildings();
-        }); 
-    };
-
     // A simple wrapper around the standard json ajax call, 
     // with default error handling + paranoid logging.
     lookup.control.doAjax = function(base,path,callback) {
@@ -179,6 +166,21 @@
         }
         lookup.log(2,':: localpath - done.');
     };
+
+    // DEPRECATED
+    lookup.control.initExpandHandlers = function() {
+        $('#form-nychpd').on('submit', function (evt) {
+            evt.preventDefault();
+            lookup.log(3,':: #form-nychpd.submit at '+ new Date());
+            lookup.control.doContacts();
+        });
+        $('#switch-view-multi-bldg').click(function(){
+            lookup.log(2,"click!");
+            lookup.log(2,"this.id = "+this.id);
+            lookup.control.doBuildings();
+        }); 
+    };
+
 
 })();
 
