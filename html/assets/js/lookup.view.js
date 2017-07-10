@@ -107,7 +107,6 @@
         }
     };
 
-
     lookup.view.showResi = function(taxlot) {
         lookup.view.hide('section-residential');
         if (taxlot.meta.residential)  {
