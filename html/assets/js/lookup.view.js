@@ -322,6 +322,7 @@
 
 
     lookup.view.showError = function(msg) {
+        lookup.log(1,':: error['+msg+']')
         $('#panel-message').hide();
         $('#panel-summary').hide();
         $('#error-search').text(msg);
