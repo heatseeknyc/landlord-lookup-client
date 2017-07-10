@@ -98,11 +98,12 @@
     };
 
     lookup.control.doBuildings = function() {
-        lookup.log(2,'do buildings..');
+        lookup.log(2,'do-buildings ..');
         var r = lookup.model.summary;
         if (r && r.keytup)  {
             fetchBuildings(r.keytup.bbl,handleBuildings);
         } else { lookup.control.showModelError(); }
+        lookup.log(2,'do-buildings done');
     };
 
     lookup.control.showModelError = function() {
