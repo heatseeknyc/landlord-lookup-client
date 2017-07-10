@@ -55,7 +55,7 @@
         <div class="section" id="section-owner-hpdreg"></div>
 
         <div class="section" id="section-pluto-landuse"></div>
-        <div class="section" id="section-residential"></div>
+        <div class="section" id="section-rentstable"></div>
         <div class="section" id="section-compliance"></div>
         <p>
     </div>
@@ -224,10 +224,12 @@
    </p>
 </script>
 
-<script id="tmpl-section-residential" type="text/html">
+<!-- Activated when meta.residential is true -->
+<script id="tmpl-section-rentstable" type="text/html">
    <h3>Residential Summary </h3>
    <p class="section">
-   There are {hpd.contact} HPD contacts available for this lot.<br>
+   Hey, [ {meta.stabilized} ].
+   Which menas this lot may or may not be stabilized. 
    </p>
 </script>
 

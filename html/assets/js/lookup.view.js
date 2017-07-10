@@ -1,4 +1,4 @@
-(function() {
+function() {
 
     lookup.view = {};
     lookup.view.polygons = {};
@@ -19,7 +19,7 @@
         dusty.load('section-owner-acris');
         dusty.load('section-owner-pluto');
         dusty.load('section-owner-hpdreg');
-        dusty.load('section-residential');
+        dusty.load('section-rentstable');
         dusty.load('section-compliance');
         lookup.log(1,':: all dusty now.');
     };
@@ -111,9 +111,9 @@
     };
 
     lookup.view.showResi = function(taxlot) {
-        lookup.view.hide('section-residential');
+        lookup.view.hide('section-rentstable');
         if (taxlot.meta.residential)  {
-            lookup.view.render('section-residential',taxlot);
+            lookup.view.render('section-rentstable',taxlot);
         }; 
     };
 
