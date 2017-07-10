@@ -72,6 +72,10 @@ p.section {
     padding-left: 5px;
 }
 span.detail { color:#888; }
+a.lokal { 
+    color: #f00;
+    cursor: pointer; 
+}
 
 .panel-lower {
     padding: 2px;
