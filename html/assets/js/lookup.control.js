@@ -13,7 +13,7 @@
             evt.preventDefault();
             var query = $('#address-input').val().trim();
             lookup.log(3,':: #address-form.submit at '+ new Date());
-            lookup.control.doSearch(query);
+            lookup.control.doTaxlot(query);
         });
     };
 
@@ -117,7 +117,7 @@
         }
     };
 
-    lookup.control.doSearch = function(query) {
+    lookup.control.doTaxlot = function(query) {
         lookup.log(2,'do search ..');
         lookup.model = {}; 
         lookup.log(2,'query =['+query+']');
@@ -155,7 +155,7 @@
         if (bbl)  {
             if (bbl.match(/^\d{10}$/))  {
                 lookup.log(2,':: localpath - lets do it ..');
-                lookup.control.doSearch(bbl);
+                lookup.control.doTaxlot(bbl);
             }
             else  {
                 lookup.log(2,':: localpath - no good!');
