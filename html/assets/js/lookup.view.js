@@ -346,9 +346,6 @@
         });
     };
 
-    lookup.view.initTabs = function()  {
-    };
-
     lookup.view.initGoogleAutocomplete = function() {
         var config = lookup.config.autocomplete;
         if (config && config.active)  {
