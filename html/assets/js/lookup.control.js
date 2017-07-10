@@ -84,7 +84,7 @@
         lookup.log(2,':: fetch buildings .. ');
         lookup.log(2,':: bbl = ' + bbl);
         var base = lookup.service.hybrid; 
-        var path = '/building/'+bbl;
+        var path = '/buildings/'+bbl;
         return lookup.control.doAjax(base,path,callback);
     };
 

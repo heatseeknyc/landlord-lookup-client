@@ -120,6 +120,7 @@
         $('#link-multi-bldg').click(function(){
             lookup.log(2,"click!");
             lookup.log(2,"this.id = "+this.id);
+            lookup.control.doBuildings();
         });
     };
 
