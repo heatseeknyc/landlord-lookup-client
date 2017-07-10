@@ -339,8 +339,8 @@
         });
     };
 
-    lookup.view._initLinks = function()  {
-        $('#switch-view-multi-bldg').click(function(){
+    lookup.view.initTaxlotLinks = function()  {
+        $('#link-multi-bldg').click(function(){
             lookup.log(2,"click!");
             lookup.log(2,"this.id = "+this.id);
         });
