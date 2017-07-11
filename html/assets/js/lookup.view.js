@@ -144,6 +144,13 @@
             if (p.year_built > 0)  { p._built = 1; }
             if (p.bldg_count > 1)  { p._bldg_multi = 1; }
         } 
+        var meta = taxlot.meta;
+        if (meta)  {
+            if (meta.stabilized > 0)  {
+                meta._stable = 1;
+            }
+        }
+
     };
 
     lookup.view.showTaxlot = function(taxlot) {
