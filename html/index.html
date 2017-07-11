@@ -226,10 +226,23 @@
 
 <!-- Activated when meta.residential is true -->
 <script id="tmpl-section-rentstable" type="text/html">
-   <h3>Residential Summary </h3>
+   <h3>Rent Stabilization</h3>
    <p class="section">
-   Hey, [ {meta.stabilized} ].
-   Which menas this lot may or may not be stabilized. 
+   {?meta._stable}
+     {?pluto._bldg_multi}
+        At least some of the buildings on this lot appear to have 
+     {:else}
+        The building on this lot appears to have
+     {/pluto._bldg_multi}
+     rent-stabilized units, according to public records.  We even have a nifty internal 
+     code [{meta.stabilized}] that provides more detail, we just need to present it more nicely.
+   {:else}
+     {?pluto._bldg_multi}
+       None of the buildings on this lot appear to have rent stabilized units, according to public records.
+     {:else}
+       This building on this does not appear to have rent stabilized units, according to public records. 
+     {/pluto._bldg_multi}
+   {/meta._stable}
    </p>
 </script>
 
