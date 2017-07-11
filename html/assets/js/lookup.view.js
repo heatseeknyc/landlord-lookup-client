@@ -1,4 +1,4 @@
-function() {
+(function() {
 
     lookup.view = {};
     lookup.view.polygons = {};
