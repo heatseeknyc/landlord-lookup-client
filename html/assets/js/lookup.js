@@ -2,7 +2,7 @@
 
     // Namespace for all globals specific to the Landlord Lookup application. 
     lookup = {};
-    lookup.version = '005a';
+    lookup.version = '006a';
     lookup.model = {}; 
 
     // Application specific configuration.
