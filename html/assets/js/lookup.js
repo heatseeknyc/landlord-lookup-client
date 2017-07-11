@@ -7,7 +7,7 @@
 
     // Application specific configuration.
     lookup.config = {
-        'debug': 3,
+        'debug': 2,
         'autocomplete': {
             'active': true,
             'bounds': false
