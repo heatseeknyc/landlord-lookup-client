@@ -102,6 +102,7 @@
     lookup.view.showOwner = function(taxlot) {
         var acris = taxlot.acris;
         var pluto = taxlot.pluto;
+        lookup.log(2,'show owner ..');
         lookup.view.hide('section-owner-acris');
         lookup.view.hide('section-owner-pluto');
         lookup.view.hide('section-owner-condo');
@@ -114,6 +115,7 @@
         } else {
             lookup.view.render('section-owner-nobody',taxlot);
         }
+        lookup.log(2,'show owner done');
     };
 
     lookup.view.showResi = function(taxlot) {
