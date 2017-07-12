@@ -15,7 +15,7 @@
  */
 (function() {
 
-    var explain = {}
+    var _explain = {}
 
     var _mapnull = function(x) {
         if (x === null)  { return '-'; }
@@ -24,14 +24,14 @@
 
     // Provides a simple, plain-English description of what kind of a 
     // property this is.  Should probably be no more than 60 chars.
-    explain.describe_property = function(taxlot) {
+    _explain.describe_property = function(taxlot) {
     };
 
     // Provides a description of the rent stabilization status for this property,
     // appropriately phrased cased for lots with multiple (or no) buildings. 
-    explain.describe_stable = function(taxlot) {
+    _explain.describe_stable = function(taxlot) {
     };
 
-    lookup.explain = explain; 
+    lookup.explain = _explain; 
 })();
 
