@@ -27,6 +27,7 @@
     };
 
     lookup.view.render = function(divname,object) {
+        lookup.log(2,':: render '+divname+' ..');
         dusty.render(divname,object);
         $('#'+divname).show();
         return true;
