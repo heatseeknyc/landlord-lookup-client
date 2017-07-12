@@ -58,7 +58,7 @@
             info = "The building"+en._pl+" on this lot "+en.isa+" Mitchell-Lama co-operative"+en._pl+", "+ 
                 "and "+en.is+" therefore protected from rent increases.";
         } else if (code == 9)  {
-            info = "The building"+en._pl+" on this lot "+en.is+" are managed by NYCHA, "+ 
+            info = "The building"+en._pl+" on this lot "+en.is+" managed by NYCHA, "+ 
                 "and "+en.is+" therefore protected from rent increases.";
         } else if (code == 10)  {
             info = "The building"+en._pl+" on this lot "+en.is+" recognized under the Loft Law, "+ 
