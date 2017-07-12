@@ -27,10 +27,46 @@
     _explain.describe_property = function(taxlot) {
     };
 
+    var sing = {bldg:'building',has:'has',was:'was',is:'is',do:'does'};
+    var plur = {bldg:'buildings',has:'have',was:'were',is:'are',do:'do'};
+    var en = sing;
+
     // Provides a description of the rent stabilization status for this property,
     // appropriately phrased cased for lots with multiple (or no) buildings. 
     _explain.describe_stable = function(taxlot) {
+        var info = "--corrupted--"; 
+        var meta = taxlot.meta;
+        if (!meta)  { return false; }
+        var noun = 'building';
+        var have = 'has'; 
+        var were = 'was'; 
+        var is = 'is'; 
+        var doth = 'do';  // 'do' is reserved!
+        var code = meta.stabilized;
+        if (code == 1)  {
+            info = "The "+en.bldg+" on this lot "+en.has+" been confirmed to be rent stabilized, " + 
+                "(at least through the end of 2015), according to publicly available documents " +
+                "from 2 sources (DHCR list; DOF taxbills).";
+        } else if (code == 2)  {
+            info = "The "+en.bldg+" on this lot probably "+en.was+" rent stabilized " 
+                "(at least through the end of 2015), though there is some diagreement on this" +
+                "between publicly available source (DHCR list; DOF taxbills).";
+        } else if (code == 3)  {
+            info = "There are no public records confirming that the "+en.bldg+" on this lot "+en.is+
+                " rent stabilized.  However, the build year and physical characteristics indicated "+
+                "that they <strong>may</strong> have stablized units.";
+        }  else  {
+            info = "The "+en.bldg+" on this lot "+en.do+" not appear to be rent-stabilized.";
+        }
+        if (!taxlot.explain) { taxlot.explain = {}; };
+        taxlot.explain.info = info;
+        return true;
     };
+
+    _explain.augment_details = function(taxlot) {
+        _explain.describe_stable(taxlot);
+    };
+
 
     lookup.explain = _explain; 
 })();
