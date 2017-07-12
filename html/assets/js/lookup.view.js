@@ -15,6 +15,7 @@
         dusty.load('section-acris-header');
         dusty.load('section-pluto-header');
         dusty.load('section-pluto-landuse');
+        dusty.load('section-owner-condo');
         dusty.load('section-owner-nobody');
         dusty.load('section-owner-acris');
         dusty.load('section-owner-pluto');
@@ -256,14 +257,14 @@
     lookup.view.moveTo = function(shape) {
         var center = [shape.lat_ctr,shape.lon_ctr];
         lookup.log(2,'center ..');
-        lookup.log(2,center);
+        lookup.log(3,center);
         lookup.view.moveMap(center,false);
     };
 
     lookup.view.showObject = function(tag,shape,spec) {
         lookup.log(2,'show object tag='+tag+' ..');
-        lookup.log(2,shape);
-        lookup.log(2,spec);
+        lookup.log(3,shape);
+        lookup.log(3,spec);
         var poly = sift(shape.points,shape.parts);
         lookup.view.addPoly(tag,poly,spec);
         lookup.log(2,'show object done');
@@ -272,7 +273,7 @@
 
     lookup.view.addPoly = function(tag,poly,spec) {
         lookup.log(3,'add poly tag='+tag+' ..');
-        lookup.log(3,poly);
+        lookup.log(4,poly);
         var map = lookup.view.map;
         if (!map)  {
             lookup.log(4,'add poly - aborting');
