@@ -55,11 +55,9 @@
             info = "There are no public records confirming that the "+en.bldg+" on this lot "+en.is+
                 " rent stabilized.  However, the build year and physical characteristics indicated "+
                 "that they <strong>may</strong> have stablized units.";
-        }  else  {
-            info = "The "+en.bldg+" on this lot "+en.do+" not appear to be rent-stabilized.";
         }
         if (!taxlot.explain) { taxlot.explain = {}; };
-        taxlot.explain.info = info;
+        taxlot.explain.stable = info;
         return true;
     };
 
