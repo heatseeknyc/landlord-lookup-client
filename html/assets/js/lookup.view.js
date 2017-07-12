@@ -103,7 +103,10 @@
         var pluto = taxlot.pluto;
         lookup.view.hide('section-owner-acris');
         lookup.view.hide('section-owner-pluto');
-        if (acris && acris.party_count)  {
+        lookup.view.hide('section-owner-condo');
+        if (taxlot.condo)  {
+            lookup.view.render('section-owner-condo',taxlot);
+        } else if (acris && acris.party_count)  {
             lookup.view.render('section-owner-acris',taxlot);
         } else if (pluto && pluto.owner)  {
             lookup.view.render('section-owner-pluto',taxlot);
