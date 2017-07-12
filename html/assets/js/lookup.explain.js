@@ -27,8 +27,8 @@
     _explain.describe_property = function(taxlot) {
     };
 
-    var sing = {bldg:'building',has:'has',was:'was',is:'is',do:'does'};
-    var plur = {bldg:'buildings',has:'have',was:'were',is:'are',do:'do'};
+    var sing = {_pl:'',it:'it',has:'has',was:'was',is:'is',isa:'is a',do:'does'};
+    var plur = {_pl:'s',it:'they',has:'have',was:'were',is:'are',isa:'are',do:'do'};
     var en = sing;
 
     // Provides a description of the rent stabilization status for this property,
@@ -37,25 +37,36 @@
         var info = "--corrupted--"; 
         var meta = taxlot.meta;
         if (!meta)  { return false; }
-        var noun = 'building';
-        var have = 'has'; 
-        var were = 'was'; 
-        var is = 'is'; 
-        var doth = 'do';  // 'do' is reserved!
         var code = meta.stabilized;
         if (code == 1)  {
-            info = "The "+en.bldg+" on this lot "+en.has+" been confirmed to be rent stabilized, " + 
-                "(at least through the end of 2015), according to publicly available documents " +
-                "from 2 sources (DHCR list; DOF taxbills).";
+            info = "The building"+en._pl+" on this lot "+en.has+" been confirmed to be rent-stabilized " + 
+                "(or under some form of rent control) according to publicly available documents from 2 sources " +
+                "(DHCR list; DOF taxbills), at least through the end of 2015.";
         } else if (code == 2)  {
-            info = "The "+en.bldg+" on this lot probably "+en.was+" rent stabilized " 
-                "(at least through the end of 2015), though there is some diagreement on this" +
-                "between publicly available source (DHCR list; DOF taxbills).";
+            info = "The building"+en._pl+" on this lot "+en.was+" probably rent stabilized " +
+                "(or under some form of rent control), at least up until very recently (through the end of 2015), " +
+                "though there is some diagreement on this between the 2 publicly available data sources we have " +
+                "(DHCR list; DOF taxbills).";
         } else if (code == 3)  {
             info = "There are no public records confirming that the "+en.bldg+" on this lot "+en.is+
-                " rent stabilized.  However, the build year and physical characteristics indicated "+
-                "that they <strong>may</strong> have stablized units.";
-        }
+                " under any form of rent-stabilizatin (or control).  However, the build year and physical " +
+                "characteristics indicate that "+en.it+" may have stablized units (but the city isn't tracking them).";
+        } else if (code == 7)  {
+            info = "The building"+en._pl+" on this lot "+en.isa+" managed by the HPD's Section 7A "+ 
+                "program, which protects them against rent increases.";
+        } else if (code == 8)  {
+            info = "The building"+en._pl+" on this lot "+en.isa+" Mitchell-Lama co-operative"+en._pl+", "+ 
+                "and "+en.is+" therefore protected from rent increases.";
+        } else if (code == 9)  {
+            info = "The building"+en._pl+" on this lot "+en.is+" are managed by NYCHA, "+ 
+                "and "+en.is+" therefore protected from rent increases.";
+        } else if (code == 10)  {
+            info = "The building"+en._pl+" on this lot "+en.is+" recognized under the Loft Law, "+ 
+                "which provides a form of rent stabilization.";
+        } else if (code == 11)  {
+            info = "The "+en.bldg+" on this lot "+en.is+" enrolled in an unspecified HPD management program, "
+                "which probably provides some form of rent stabilization.";
+        }  
         if (!taxlot.explain) { taxlot.explain = {}; };
         taxlot.explain.stable = info;
         return true;
