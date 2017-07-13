@@ -67,7 +67,9 @@
             caption = "A condominium "+_with(k,n);
         }  else if (meta.is_coop)  {
             caption = "A co-op "+_with(k,n);
-        }  else if (n > 1 && pluto.land_use == '04')  {
+        }  else if (n > 1 && (
+               pluto.land_use == '03' ||
+               pluto.land_use == '04' ))  {
             caption = "An apartment complex "+_with(k,n);
         }  else if (pluto.bldg_class == 'O4' && n == 1)  {
             caption = "An office building"; 
