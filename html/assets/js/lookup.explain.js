@@ -32,7 +32,18 @@
             // by the other templates.  So if we call nonetheless, sans pluto struct,
             // we're doing something wrong.  Let's just emit something nice-sounidng
             // and move on.
+            taxlot.explain.caption = "A mystery lot."; 
+            return true;
         }
+        var caption = "--corrupted--"; 
+        if (pluto.land_use == 'Z8')  {
+            caption = "A cemetery";
+        }  else if (0)  {
+            // stub
+        }  else  { 
+            // shouldn't get here - default to 'corrupted' 
+        }
+        taxlot.explain.caption = caption; 
     };
 
     var sing = {_pl:'',it:'it',has:'has',was:'was',is:'is',isa:'is a',do:'does'};
