@@ -34,6 +34,13 @@
         else { return "no buildings"; }
     };
 
+    // Emit "across n building(s)" only when n > 1
+    var _across = function(n)  {
+        if (n > 1)  { return " across "+_buildings(n); }
+        else { return ""; }
+    };
+
+
     // Provides a simple, plain-English description of what kind of a property this is.  
     // Should probably be no more than 60 chars.  Intended for the 'pluto-header' section only.
     _explain.describe_taxlot = function(taxlot) {
@@ -54,9 +61,9 @@
         if (pluto.bldg_class == 'Z8')  {
             caption = "A cemetery with "+_buildings(n);
         }  else if (meta.is_condo)  {
-            caption = "A condominium with "+_units(k)
+            caption = "A condominium with "+_units(k)+_across(n);
         }  else if (meta.is_coop)  {
-            caption = "A co-op with "+_units(k);
+            caption = "A co-op with "+_units(k)+_across(n);
         }  else   {
             if (n > 0)  {
                 caption = "A lot with "+_buildings(n); 
