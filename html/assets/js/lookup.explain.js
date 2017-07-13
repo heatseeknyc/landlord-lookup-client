@@ -22,9 +22,9 @@
         else { return x; }
     };
 
-    // Provides a simple, plain-English description of what kind of a 
-    // property this is.  Should probably be no more than 60 chars.
-    _explain.describe_property = function(taxlot) {
+    // Provides a simple, plain-English description of what kind of a property this is.  
+    // Should probably be no more than 60 chars.
+    _explain.describe_taxlot = function(taxlot) {
     };
 
     var sing = {_pl:'',it:'it',has:'has',was:'was',is:'is',isa:'is a',do:'does'};
