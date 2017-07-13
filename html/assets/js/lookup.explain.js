@@ -61,9 +61,7 @@
         var k = pluto.units_res;
         var n = pluto.bldg_count;
         var caption = "--corrupted--"; 
-        if (pluto.bldg_class == 'Z8')  {
-            caption = "A cemetery with "+_buildings(n);
-        }  else if (meta.is_condo)  {
+        if (meta.is_condo)  {
             caption = "A condominium "+_with(k,n);
         }  else if (meta.is_coop)  {
             caption = "A co-op "+_with(k,n);
@@ -73,6 +71,8 @@
             caption = "An apartment complex with "+_buildings(n);
         }  else if (pluto.bldg_class == 'O4' && n == 1)  {
             caption = "An office building"; 
+        }  else if (pluto.bldg_class == 'Z8')  {
+            caption = "A cemetery with "+_buildings(n);
         }  else   {
             if (n > 0)  {
                 caption = "A lot with "+_buildings(n); 
