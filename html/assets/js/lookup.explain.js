@@ -71,6 +71,8 @@
             caption = "An apartment complex with "+_buildings(n);
         }  else if (pluto.bldg_class == 'O4' && n == 1)  {
             caption = "An office building"; 
+        }  else if (pluto.bldg_class == 'Y3')  {
+            caption = "A correctional facility with "+_buildings(n); 
         }  else if (pluto.bldg_class == 'Z8')  {
             caption = "A cemetery with "+_buildings(n);
         }  else   {
