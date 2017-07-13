@@ -40,8 +40,8 @@
         else { return ""; }
     };
 
-    var _with(n,k)  {
-    };
+    // Shorthand for "with k units across n buildings"
+    var _with = function(k,n)  { return _units(k)+_across(n); };
 
 
     // Provides a simple, plain-English description of what kind of a property this is.  
@@ -64,9 +64,9 @@
         if (pluto.bldg_class == 'Z8')  {
             caption = "A cemetery with "+_buildings(n);
         }  else if (meta.is_condo)  {
-            caption = "A condominium with "+_units(k)+_across(n);
+            caption = "A condominium with "+_with(k,n);
         }  else if (meta.is_coop)  {
-            caption = "A co-op with "+_units(k)+_across(n);
+            caption = "A co-op with "+_with(k,n);
         }  else   {
             if (n > 0)  {
                 caption = "A lot with "+_buildings(n); 
