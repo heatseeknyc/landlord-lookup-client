@@ -23,7 +23,7 @@
     };
 
     // Provides a simple, plain-English description of what kind of a property this is.  
-    // Should probably be no more than 60 chars.
+    // Should probably be no more than 60 chars.  Intended for the 'pluto-header' section only.
     _explain.describe_taxlot = function(taxlot) {
         var pluto = taxlot.pluto;
         if (!pluto)  {
