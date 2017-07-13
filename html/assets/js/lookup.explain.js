@@ -28,8 +28,7 @@
     };
 
     // Only intended where n > 0, but we failsafe anyway
-    var _buildings = function(pluto)  {
-        var n = pluto.bldg_count;
+    var _buildings = function(n)  {
         if (n > 1)  {  return ""+n+" buildings"; }
         else if (n == 1)  {  return "1 building";  }
         else { return "0 buildings"; }
