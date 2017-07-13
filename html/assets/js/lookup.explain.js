@@ -31,13 +31,8 @@
     var _buildings = function(n)  {
         if (n > 1)  {  return ""+n+" buildings"; }
         else if (n == 1)  {  return "1 building";  }
-        else { return "0 buildings"; }
+        else { return "no buildings"; }
     };
-
-    var _withbldgs = function(caption,n)   { 
-        if (n)  { return caption+"with "+_buildings(n); 
-        }  else  { return caption; }
-    }
 
     // Provides a simple, plain-English description of what kind of a property this is.  
     // Should probably be no more than 60 chars.  Intended for the 'pluto-header' section only.
@@ -56,8 +51,8 @@
         var k = pluto.units_res;
         var n = pluto.bldg_count;
         var caption = "--corrupted--"; 
-        if (pluto.land_use == 'Z8')  {
-            caption = _withbldgs("A cemetery");
+        if (pluto.bldg_class == 'Z8')  {
+            caption = "A cemetery with "+_buildings(n);
         }  else if (meta.is_condo)  {
             caption = "A condominium with "+_units(k)
         }  else if (meta.is_coop)  {
