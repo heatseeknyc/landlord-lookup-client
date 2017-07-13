@@ -70,7 +70,7 @@
         }  else if (n > 1 && (
                pluto.land_use == '03' ||
                pluto.land_use == '04' ))  {
-            caption = "An apartment complex "+_with(k,n);
+            caption = "An apartment complex with "+_buildings(n);
         }  else if (pluto.bldg_class == 'O4' && n == 1)  {
             caption = "An office building"; 
         }  else   {
