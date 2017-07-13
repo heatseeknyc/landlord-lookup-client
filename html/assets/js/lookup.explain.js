@@ -22,6 +22,11 @@
         else { return x; }
     };
 
+    var _units = function(n)  {
+        if (n == 1) { return "1 unit"; }
+        else { return ""+n+" units"; }
+    };
+
     // Only intended where n > 0, but we failsafe anyway
     var _buildings = function(pluto)  {
         var n = pluto.bldg_count;
@@ -40,7 +45,7 @@
     _explain.describe_taxlot = function(taxlot) {
         var meta = taxlot.meta;
         var pluto = taxlot.pluto;
-        if (!pluto or !meta)  {
+        if (!pluto || !meta)  {
             // A taxlot should always have a 'meta' struct, and if we've called this
             // function it should have a pluto struct as well (otherwise this would be 
             // an "acris-only" lot, handled by the other templates).  So if we call 
@@ -49,14 +54,15 @@
             taxlot.explain.caption = "A mystery lot."; 
             return true;
         }
+        var k = pluto.units_res;
         var n = pluto.bldg_count;
         var caption = "--corrupted--"; 
         if (pluto.land_use == 'Z8')  {
             caption = _withbldgs("A cemetery");
         }  else if (meta.is_condo)  {
-            caption = "A condominium";
+            caption = "A condominium with "+_units(k)
         }  else if (meta.is_coop)  {
-            caption = "A co-op";
+            caption = "A co-op with "+_units(k);
         }  else   {
             if (n > 0)  {
                 caption = "A lot with "+_buildings(n); 
