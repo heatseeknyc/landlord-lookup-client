@@ -21,17 +21,17 @@
         if (x === null)  { return '-'; }
         else { return x; }
     };
-
-    var _units = function(n)  {
-        if (n == 1) { return "1 unit"; }
-        else { return ""+n+" units"; }
-    };
-
+    
     // Only intended where n > 0, but we failsafe anyway
     var _buildings = function(n)  {
         if (n > 1)  {  return ""+n+" buildings"; }
         else if (n == 1)  {  return "1 building";  }
         else { return "no buildings"; }
+    };
+
+    var _units = function(n)  {
+        if (n == 1) { return "1 unit"; }
+        else { return ""+n+" units"; }
     };
 
     // Emit "across n building(s)" only when n > 1
