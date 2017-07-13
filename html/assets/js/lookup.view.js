@@ -140,7 +140,7 @@
         taxlot.slug = lookup.utils.slugify(taxlot.meta.bbl);
         lookup.log(2,taxlot.slug); 
         lookup.utils.add_control_flags(taxlot);
-        lookup.explain.augment_details(taxlot);
+        lookup.explain.augment(taxlot);
     };
 
     // Augments the pluto dict with control flags to assist the templating 

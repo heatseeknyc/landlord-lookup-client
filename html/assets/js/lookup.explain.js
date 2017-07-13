@@ -111,7 +111,8 @@
         return true;
     };
 
-    _explain.augment_details = function(taxlot) {
+    // Augments the taxlot struct with various details
+    _explain.augment = function(taxlot) {
         _explain.describe_stable(taxlot);
     };
 
