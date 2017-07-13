@@ -29,9 +29,9 @@
         else { return "no buildings"; }
     };
 
-    var _units = function(n)  {
-        if (n == 1) { return "1 unit"; }
-        else { return ""+n+" units"; }
+    var _units = function(k)  {
+        if (k == 1) { return "1 unit"; }
+        else { return ""+k+" units"; }
     };
 
     // Emit "across n building(s)" only when n > 1
