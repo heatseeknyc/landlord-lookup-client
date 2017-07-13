@@ -69,6 +69,8 @@
             caption = "A co-op "+_with(k,n);
         }  else if (pluto.land_use == '04' && n > 1)  {
             caption = "An apartment complex "+_with(k,n);
+        }  else if (pluto.bldg_class == 'O4' && n == 1)  {
+            caption = "An office building"; 
         }  else   {
             if (n > 0)  {
                 caption = "A lot with "+_buildings(n); 
