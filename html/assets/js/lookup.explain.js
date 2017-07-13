@@ -40,12 +40,12 @@
     _explain.describe_taxlot = function(taxlot) {
         var meta = taxlot.meta;
         var pluto = taxlot.pluto;
-        if (!pluto)  {
-            // Actually, if we've called this function then it should only be because 
-            // the pluto record is present (otherwise this is an "acris-only" lot, handled 
-            // by the other templates.  So if we call nonetheless, sans pluto struct,
-            // we're doing something wrong.  Let's just emit something nice-sounidng
-            // and move on.
+        if (!pluto or !meta)  {
+            // A taxlot should always have a 'meta' struct, and if we've called this
+            // function it should have a pluto struct as well (otherwise this would be 
+            // an "acris-only" lot, handled by the other templates).  So if we call 
+            // nonetheless, sans pluto or structs, we're doing something wrong.  
+            // Let's just emit something nice-sounidng and move on.
             taxlot.explain.caption = "A mystery lot."; 
             return true;
         }
