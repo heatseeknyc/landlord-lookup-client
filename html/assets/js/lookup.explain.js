@@ -25,6 +25,14 @@
     // Provides a simple, plain-English description of what kind of a property this is.  
     // Should probably be no more than 60 chars.
     _explain.describe_taxlot = function(taxlot) {
+        var pluto = taxlot.pluto;
+        if (!pluto)  {
+            // Actually, if we've called this function then it should only be because 
+            // the pluto record is present (otherwise this is an "acris-only" lot, handled 
+            // by the other templates.  So if we call nonetheless, sans pluto struct,
+            // we're doing something wrong.  Let's just emit something nice-sounidng
+            // and move on.
+        }
     };
 
     var sing = {_pl:'',it:'it',has:'has',was:'was',is:'is',isa:'is a',do:'does'};
