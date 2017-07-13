@@ -38,6 +38,7 @@
     // Provides a simple, plain-English description of what kind of a property this is.  
     // Should probably be no more than 60 chars.  Intended for the 'pluto-header' section only.
     _explain.describe_taxlot = function(taxlot) {
+        var meta = taxlot.meta;
         var pluto = taxlot.pluto;
         if (!pluto)  {
             // Actually, if we've called this function then it should only be because 
@@ -106,13 +107,14 @@
             info = "The "+en.bldg+" on this lot "+en.is+" enrolled in an unspecified HPD management program, "
                 "which probably provides some form of rent stabilization.";
         }  
-        if (!taxlot.explain) { taxlot.explain = {}; };
         taxlot.explain.stable = info;
         return true;
     };
 
     // Augments the taxlot struct with various details
     _explain.augment = function(taxlot) {
+        if (!taxlot.explain) { taxlot.explain = {}; };
+        _explain.describe_taxlot(taxlot);
         _explain.describe_stable(taxlot);
     };
 
