@@ -31,11 +31,8 @@
     };
 
     var _withbldgs = function(caption,n)   { 
-        if (n)  { 
-            return caption+"with "+_buildings(n); }
-        }  else  {
-            return caption
-        }
+        if (n)  { return caption+"with "+_buildings(n); 
+        }  else  { return caption; }
     }
 
     // Provides a simple, plain-English description of what kind of a property this is.  
@@ -65,8 +62,6 @@
             }  else  {
                 caption = "A vacant lot"; 
             }
-        }  else  { 
-            // shouldn't get here - default to 'corrupted' 
         }
         taxlot.explain.caption = caption; 
     };
