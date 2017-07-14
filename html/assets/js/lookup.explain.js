@@ -124,7 +124,7 @@
                 " under any form of rent-stabilizatin (or control).  However, the build year and physical " +
                 "characteristics indicate that "+en.it+" may have stablized units (but the city isn't tracking them).";
         } else if (code == 7)  {
-            info = "The building"+en._pl+" on this lot "+en.isa+" managed by the HPD's Section 7A "+ 
+            info = "The building"+en._pl+" on this lot "+en.is+" managed by the HPD's Section 7A "+ 
                 "program, which protects them against rent increases.";
         } else if (code == 8)  {
             info = "The building"+en._pl+" on this lot "+en.isa+" Mitchell-Lama co-operative"+en._pl+", "+ 
