@@ -168,6 +168,7 @@
         if (!taxlot)  {
             return false;
         };
+        lookup.log(2,taxlot); 
         lookup.view.hide('section-acris-header');
         lookup.view.hide('section-pluto-header');
         lookup.view.hide('section-pluto-landuse');

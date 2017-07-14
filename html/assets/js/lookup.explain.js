@@ -85,17 +85,31 @@
         taxlot.explain.caption = caption; 
     };
 
+    // Quick-and-dirty conjugation of certain words. 
     var sing = {_pl:'',it:'it',has:'has',was:'was',is:'is',isa:'is a',do:'does'};
     var plur = {_pl:'s',it:'they',has:'have',was:'were',is:'are',isa:'are',do:'do'};
-    var en = sing;
+    var conj = function (n)  {
+        if (n > 1) { return plur; } else { return sing; }
+    }
 
     // Provides a description of the rent stabilization status for this property,
     // appropriately phrased cased for lots with multiple (or no) buildings. 
     _explain.describe_stable = function(taxlot) {
         var info = "--corrupted--"; 
         var meta = taxlot.meta;
-        if (!meta)  { return false; }
+        var pluto = taxlot.pluto;
+        // If we call this function, both of these structs should definitely be 
+        // present.  If they're not we've definitely done something wrong. 
+        if (!meta || !pluto)  { 
+            taxlot.explain.stable = info;
+            return false; 
+        }
         var code = meta.stabilized;
+        // lookup.log(2,'pluto = ..');
+        // lookup.log(2,pluto);
+        var en = conj(pluto.bldg_count);
+        lookup.log(2,'conj = ..');
+        lookup.log(2,en);
         if (code == 1)  {
             info = "The building"+en._pl+" on this lot "+en.has+" been confirmed to be rent-stabilized " + 
                 "(or under some form of rent control) according to publicly available documents from 2 sources " +
