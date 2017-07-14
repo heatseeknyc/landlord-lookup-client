@@ -151,7 +151,7 @@
 
 <script id="tmpl-section-pluto-header" type="text/html">
    <strong>Primary Address</strong>: {pluto.address}, {deco.borough}<br>
-   <strong>BBL</strong> = {meta.bbl} <span class="detail">(boro {deco.boro}, block {deco.block}, lot {deco.lot})</span><br>
+   <strong>BBL</strong> = <a href="/taxlot/{meta.bbl}">{meta.bbl}</a> <span class="detail">(boro {deco.boro}, block {deco.block}, lot {deco.lot})</span><br>
    {explain.caption}
    {?pluto._bldg_multi}&nbsp;<a href="/taxlot/{meta.bbl}">(view all)</a>{/pluto._bldg_multi}
    <br>
