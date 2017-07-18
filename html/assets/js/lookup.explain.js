@@ -96,17 +96,15 @@
     // appropriately phrased cased for lots with multiple (or no) buildings. 
     _explain.describe_stable = function(taxlot) {
         var info = "--corrupted--"; 
-        var meta = taxlot.meta;
         var pluto = taxlot.pluto;
+        var stable = taxlot.stable;
         // If we call this function, both of these structs should definitely be 
         // present.  If they're not we've definitely done something wrong. 
         if (!meta || !pluto)  { 
             taxlot.explain.stable = info;
             return false; 
         }
-        var code = meta.stabilized;
-        // lookup.log(2,'pluto = ..');
-        // lookup.log(2,pluto);
+        var code = stable.code; 
         var en = conj(pluto.bldg_count);
         lookup.log(2,'conj = ..');
         lookup.log(2,en);
