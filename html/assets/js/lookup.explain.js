@@ -100,7 +100,7 @@
         var stable = taxlot.stable;
         // If we call this function, both of these structs should definitely be 
         // present.  If they're not we've definitely done something wrong. 
-        if (!meta || !pluto)  { 
+        if (!stable || !pluto)  { 
             taxlot.explain.stable = info;
             return false; 
         }
