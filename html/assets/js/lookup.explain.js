@@ -109,10 +109,12 @@
         lookup.log(2,'conj = ..');
         lookup.log(2,en);
         if (code == 1)  {
+            // deprecated in favor of wording in template
             info = "The building"+en._pl+" on this lot "+en.has+" been confirmed to be rent-stabilized " + 
                 "(or under some form of rent control) according to publicly available documents from 2 sources " +
                 "(DHCR list; DOF taxbills), at least through the end of 2015.";
         } else if (code == 2)  {
+            // deprecated in favor of wording in template
             info = "The building"+en._pl+" on this lot "+en.was+" probably rent stabilized " +
                 "(or under some form of rent control), at least up until very recently (through the end of 2015), " +
                 "though there is some diagreement on this between the 2 publicly available data sources we have " +
@@ -138,6 +140,16 @@
                 "which probably provides some form of rent stabilization.";
         }  
         taxlot.explain.stable = info;
+        
+        // A simple blurb to describe the number of units
+        var unit_info = "unitcount unknown"; 
+        var j = stable.taxbill_unitcount;
+        if (j)  {
+            var en = conj(j);
+            unit_info = ""+j+" stabilized unit"+en._pl;
+        }
+        taxlot.explain.taxbill_unitcount = unit_info;
+        
         return true;
     };
 

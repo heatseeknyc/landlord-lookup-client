@@ -213,17 +213,28 @@
 
 <!-- Activated when meta.residential is true -->
 <script id="tmpl-section-rentstable" type="text/html">
-   <h3>Rent Stabilization</h3>
+   <h3>Rent Stabilized?</h3>
    <p class="section">
-   {?meta._stable}
-     {explain.stable}
+   {?stable}
+     {?stable._confirmed}
+     <span class="affirm">Yes</span>, as confirmed by:<p>
+       {?stable.dhcr_ok}
+       &nbsp; &nbsp; <span class="nifty">&#10003;</span> DHCR stabilization list for 2015<br>
+       {/stable.dhcr_ok}
+       {?stable.taxbill_lastyear}
+       &nbsp; &nbsp; <span class="nifty">&#10003;</span> DOF taxbills from {stable.taxbill_lastyear} ({explain.taxbill_unitcount})<br>
+       {/stable.taxbill_lastyear}
+     {:else}
+       {explain.stable}
+     {/stable._confirmed}
    {:else}
+     <span class="negate">No/span>.
      {?pluto._bldg_multi}
        None of the buildings on this lot appear to have rent stabilized units, according to public records.
      {:else}
-       This building on this lot does not appear to have rent stabilized units, according to public records. 
+       This building does not appear to have rent stabilized units, according to public records. 
      {/pluto._bldg_multi}
-   {/meta._stable}
+   {/stable}
    </p>
 </script>
 
