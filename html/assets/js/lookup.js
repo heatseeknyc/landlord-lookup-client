@@ -35,12 +35,23 @@
 
 })();
 
+// 
+// A tiny little "service" layer which detrmined service URLs (curently just one),
+// based on environment and config parameters 
+//
+// Could perhaps be a separate file, but that would just make for longer load times. 
+// Let's at least put it in an enclosing scope for now - we can always move it to a 
+// separte file later.
 (function() {
-    lookup.service = {
+
+    var _service = {
         // 'hybrid':'http://' + window.location.hostname
         // 'hybrid':'http://lookup.heatseek.org'
         'hybrid':'http://localhost:8081',
     };
+
+    lookup.service = _service; 
+
 })();
 
 
