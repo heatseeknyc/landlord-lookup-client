@@ -61,7 +61,7 @@
         var k = pluto.units_res;
         var n = pluto.bldg_count;
         var caption = "--corrupted--"; 
-        if (meta.is_condo)  {
+        if (meta.is_bank)  {
             caption = "A condominium "+_with(k,n);
         }  else if (meta.is_coop)  {
             caption = "A co-op "+_with(k,n);
