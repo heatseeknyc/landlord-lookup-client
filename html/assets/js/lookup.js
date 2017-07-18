@@ -44,13 +44,41 @@
 // separte file later.
 (function() {
 
+    lookup.service = {};
+
+    // deprecated
     var _service = {
         // 'hybrid':'http://' + window.location.hostname
         // 'hybrid':'http://lookup.heatseek.org'
         'hybrid':'http://localhost:8081',
     };
 
-    lookup.service = _service; 
+    var makeurl = function (hostname,port)  {
+        url = 'http://'+hostname;
+        if (port && port != 80)  { url += ':'+port }
+        return url
+    };
+
+    // Determine our service URL based on where were are.
+    // Basically it's just whatever the URL we're hosted on, with a cheap hack to 
+    // slot in a port number if we're hosted locally.
+    var resolve_hybrid = var function() {
+        var port = null;
+        var hostname = window.location.hostname;
+        if (hostname === 'localhost')  { port = 8081 };
+        return makeurl(hostname,port);
+    };
+
+    // Must be called before accessing services
+    lookup.service.initConf = function() {
+        lookup.service.hybrid = resolve_hybrid();
+    };
+
+    // Config struct w/ brain-deed default (so if we forget to init, we won't 
+    // reach any services but at least we won't get crazy syntax errors).
+    lookup.service = {
+        hybrid: 'http://notset.org'
+    }; 
 
 })();
 
