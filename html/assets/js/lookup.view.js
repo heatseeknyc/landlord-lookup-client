@@ -120,11 +120,13 @@
         lookup.log(2,'show owner done');
     };
 
+    // Show "residential info", if residential.  
+    // At present this just means rent stabilization info (whatever the status may be). 
     lookup.view.showResi = function(taxlot) {
         lookup.view.hide('section-rentstable');
-        if (taxlot.meta.residential)  {
+        if (taxlot.meta.is_resi)  {
             lookup.view.render('section-rentstable',taxlot);
-        }; 
+        };
     };
 
     lookup.view.initTaxlotLinks = function()  {
@@ -155,12 +157,12 @@
             if (p.year_built > 0)  { p._built = 1; }
             if (p.bldg_count > 1)  { p._bldg_multi = 1; }
         } 
-        var meta = taxlot.meta;
-        if (meta)  {
-            if (meta.stabilized > 0)  {
-                meta._stable = 1;
-            }
-        }
+        // var meta = taxlot.meta;
+        // if (meta)  {
+        //    if (meta.stabilized > 0)  {
+        //        meta._stable = 1;
+        //    }
+        //}
 
     };
 
