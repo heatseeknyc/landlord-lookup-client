@@ -100,6 +100,7 @@
     };
     
     lookup.view.showOwner = function(taxlot) {
+        var meta = taxlot.meta;
         var acris = taxlot.acris;
         var pluto = taxlot.pluto;
         var condo = taxlot.condo;
@@ -107,7 +108,7 @@
         lookup.view.hide('section-owner-acris');
         lookup.view.hide('section-owner-pluto');
         lookup.view.hide('section-owner-condo');
-        if (condo.is_bank)  {
+        if (meta.is_bank)  {
             lookup.view.render('section-owner-condo',taxlot);
         } else if (acris && acris.party_count)  {
             lookup.view.render('section-owner-acris',taxlot);
