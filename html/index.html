@@ -150,7 +150,7 @@
 </script>
 
 <script id="tmpl-section-header-acris-condounit" type="text/html">
-    The taxlot <strong>{meta.bbl}</strong> identifies a unit in the <strong>condominium/strong>:<br>
+    The taxlot <strong>{meta.bbl}</strong> identifies a unit in the <strong>condominium</strong>:<br>
     &nbsp; &nbsp; <strong>BBL</strong> = <a href="/taxlot/{condo.parent}">{condo.parent}</a> 
 </script>
 
@@ -164,8 +164,8 @@
 
 <script id="tmpl-section-owner-acris" type="text/html">
    <p class="section">
-   {acris.owner}<br> 
-   {acris.address}<br> 
+   {acris.owner_name}<br> 
+   {acris.owner_address}<br> 
    <span class="detail">Acquired on</span> <strong>{acris.transfer_date}</strong> 
            <span class="detail">for</span> <strong>${acris.amount}</strong><br>
    <span class="detail">Detailed transaction history available from <a id="link-acris" target="_blank"
@@ -234,7 +234,7 @@
        {explain.stable}
      {/stable._confirmed}
    {:else}
-     <span class="negate">No/span>.
+     <span class="negate">No</span>. &nbsp;
      {?pluto._bldg_multi}
        None of the buildings on this lot appear to have rent stabilized units, according to public records.
      {:else}

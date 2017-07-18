@@ -12,7 +12,8 @@
     // having to specify them here.  But for now, we'll just repeat ourselves.
     lookup.view.initDust = function() {
         lookup.log(1,':: getting dusty...');
-        dusty.load('section-header-acris');
+        dusty.load('section-header-acris-other');
+        dusty.load('section-header-acris-condounit');
         dusty.load('section-header-pluto');
         dusty.load('section-landuse');
         dusty.load('section-owner-acris');
@@ -109,7 +110,7 @@
         lookup.view.hide('section-owner-condo');
         if (meta.is_bank)  {
             lookup.view.render('section-owner-condo',taxlot);
-        } else if (acris && acris.party_count)  {
+        } else if (acris && 1)  {
             lookup.view.render('section-owner-acris',taxlot);
         } else if (pluto && pluto.owner)  {
             lookup.view.render('section-owner-pluto',taxlot);
@@ -188,7 +189,7 @@
         } else if (taxlot.acris)  {
             if (taxlot.condo && taxlot.condo.parent)  {
                 lookup.view.render('section-header-acris-condounit',taxlot);
-            else  {
+            }  else  {
                 lookup.view.render('section-header-acris-other',taxlot);
             }
         } else {
