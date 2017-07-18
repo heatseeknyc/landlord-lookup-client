@@ -14,7 +14,7 @@
         lookup.log(1,':: getting dusty...');
         dusty.load('section-header-acris');
         dusty.load('section-header-pluto');
-        dusty.load('section-pluto-landuse');
+        dusty.load('section-landuse');
         dusty.load('section-owner-acris');
         dusty.load('section-owner-pluto');
         dusty.load('section-owner-condo');
@@ -179,11 +179,11 @@
         lookup.log(2,taxlot); 
         lookup.view.hide('section-header-acris');
         lookup.view.hide('section-header-pluto');
-        lookup.view.hide('section-pluto-landuse');
+        lookup.view.hide('section-landuse');
         lookup.utils.augment_taxlot(taxlot);
         if (taxlot.pluto)  {
             lookup.view.render('section-header-pluto',taxlot);
-            lookup.view.render('section-pluto-landuse',taxlot);
+            lookup.view.render('section-landuse',taxlot);
         } else if (taxlot.acris)  {
             lookup.view.render('section-header-acris',taxlot);
         } else {
