@@ -12,8 +12,8 @@
     // having to specify them here.  But for now, we'll just repeat ourselves.
     lookup.view.initDust = function() {
         lookup.log(1,':: getting dusty...');
-        dusty.load('section-acris-header');
-        dusty.load('section-pluto-header');
+        dusty.load('section-header-acris');
+        dusty.load('section-header-pluto');
         dusty.load('section-pluto-landuse');
         dusty.load('section-owner-acris');
         dusty.load('section-owner-pluto');
@@ -178,15 +178,15 @@
             return false;
         };
         lookup.log(2,taxlot); 
-        lookup.view.hide('section-acris-header');
-        lookup.view.hide('section-pluto-header');
+        lookup.view.hide('section-header-acris');
+        lookup.view.hide('section-header-pluto');
         lookup.view.hide('section-pluto-landuse');
         lookup.utils.augment_taxlot(taxlot);
         if (taxlot.pluto)  {
-            lookup.view.render('section-pluto-header',taxlot);
+            lookup.view.render('section-header-pluto',taxlot);
             lookup.view.render('section-pluto-landuse',taxlot);
         } else if (taxlot.acris)  {
-            lookup.view.render('section-acris-header',taxlot);
+            lookup.view.render('section-header-acris',taxlot);
         } else {
             lookup.view.showError('invalid frontend state')
             return false;

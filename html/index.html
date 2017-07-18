@@ -47,8 +47,8 @@
         <div class="popup-control">&times;</div>
 
         <br>
-        <div class="section" id="section-acris-header"></div>
-        <div class="section" id="section-pluto-header"></div>
+        <div class="section" id="section-header-acris"></div>
+        <div class="section" id="section-header-pluto"></div>
 
         <h3>Ownership</h3>
         <div class="section" id="section-owner-acris"></div>
@@ -144,12 +144,12 @@
 </ul>
 </script>
 
-<script id="tmpl-section-acris-header" type="text/html">
+<script id="tmpl-section-header-acris" type="text/html">
    BBL = <strong>{meta.bbl}</strong> is an ACRIS-only lot.<br>
 
 </script>
 
-<script id="tmpl-section-pluto-header" type="text/html">
+<script id="tmpl-section-header-pluto" type="text/html">
    <strong>Primary Address</strong>: {pluto.address}, {deco.borough}<br>
    <strong>BBL</strong> = <a href="/taxlot/{meta.bbl}">{meta.bbl}</a> <span class="detail">(boro {deco.boro}, block {deco.block}, lot {deco.lot})</span><br>
    {explain.caption}
