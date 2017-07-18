@@ -158,8 +158,10 @@
             if (p.bldg_count > 1)  { p._bldg_multi = 1; }
         };
         var stable = taxlot.stable;
-        if (stable.code === 1 || stable.code === 2)  {
-            stable._confirmed = 1;
+        if (stable)  {
+            if (stable.code === 1 || stable.code === 2)  {
+                stable._confirmed = 1;
+            };
         };
         // var meta = taxlot.meta;
         // if (meta)  {
