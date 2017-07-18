@@ -177,7 +177,8 @@
             return false;
         };
         lookup.log(2,taxlot); 
-        lookup.view.hide('section-header-acris');
+        lookup.view.hide('section-header-acris-other');
+        lookup.view.hide('section-header-acris-condounit');
         lookup.view.hide('section-header-pluto');
         lookup.view.hide('section-landuse');
         lookup.utils.augment_taxlot(taxlot);
@@ -185,7 +186,11 @@
             lookup.view.render('section-header-pluto',taxlot);
             lookup.view.render('section-landuse',taxlot);
         } else if (taxlot.acris)  {
-            lookup.view.render('section-header-acris',taxlot);
+            if (taxlot.condo && taxlot.condo.parent)  {
+                lookup.view.render('section-header-acris-condounit',taxlot);
+            else  {
+                lookup.view.render('section-header-acris-other',taxlot);
+            }
         } else {
             lookup.view.showError('invalid frontend state')
             return false;

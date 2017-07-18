@@ -47,7 +47,8 @@
         <div class="popup-control">&times;</div>
 
         <br>
-        <div class="section" id="section-header-acris"></div>
+        <div class="section" id="section-header-acris-other"></div>
+        <div class="section" id="section-header-acris-condounit"></div>
         <div class="section" id="section-header-pluto"></div>
 
         <h3>Ownership</h3>
@@ -144,8 +145,13 @@
 </ul>
 </script>
 
-<script id="tmpl-section-header-acris" type="text/html">
-   BBL = <strong>{meta.bbl}</strong> is an ACRIS-only lot.<br>
+<script id="tmpl-section-header-acris-other" type="text/html">
+   BBL = <strong>{meta.bbl}</strong> is an ACRIS-only lot (that's not a condominium unit).<br>
+</script>
+
+<script id="tmpl-section-header-acris-condounit" type="text/html">
+    The taxlot <strong>{meta.bbl}</strong> identifies a unit in the <strong>condominium/strong>:<br>
+    &nbsp; &nbsp; <strong>BBL</strong> = <a href="/taxlot/{condo.parent}">{condo.parent}</a> 
 </script>
 
 <script id="tmpl-section-header-pluto" type="text/html">
