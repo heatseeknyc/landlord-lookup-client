@@ -3,7 +3,7 @@
     // Namespace for all globals specific to the Landlord Lookup application. 
     lookup = {};
     lookup.version = '006a';
-    lookup.model = {}; 
+    lookup.model = {}
 
     // Application specific configuration.
     lookup.config = {
@@ -15,12 +15,6 @@
         'ajaxsetup': {
             'timeout': 20000
         }
-    };
-
-    lookup.service = {
-        // 'hybrid':'http://' + window.location.hostname
-        // 'hybrid':'http://lookup.heatseek.org'
-        'hybrid':'http://localhost:8081',
     };
 
     // Sets the debug level from a raw string argument (from a query
@@ -40,4 +34,13 @@
     };
 
 })();
+
+(function() {
+    lookup.service = {
+        // 'hybrid':'http://' + window.location.hostname
+        // 'hybrid':'http://lookup.heatseek.org'
+        'hybrid':'http://localhost:8081',
+    };
+})();
+
 
