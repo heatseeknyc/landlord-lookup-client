@@ -131,6 +131,7 @@
         }
     };
 
+    // DEPRECATED
     lookup.control.doSearch = function(query) {
         lookup.log(2,'do-search ..');
         $.when(lookup.control.doTaxlot(query)).done(
