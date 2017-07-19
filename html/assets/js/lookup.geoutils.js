@@ -83,11 +83,13 @@
         return r 
     };
    
+    // DEPRECATED in favor of nycprop.bbl_info()
     lookup.geoutils.boroName = { 
         1:"Manhattan", 2:"Bronx", 3:"Brooklyn", 4:"Queens", 5:"Staten Island"
     };
 
     // Unpacks a BBL to a dict of named components. 
+    // Note deprecated dependeny (on boroName)
     lookup.geoutils.splitBBL = function(bbl) {
         var blockandlot = bbl % 1000000000;
         var r = {};
