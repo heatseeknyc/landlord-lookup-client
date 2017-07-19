@@ -12,7 +12,9 @@
     // having to specify them here.  But for now, we'll just repeat ourselves.
     lookup.view.initDust = function() {
         lookup.log(1,':: getting dusty...');
-        dusty.load('section-header-acris-other');
+        dusty.load('section-header-pad-only');
+        dusty.load('section-header-acris-only');
+        dusty.load('section-header-acris-with-pad');
         dusty.load('section-header-acris-condounit');
         dusty.load('section-header-pluto');
         dusty.load('section-landuse');
@@ -184,20 +186,32 @@
             return false;
         };
         lookup.log(2,taxlot); 
-        lookup.view.hide('section-header-acris-other');
+        lookup.view.hide('section-header-pad-ony');
+        lookup.view.hide('section-header-acris-only');
+        lookup.view.hide('section-header-acris-with-pad');
         lookup.view.hide('section-header-acris-condounit');
         lookup.view.hide('section-header-pluto');
         lookup.view.hide('section-landuse');
         lookup.utils.augment_taxlot(taxlot);
+        // The following looks a bit obtuse.
+        // But these are the various corner cases we need to deal with
+        // (appearing roughly in order of likeliehood).
+        var meta  = taxlot.meta;
+        var condo = taxlot.condo;
+        var acris = taxlot.acris;
         if (taxlot.pluto)  {
             lookup.view.render('section-header-pluto',taxlot);
             lookup.view.render('section-landuse',taxlot);
-        } else if (taxlot.acris)  {
-            if (taxlot.condo && taxlot.condo.parent)  {
+        } else if (acris)  {
+            if (condo && condo.parent)  {
                 lookup.view.render('section-header-acris-condounit',taxlot);
+            } else if (meta.in_pad)  {
+                lookup.view.render('section-header-acris-with-pad',taxlot);
             }  else  {
-                lookup.view.render('section-header-acris-other',taxlot);
+                lookup.view.render('section-header-acris-only',taxlot);
             }
+        } else if (meta.in_pad)  {
+            lookup.view.render('section-header-pad-only',taxlot);
         } else {
             lookup.view.showError('invalid frontend state')
             return false;
