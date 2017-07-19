@@ -79,6 +79,13 @@ a.lokal {
     color: #f00;
     cursor: pointer; 
 }
+a.discreet { 
+    color: #000;
+    cursor: pointer; 
+}
+a.descreet:hover   { 
+    color:#f0c; 
+}
 
 .panel-lower {
     padding: 2px;

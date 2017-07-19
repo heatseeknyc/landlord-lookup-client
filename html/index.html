@@ -167,11 +167,11 @@
 </script>
 
 <script id="tmpl-section-header-acris-condounit" type="text/html">
-   <strong>BBL</strong> = <a href="/taxlot/{meta.bbl}">{meta.bbl}</a> 
+   BBL = <a class="discreet" href="/taxlot/{meta.bbl}">{meta.bbl}</a> 
        <span class="detail">(boro {deco.boro}, block {deco.block}, lot {deco.lot})</span><br>
-    This taxlot identifies a unit in the <strong>condominium</strong>:<br>
-    &nbsp; &nbsp; <strong>BBL</strong> = <a href="/taxlot/{condo.parent}">{condo.parent}</a> 
-    &nbsp; &nbsp; <strong>BBL</strong> = <a href="/taxlot/{condo.parent}">{condo.parent}</a> 
+       identifies a unit in the condominium {explain.condo_what} located at:<p> 
+       &nbsp; {condo.baselot.address}, {explain.boroname}</a><br>
+    &nbsp; <strong>BBL</strong> = <a href="/taxlot/{condo.parent}">{condo.parent}</a> 
 </script>
 
 <script id="tmpl-section-header-pluto" type="text/html">
