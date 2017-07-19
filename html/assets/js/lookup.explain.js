@@ -60,7 +60,7 @@
         }
         var k = pluto.units_res;
         var n = pluto.bldg_count;
-        var caption = "--corrupted--"; 
+        var caption = "--unknown--"; 
         if (meta.is_bank)  {
             caption = "A condominium "+_with(k,n);
         }  else if (meta.is_coop)  {
@@ -95,7 +95,7 @@
     // Provides a description of the rent stabilization status for this property,
     // appropriately phrased cased for lots with multiple (or no) buildings. 
     _explain.describe_stable = function(taxlot) {
-        var info = "--corrupted--"; 
+        var info = "--unknown--"; 
         var pluto = taxlot.pluto;
         var stable = taxlot.stable;
         // If we call this function, both of these structs should definitely be 
@@ -155,7 +155,7 @@
 
     // If we came in via a condo unit BBL, we need to say a few things about the baselot.
     _explain.describe_baselot = function(taxlot) {
-        var info = "--corrupted--";
+        var info = "--unknown--";
         var baselot = null;
         var condo = taxlot.condo;
         if (condo)  {  baselot = condo.baselot;  }
