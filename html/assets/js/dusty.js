@@ -20,7 +20,7 @@
         dust.render(tmplkey, object, function(err, out) {
               $('#'+divname).html(out);
         });
-        console.log('dusty.render '+divname+' done');
+        // console.log('dusty.render '+divname+' done');
     };
 
 })();
