@@ -111,7 +111,8 @@
         } else { lookup.control.showModelError(); }
     };
 
-    // fetches and displays buildings - whatever our taxlot type 
+    // Checks whether we have a viewable taxlot (of either pluto or
+    // baselot type), and if we do, fetches and displays the buildings.
     lookup.control.doBuildings = function(flag) {
         lookup.log(2,'do-buildings ..');
         var r = lookup.model.summary;
@@ -133,7 +134,7 @@
             lookup.log(2,'do-buildings baselot ..');
             fetchBuildings(keytup,flag,handleBuildings);
         } else { 
-            lookup.control.showModelError('crazy invalid state'); 
+            lookup.log(2,'do-buildings - abort - no lot struct');
         }
         lookup.log(2,'do-buildings done');
     };
@@ -194,6 +195,7 @@
         else {
             lookup.model.summary = r;
             lookup.view.showLookup();
+            lookup.view.displayTaxlot();
             lookup.control.doBuildings(false);
         }
         lookup.log(2,':: handle lookup done.');
@@ -235,3 +237,12 @@
 
 })();
 
+/*
+        if (isViewable(r.taxlot))  {   
+            lookup.log(2,'show lookup display ..');
+            lookup.view.displayTaxlot(r.taxlot); 
+        }  else  {
+            lookup.log(2,'show lookup - bypass display');
+        }   
+
+        */

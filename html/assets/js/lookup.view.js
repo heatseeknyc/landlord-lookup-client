@@ -84,12 +84,19 @@
         }
     };
 
+    // Tells us whether the taxlot struct has a shape struct somewhere to display.
+    var isViewable = function (taxlot)  {
+        return (taxlot.pluto) || (taxlot.condo && taxlot.condo.baselot);
+    };
 
-    // Refers to the taxlot shape, not the info summary.
-    lookup.view.displayTaxlot = function(taxlot) {
+    // Displays the embedded member shape struct, if it can find one.
+    // Looks first for a 'pluto' struct, then for a 'condo.baselot' struct.  
+    lookup.view.displayTaxlot = function() {
         lookup.log(2,'display taxlot ..');
         lookup.view.cleanup('building');
         lookup.view.cleanup('taxlot');
+        var r = lookup.model.summary;
+        var taxlot = r.taxlot;
         var pluto = taxlot.pluto;
         var baselot = null;
         if (taxlot.condo) { baselot = taxlot.condo.baselot; }
@@ -249,6 +256,7 @@
         return true;
     };
 
+
     lookup.view.showLookup = function() {
         lookup.log(2,'show lookup basics ..');
         var r = lookup.model.summary;
@@ -263,7 +271,6 @@
         // lookup.view.showExternalLinks();
         lookup.view.showTaxlot(r.taxlot);
         $('#panel-summary').show();
-        lookup.view.displayTaxlot(r.taxlot);
         lookup.log(2,'show lookup done');
     };
 
