@@ -88,7 +88,7 @@
     // Refers to the taxlot shape, not the info summary.
     lookup.view.displayTaxlot = function(taxlot) {
         lookup.log(2,'display taxlot..');
-        pluto = taxlot.pluto;
+        var pluto = taxlot.pluto;
         if (!pluto)  {
             lookup.log(2,'display abort - no pluto struct');
             return false;
