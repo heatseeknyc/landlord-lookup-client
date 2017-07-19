@@ -133,7 +133,6 @@
 
     lookup.control.doSearch = function(query) {
         lookup.log(2,'do-search ..');
-        // $.when(lookup.control.doTaxlot(query)).then(lookup.control.doBuildings());
         $.when(lookup.control.doTaxlot(query)).done(
             function(){
                 lookup.log(1,'YOW');
