@@ -153,11 +153,26 @@
         return true;
     };
 
+    // If we came in via a condo unit BBL, we need to say a few things about the baselot.
+    _explain.describe_baselot = function(taxlot) {
+        var info = "--corrupted--";
+        var baselot = null;
+        var condo = taxlot.condo;
+        if (condo)  {  baselot = condo.baselot;  }
+        if (baselot && baselot.bldg_count > 1)  {
+            info = "building";
+        }  else  {
+            info = "project";
+        }
+        taxlot.explain.condo_what = info;
+    };
+
     // Augments the taxlot struct with various details
     _explain.augment = function(taxlot) {
         if (!taxlot.explain) { taxlot.explain = {}; };
         _explain.describe_taxlot(taxlot);
         _explain.describe_stable(taxlot);
+        _explain.describe_baselot(taxlot);
     };
 
 
