@@ -87,17 +87,24 @@
 
     // Refers to the taxlot shape, not the info summary.
     lookup.view.displayTaxlot = function(taxlot) {
-        lookup.log(2,'display taxlot..');
-        var pluto = taxlot.pluto;
-        if (!pluto)  {
-            lookup.log(2,'display abort - no pluto struct');
-            return false;
-        }
+        lookup.log(2,'display taxlot ..');
         lookup.view.cleanup('building');
         lookup.view.cleanup('taxlot');
+        var pluto = taxlot.pluto;
+        var baselot = null;
+        if (taxlot.condo) { baselot = taxlot.condo.baselot; }
         var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
-        lookup.view.showObject('taxlot',pluto,spec);
-        lookup.view.moveTo(pluto);
+        if (pluto)  {
+            lookup.view.showObject('taxlot',pluto,spec);
+            lookup.view.moveTo(pluto);
+        } else if (baselot)  {
+            lookup.view.showObject('taxlot',baselot,spec);
+            lookup.view.moveTo(baselot);
+        }  else  {
+            lookup.log(2,'display abort - no lot struct');
+            return false;
+        }
+        lookup.log(2,'display taxlot done');
         return true;
     };
     

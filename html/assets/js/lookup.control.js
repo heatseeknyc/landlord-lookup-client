@@ -81,6 +81,7 @@
 
     function fetchBuildings(keytup,flag,callback) {
         lookup.log(2,':: fetch buildings .. ');
+        lookup.log(2,keytup);
         var q = keyarg(keytup,flag);
         lookup.log(2,':: keyarg = '+q); 
         var base = lookup.service.hybrid; 
@@ -110,25 +111,46 @@
         } else { lookup.control.showModelError(); }
     };
 
+    // fetches and displays buildings - whatever our taxlot type 
     lookup.control.doBuildings = function(flag) {
         lookup.log(2,'do-buildings ..');
         var r = lookup.model.summary;
-        if (r && r.keytup)  {
-            fetchBuildings(r.keytup,flag,handleBuildings);
-        } else { lookup.control.showModelError(); }
+        if (!r)  { return lookup.control.showModelError('no response in model'); }
+        var keytup = r.keytup;
+        var taxlot = r.taxlot;
+        if (!taxlot)  { return lookup.control.showModelError('no taxlot'); }
+        if (!keytup)  { return lookup.control.showModelError('no keytup'); }
+        var pluto = taxlot.pluto;
+        var condo = taxlot.condo;
+        if (pluto && keytup)  {
+            // Vanilla taxlot fetch
+            lookup.log(2,'do-buildings taxlot ..');
+            fetchBuildings(keytup,flag,handleBuildings);
+        }  else if (condo)  {
+            // We're a condo unit -- fetch buildings for the baselot 
+            var bbl = condo.parent;
+            var keytup = {'bbl':bbl,'bin':null};
+            lookup.log(2,'do-buildings baselot ..');
+            fetchBuildings(keytup,flag,handleBuildings);
+        } else { 
+            lookup.control.showModelError('crazy invalid state'); 
+        }
         lookup.log(2,'do-buildings done');
     };
 
-    lookup.control.showModelError = function() {
+    lookup.control.showModelError = function(message) {
+        if (!message)  { message = '--unknown cause--'; }
+        var longmsg = 'invalid model state: ' + message;
         var r = lookup.model.summary;
         if (r)  {
-            lookup.log(1,'invalid state (model has lookup , but no keytup struct)');
+            lookup.log(1,longmsg);
             lookup.view.showDefaultError();
         }
         else  {
             lookup.log(1,'invalid state (model has no lookup)');
             lookup.view.showDefaultError();
         }
+        return false;
     };
 
     // DEPRECATED
