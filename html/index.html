@@ -164,19 +164,38 @@
 
 <script id="tmpl-section-owner-acris" type="text/html">
    <p class="section">
-   {acris.owner_name}<br> 
-   {acris.owner_address}<br> 
-   <span class="detail">Acquired on</span> <strong>{acris.transfer_date}</strong> 
+   {?acris._vanilla}
+     {?acris._multiparty}
+     <span class="nifty">(multiple parties)</span><br>
+     {:else}
+     {acris.owner_name}<br> 
+     {acris.owner_address}<br> 
+     {/acris._multiparty}
+     <span class="detail">Acquired on</span> <strong>{acris.transfer_date}</strong> 
            <span class="detail">for</span> <strong>${acris.amount}</strong><br>
-   <span class="detail">Detailed transaction history available from <a id="link-acris" target="_blank"
-           href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?{slug.acris}">ACRIS</a></span><br>
+   {/acris._vanilla}
+   {?acris._showpluto}
+   {pluto.owner} &nbsp; <span class="detail">(from Pluto)</span><p>
+   {/acris._showpluto}
+   {?acris._partial}
+      The most recent deed transaction on this lot (on <strong>{acris.transfer_date}</strong>) 
+      was a <strong>partial sale</strong> (of {acris.percent}%) &ndash;
+      so the owernship is a bit tricky to determine. 
+   {/acris._partial}
+   {?acris._complex}
+      The most recent deed transaction on this lot (on <strong>{acris.transfer_date}</strong>) 
+      involved <strong>multiple transfers</strong> on the same day &ndash; 
+      so the owernship is a bit tricky to determine. 
+   {/acris._complex}
+    Detailed transaction history available from <a id="link-acris" target="_blank"
+        href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?{slug.acris}">ACRIS</a>.<br>
    </p>
 </script>
 
 <script id="tmpl-section-owner-pluto" type="text/html">
    <p class="section">
-   {pluto.owner} <span class="detail">(from Pluto)</span><br>
-   ACRIS records are a bit sketchy for this lot, so that's all we know.
+   {pluto.owner} &nbsp; &nbsp; <span class="detail">(from Pluto)</span><p>
+   ACRIS apparently has no deed conveyances for this lot,<br>so that's all we know.
    </p>
 </script>
 

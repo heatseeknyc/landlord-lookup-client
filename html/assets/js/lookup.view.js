@@ -110,7 +110,7 @@
         lookup.view.hide('section-owner-condo');
         if (meta.is_bank)  {
             lookup.view.render('section-owner-condo',taxlot);
-        } else if (acris && 1)  {
+        } else if (acris && acris.code > 0)  {
             lookup.view.render('section-owner-acris',taxlot);
         } else if (pluto && pluto.owner)  {
             lookup.view.render('section-owner-pluto',taxlot);
@@ -152,10 +152,10 @@
     // create a new top-level struct, we prefer to mangle the pluto struct slightly,
     // using a convention whereby a leading underscore means "derived boolean flag".
     lookup.utils.add_control_flags = function(taxlot) {
-        var p = taxlot.pluto; 
-        if (p)  {
-            if (p.year_built > 0)  { p._built = 1; }
-            if (p.bldg_count > 1)  { p._bldg_multi = 1; }
+        var pluto = taxlot.pluto;
+        if (pluto)  {
+            if (pluto.year_built > 0)  { pluto._built = 1; }
+            if (pluto.bldg_count > 1)  { pluto._bldg_multi = 1; }
         };
         var stable = taxlot.stable;
         if (stable)  {
@@ -163,14 +163,20 @@
                 stable._confirmed = 1;
             };
         };
-        // var meta = taxlot.meta;
-        // if (meta)  {
-        //    if (meta.stabilized > 0)  {
-        //        meta._stable = 1;
-        //    }
-        //}
-
+        var acris = taxlot.acris;
+        if (acris)  {
+            if (acris.code === 1)   { acris._vanilla = 1; };
+            if (acris.code === 2)   { acris._partial = 1; };
+            if (acris.code === 3)   { acris._complex = 1; };
+            if (acris.buyers > 1) { acris._multiparty = 1; };
+            // A special flag to show the Pluto owner, 
+            // because the ACRIS records are too sketchy. 
+            if ((acris._partial || acris._complex) && pluto)  {
+                acris._showpluto = 1; 
+            };
+        };
     };
+
 
     lookup.view.showTaxlot = function(taxlot) {
         lookup.log(2,'show taxlot ..'); 
