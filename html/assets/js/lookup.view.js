@@ -98,7 +98,6 @@
         var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
         lookup.view.showObject('taxlot',pluto,spec);
         lookup.view.moveTo(pluto);
-        lookup.view.initTaxlotLinks();
         return true;
     };
     
@@ -221,6 +220,7 @@
         lookup.view.showOwner(taxlot);
         lookup.view.showResi(taxlot);
         lookup.view.render('section-compliance',taxlot);
+        lookup.view.initTaxlotLinks();
         return true;
     };
 
