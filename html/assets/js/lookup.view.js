@@ -85,6 +85,7 @@
     };
 
 
+    // Refers to the taxlot shape, not the info summary.
     lookup.view.displayTaxlot = function(taxlot) {
         lookup.log(2,'display taxlot..');
         pluto = taxlot.pluto;
@@ -180,6 +181,7 @@
     };
 
 
+    // Refers to the taxlot info summary, not the lot shape. 
     lookup.view.showTaxlot = function(taxlot) {
         lookup.log(2,'show taxlot ..'); 
         if (!taxlot)  {
