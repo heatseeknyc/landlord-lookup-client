@@ -138,4 +138,11 @@
         return _mon[d.month]+' '+d.day+', '+d.year;
     };
 
+    // Given an integer, return a stringified version with commas added 
+    // between powers of 1000.  If we aren't an integer, return null. 
+    lookup.utils.provide_commas = function(n) {
+        return null;
+    };
+
+
 })();
