@@ -322,12 +322,12 @@
     };
 
     lookup.view.showObject = function(tag,shape,spec) {
-        lookup.log(2,'show object tag='+tag+' ..');
-        lookup.log(3,shape);
-        lookup.log(3,spec);
+        lookup.log(3,'show object tag='+tag+' ..');
+        lookup.log(4,shape);
+        lookup.log(4,spec);
         var poly = sift(shape.points,shape.parts);
         lookup.view.addPoly(tag,poly,spec);
-        lookup.log(2,'show object done');
+        lookup.log(3,'show object done');
         return true;
     };
 
