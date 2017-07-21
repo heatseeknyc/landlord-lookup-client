@@ -107,4 +107,35 @@
         return results[1];
     };
 
+    // Splits a datestring in the 'YYYY-MM-DD' format - the most common one 
+    // emitted by databases, and the only format we'll likely have to contend 
+    // with for a great while.
+    lookup.utils.splitdate = function(s) {
+        var re = new RegExp(/^(\d\d\d\d)-(\d\d)-(\d\d)$/);
+        var m = re.exec(s);
+        if (m) { 
+            var year  = parseInt(m[1]);
+            var month = parseInt(m[2]);
+            var day   = parseInt(m[3]);
+            return { 'year':year, 'month':month, 'day':day };
+        }  else  {  
+            return null 
+        } 
+    };
+
+    // Expects a dict in the form emitted by 'splitdate', and returns a 
+    // nice date string in the colloqual English format (with long month names).
+    // If the date is invalid somehow, it returns null.  The validation is
+    // not bulletproof by any means, but good enough for now.
+    var _mon = [
+        'BADMONTH','January','February','March','April','May','June',
+        'July','August','September','October','November','December'];
+    lookup.utils.nicedate = function(d) {
+        if (!d || !d.year || !d.month || !d.day)  { return null; } 
+        if (d.year < 1000 || d.year > 9999) { return null; }
+        if (d.month < 1 || d.month > 12) { return null; }
+        if (d.day < 1 || d.day > 31) { return null; }
+        return _mon[d.month]+' '+d.day+', '+d.year;
+    };
+
 })();
