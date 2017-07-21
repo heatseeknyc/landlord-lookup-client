@@ -184,7 +184,7 @@
             if (acris.code === 1)   { acris._vanilla = 1; };
             if (acris.code === 2)   { acris._partial = 1; };
             if (acris.code === 3)   { acris._complex = 1; };
-            if (acris.buyers > 1) { acris._multiparty = 1; };
+            if (acris.party2_count > 1) { acris._multiparty = 1; };
             // A special flag to show the Pluto owner, 
             // because the ACRIS records are too sketchy. 
             if ((acris._partial || acris._complex) && pluto)  {
