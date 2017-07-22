@@ -110,8 +110,10 @@
     }
 
     // Determine the indefinite article that precedes the given word, in the usual way.
+    // We're definitely not happy with this hack, but we'd rather not go searchint for
+    // some general-purpose library to do stuff like this.
     var _vowpat = new RegExp('^[aeiouAEIOU]');
-    var _youpat = new RegExp('^(ubi|uke|ulurp|uni|uro|uto)'); 
+    var _youpat = new RegExp('^(ubi|uke|ulurp|uni|uro|use|uto)'); 
     var indef_article = function (w)  {
         if (_vowpat.exec(w) && !_youpat.exec(w.toLowerCase())) { 
             return 'an'; 
