@@ -189,13 +189,14 @@
    <p class="section">
    {?acris._vanilla}
      {?acris._multiparty}
-     <span class="nifty">(multiple parties)</span><br>
+     <span class="nifty">(multiple parties)</span><p>
      {:else}
      {acris.party2_name}<br> 
-     {acris.party2_address}<br> 
+     {acris.party2_address}<p> 
      {/acris._multiparty}
-     <span class="detail">Acquired on</span> <strong>{acris.effdate}</strong> 
-           <span class="detail">for</span> <strong>${acris.amount}</strong><br>
+     <span class="detail">via</span> <strong>{explain.doctype}</strong> 
+          <span class="detail">filed on</span> <strong>{explain.effdate}</strong><br>
+     <span class="detail">for</span>: <strong>${acris.amount}</strong><br>
    {/acris._vanilla}
    {?acris._showpluto}
    {pluto.owner} &nbsp; <span class="detail">(from Pluto)</span><p>

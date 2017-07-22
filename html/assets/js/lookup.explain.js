@@ -13,7 +13,9 @@
  * the rent stabilization status of a vacant lot), rather then crashing or simply 
  * returning null.
  */
-// dependencies: nycprop.js
+// dependencies: 
+//  - nycprop.js
+//  - lookup.acris.js
 (function() {
 
     var _explain = {}
@@ -174,12 +176,26 @@
         taxlot.explain.boroname   = boro;
     };
 
+    _explain.describe_acris = function(taxlot) {
+        var nicetype = "[unknown doctype]";
+        var nicedate = "[unknown date]";
+        var acris = taxlot.acris;
+        if (acris)  {
+            nicetype = lookup.acris.doctype2eng(acris.doctype);
+            var d = lookup.utils.splitdate(acris.effdate);
+            nicedate = lookup.utils.nicedate(d);
+        }
+        taxlot.explain.doctype  = nicetype; 
+        taxlot.explain.effdate  = nicedate; 
+    };
+
     // Augments the taxlot struct with various details
     _explain.augment = function(taxlot) {
         if (!taxlot.explain) { taxlot.explain = {}; };
         _explain.describe_taxlot(taxlot);
         _explain.describe_stable(taxlot);
         _explain.describe_baselot(taxlot);
+        _explain.describe_acris(taxlot);
     };
 
 
