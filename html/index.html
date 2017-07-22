@@ -194,9 +194,9 @@
      {acris.party2_name}<br> 
      {acris.party2_address}<p> 
      {/acris._multiparty}
-     <span class="detail">via {explain.doctype_art}</span> <strong>{explain.doctype}</strong> 
-          <span class="detail">filed on</span> <strong>{explain.effdate}</strong><br>
-     <span class="detail">for</span>: <strong>{explain.amount}</strong><br>
+     <span class="regular">sale price</span>: <strong>{explain.amount}</strong><br>
+     <span class="regular">via {explain.doctype_art}</span> <strong>{explain.doctype}</strong>  
+         <span class="regular">filed on</span> <strong>{explain.effdate}</strong><br>
    {/acris._vanilla}
    {?acris._showpluto}
    {pluto.owner} &nbsp; <span class="detail">(from Pluto)</span><p>
@@ -211,8 +211,8 @@
       involved <strong>multiple transfers</strong> on the same day &ndash; 
       so the owernship is a bit tricky to determine. 
    {/acris._complex}
-    Detailed transaction history available from <a id="link-acris" target="_blank"
-        href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?{slug.acris}">ACRIS</a>.<br>
+   <span class="detail">Detailed transaction history available from</span> <a id="link-acris" target="_blank"
+        href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?{slug.acris}">ACRIS</a><br>
    </p>
 </script>
 
