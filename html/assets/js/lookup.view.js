@@ -159,7 +159,7 @@
         lookup.log(2,taxlot.deco); 
         taxlot.slug = lookup.utils.slugify(taxlot.meta.bbl);
         lookup.log(2,taxlot.slug); 
-        lookup.utils.add_control_flags(taxlot);
+        lookup.utils.adjust_control_flags(taxlot);
         lookup.explain.augment(taxlot);
     };
 
@@ -167,7 +167,7 @@
     // system (dustjs), which checks for existence (not true-ness).  Rather than
     // create a new top-level struct, we prefer to mangle the pluto struct slightly,
     // using a convention whereby a leading underscore means "derived boolean flag".
-    lookup.utils.add_control_flags = function(taxlot) {
+    lookup.utils.adjust_control_flags = function(taxlot) {
         var pluto = taxlot.pluto;
         if (pluto)  {
             if (pluto.year_built > 0)  { pluto._built = 1; }
