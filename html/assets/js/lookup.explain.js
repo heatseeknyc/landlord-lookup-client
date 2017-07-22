@@ -46,6 +46,11 @@
     // Shorthand for "with k units across n buildings"
     var _with = function(k,n)  { return "with "+_units(k)+_across(n); };
 
+    var _resiblurb = function(x)  {
+        if (x) { return "(residential)"; }
+        else { return "(non-residential)"; }
+    }
+
 
     // Provides a simple, plain-English description of what kind of a property this is.  
     // Should probably be no more than 60 chars.  Intended for the 'pluto-header' section only.
@@ -61,13 +66,21 @@
             taxlot.explain.caption = "A mystery lot."; 
             return true;
         }
-        var k = pluto.units_res;
+        var k = pluto.units_total;
         var n = pluto.bldg_count;
         var caption = "--unknown--"; 
         if (meta.is_bank)  {
-            caption = "A condominium "+_with(k,n);
+            if (meta.is_resi)  {
+                caption = "A residential condominium "+_with(k,n);
+            }  else  {
+                caption = "A commercial condominium "+_with(k,n);
+            }
         }  else if (meta.is_coop)  {
-            caption = "A co-op "+_with(k,n);
+            if (meta.is_resi)  {
+                caption = "A residential co-op "+_with(k,n);
+            }  else  {
+                caption = "A commercial co-op "+_with(k,n);
+            }
         }  else if (n > 1 && (
                pluto.land_use == '03' ||
                pluto.land_use == '04' ))  {
@@ -81,6 +94,7 @@
         }  else   {
             if (n > 0)  {
                 caption = "A lot with "+_buildings(n); 
+                caption += " "+_resiblurb(meta.is_resi);
             }  else  {
                 caption = "A vacant lot"; 
             }
