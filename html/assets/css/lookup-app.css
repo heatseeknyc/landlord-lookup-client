@@ -71,6 +71,7 @@ div.section {
 p.section {
     padding-left: 5px;
 }
+span.regular { }
 span.detail { color:#888; }
 span.affirm { color:#090; }
 span.nifty  { color:#606; }
