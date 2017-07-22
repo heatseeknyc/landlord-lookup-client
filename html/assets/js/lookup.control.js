@@ -9,12 +9,32 @@
     };
 
     lookup.control.initSearch = function() {
-        $('#address-form').on('submit', function (evt) {
-            evt.preventDefault();
-            var query = $('#address-input').val().trim();
-            lookup.log(3,':: #address-form.submit at '+ new Date());
-            lookup.control.doTaxlot(query);
+        $('#address-form').on('submit', function (e) {
+            e.preventDefault();
+            lookup.control.doSearch();
+            // var query = $('#address-input').val().trim();
+            // lookup.log(3,':: #address-form.submit at '+ new Date());
+            // lookup.control.doTaxlot(query);
         });
+        $('form').each(function() {
+            $(this).find('input').keypress(function(e) {
+                // e.preventDefault();
+                if(e.which == 10 || e.which == 13) {
+                    lookup.log(1,':: WOOP!');
+                    lookup.control.doSearch();
+                    // this.form.submit();
+                }
+            });
+            $(this).find('input[type=submit]').hide();
+        });
+    };
+
+    lookup.control.doSearch = function(query) {
+        lookup.log(2,'do-search ..');
+        var query = $('#address-input').val().trim();
+        lookup.log(3,':: #address-form.submit at '+ new Date());
+        lookup.control.doTaxlot(query);
+        lookup.log(2,'do-search done');
     };
 
     // A simple wrapper around the standard json ajax call, 
@@ -155,7 +175,7 @@
     };
 
     // DEPRECATED
-    lookup.control.doSearch = function(query) {
+    lookup.control.___doSearch = function(query) {
         lookup.log(2,'do-search ..');
         $.when(lookup.control.doTaxlot(query)).done(
             function(){
