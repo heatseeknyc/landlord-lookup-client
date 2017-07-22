@@ -111,9 +111,13 @@
 
     // Determine the indefinite article that precedes the given word, in the usual way.
     var _vowpat = new RegExp('^[aeiouAEIOU]');
+    var _youpat = new RegExp('^(ubi|uke|ulurp|uni|uro|uto)'); 
     var indef_article = function (w)  {
-        if (_vowpat.exec(w))  { return 'an'; }
-        else { return 'a'; }
+        if (_vowpat.exec(w) && !_youpat.exec(w.toLowerCase())) { 
+            return 'an'; 
+        } else { 
+            return 'a'; 
+        }
     }
 
     // Provides a description of the rent stabilization status for this property,
