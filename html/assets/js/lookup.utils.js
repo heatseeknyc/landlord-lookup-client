@@ -156,10 +156,22 @@
         return r.reverse();
     }
 
+    // where's lpad when you need it?
+    // (yes it's brittle, but should work for us)
+    var _lpad = function (s,c,k)  { 
+        while (s.length < k)  { s = c+s; }
+        return s
+    }
+
     // Given an integer, return a stringified version with commas added 
     // between powers of 1000.  If we aren't an integer, return null. 
     lookup.utils.provide_commas = function(n) {
-        return _radix(n).join(',');
+        var r = _radix(n);
+        for (i=1; i<r.length; i++)  {
+            r[i] = _lpad(''+r[i],'0',3);
+        }
+        return r.join(',');
+        // return _radix(n).join(',');
     };
     // lookup.utils.radix = _radix; 
 
