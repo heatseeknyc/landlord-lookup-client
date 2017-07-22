@@ -177,16 +177,21 @@
     };
 
     _explain.describe_acris = function(taxlot) {
-        var nicetype = "[unknown doctype]";
-        var nicedate = "[unknown date]";
+        var nice = {};
+        nice.doctype = "[unknown doctype]";
+        nice.effdate = "[unknown date]";
+        nice.amount  = "an unknown amount";
         var acris = taxlot.acris;
         if (acris)  {
-            nicetype = lookup.acris.doctype2eng(acris.doctype);
+            nice.doctype = lookup.acris.doctype2eng(acris.doctype);
             var d = lookup.utils.splitdate(acris.effdate);
-            nicedate = lookup.utils.nicedate(d);
+            nice.effdate = lookup.utils.nicedate(d);
+            var nicenum = lookup.utils.provide_commas(acris.amount);
+            if (nicenum !== "0")   { nice.amount = '$'+nicenum; }
         }
-        taxlot.explain.doctype  = nicetype; 
-        taxlot.explain.effdate  = nicedate; 
+        taxlot.explain.doctype = nice.doctype; 
+        taxlot.explain.effdate = nice.effdate; 
+        taxlot.explain.amount  = nice.amount;
     };
 
     // Augments the taxlot struct with various details
