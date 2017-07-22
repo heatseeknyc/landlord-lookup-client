@@ -95,6 +95,13 @@
         if (n > 1) { return plur; } else { return sing; }
     }
 
+    // Determine the indefinite article that precedes the given word, in the usual way.
+    var _vowpat = new RegExp('^[aeiouAEIOU]');
+    var indef_article = function (w)  {
+        if (_vowpat.exec(w))  { return 'an'; }
+        else { return 'a'; }
+    }
+
     // Provides a description of the rent stabilization status for this property,
     // appropriately phrased cased for lots with multiple (or no) buildings. 
     _explain.describe_stable = function(taxlot) {
@@ -190,6 +197,7 @@
             if (nicenum !== "0")   { nice.amount = '$'+nicenum; }
         }
         taxlot.explain.doctype = nice.doctype; 
+        taxlot.explain.doctype_art = indef_article(nice.doctype); 
         taxlot.explain.effdate = nice.effdate; 
         taxlot.explain.amount  = nice.amount;
     };

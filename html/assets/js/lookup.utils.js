@@ -138,11 +138,29 @@
         return _mon[d.month]+' '+d.day+', '+d.year;
     };
 
+    // Given an integer, return its natural expansion into base 1000.
+    var _radix = function(n)  {
+        if (n === 0) { return [0] }
+        if (n < 0)  {
+            var r = _radix(-n);
+            r[0] = -r[0];
+            return r;
+        }
+        var r = [];
+        while (n > 1000)  {
+            k = n % 1000;
+            n = (n - k) / 1000;
+            r.push(k);
+        }
+        r.push(n);
+        return r.reverse();
+    }
+
     // Given an integer, return a stringified version with commas added 
     // between powers of 1000.  If we aren't an integer, return null. 
     lookup.utils.provide_commas = function(n) {
-        return null;
+        return _radix(n).join(',');
     };
-
+    // lookup.utils.radix = _radix; 
 
 })();
