@@ -84,6 +84,22 @@
         }
     };
 
+    // Pans to the current shape, magically adjusting zoom level
+    lookup.view.panTo = function(shape) {
+        var map = lookup.view.map;
+        if (map)  { return false; }
+        if (lookup.view.marker)  { map.removeLayer(lookup.view.marker); }
+        var alpha = 3.0;
+        var radius = shape.radius;
+        var center = [shape.lat_ctr,shape.lon_ctr];
+        var level = lookup.utils.zoomlevel(shape.radius,alpha);
+        lookup.log(2,'panTo ..');
+        lookup.log(2,center);
+        lookup.log(2,{'radius':radius,'level':level});
+        map.panTo(center,level);
+        return true;
+    };
+
     // Tells us whether the taxlot struct has a shape struct somewhere to display.
     var isViewable = function (taxlot)  {
         return (taxlot.pluto) || (taxlot.condo && taxlot.condo.baselot);
