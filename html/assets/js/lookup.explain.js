@@ -113,9 +113,9 @@
     // We're definitely not happy with this hack, but we'd rather not go searchint for
     // some general-purpose library to do stuff like this.
     var _vowpat = new RegExp('^[aeiouAEIOU]');
-    var _youpat = new RegExp('^(ubi|uke|ulurp|uni|uro|use|uto)'); 
+    var _youpat = new RegExp('^(ubi|uke|ulurp|uni|uro|use|uto)','gi'); 
     var indef_article = function (w)  {
-        if (_vowpat.exec(w) && !_youpat.exec(w.toLowerCase())) { 
+        if (_vowpat.exec(w) && !_youpat.exec(w)) { 
             return 'an'; 
         } else { 
             return 'a'; 
