@@ -210,11 +210,17 @@
         nice.amount  = "an unknown amount";
         var acris = taxlot.acris;
         if (acris)  {
-            nice.doctype = lookup.acris.doctype2eng(acris.doctype);
             var d = lookup.utils.splitdate(acris.effdate);
             nice.effdate = lookup.utils.nicedate(d);
-            var nicenum = lookup.utils.provide_commas(acris.amount);
-            if (nicenum !== "0")   { nice.amount = '$'+nicenum; }
+            if (acris._complex)  {
+                // doctype won't get displayed; an the amount will
+                // be the default string above.
+                ;
+            }  else  {
+                nice.doctype = lookup.acris.doctype2eng(acris.doctype);
+                var nicenum = lookup.utils.provide_commas(acris.amount);
+                if (nicenum !== "0")   { nice.amount = '$'+nicenum; }
+            }
         }
         taxlot.explain.doctype = nice.doctype; 
         taxlot.explain.doctype_art = indef_article(nice.doctype); 
