@@ -189,6 +189,7 @@
 
 <script id="tmpl-section-owner-acris" type="text/html">
    <p class="section">
+
    {?acris._vanilla}
      {?acris._multiparty}
      <span class="nifty">(multiple parties)</span><p>
@@ -204,9 +205,11 @@
              target="_blank" href="http://a836-acris.nyc.gov/DS/DocumentSearch/DocumentImageView?doc_id={acris.docid}">img</a>)
      </span><br>
    {/acris._vanilla}
+
    {?acris._showpluto}
    {pluto.owner} &nbsp; <span class="detail">(from Pluto)</span><p>
    {/acris._showpluto}
+
    {?acris._partial}
      The most recent transaction on this lot was a <strong>partial sale</strong><br>
      for a share of <strong>{acris.percent}%</strong>, 
@@ -217,6 +220,7 @@
      </span><br>
      So the current ownership is a bit tricky to determine.<br>
    {/acris._partial}
+
    {?acris._complex}
      <span class="regular">Acquired for:</span> <strong>{explain.amount}</strong><br>
      <span class="regular">via a <strong>complex deed transaction</strong>  
@@ -224,6 +228,7 @@
      The most change in ownership for this lot involved multiple transfers 
      on the same day, so the current owner cannot be easily determined.<br>
    {/acris._complex}
+
    <span class="detail">Detailed transaction history available from</span> <a id="link-acris" target="_blank"
         href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?{slug.acris}">ACRIS</a><br>
    </p>
