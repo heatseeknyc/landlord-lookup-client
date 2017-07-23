@@ -185,8 +185,8 @@
 
     // If we came in via a condo unit BBL, we need to say a few things about the baselot.
     _explain.describe_baselot = function(taxlot) {
-        var boroname = "--unknown--";
-        var condotype = "--unknown--";
+        var boroname = "--unknown--"; // this filed should never trickle up empty
+        var condotype = ""; // but if this field it trickles up empty, that's OK
         var baselot = null;
         var condo = taxlot.condo;
         if (condo)  {  baselot = condo.baselot;  }
