@@ -203,15 +203,23 @@
         taxlot.explain.boroname  = boroname;
     };
 
+    // Expects a date string of the form 'YYYY-MM-DD', 
+    // and tries to return a nice English statement of it.
+    var _nicedate = function(datestr)  {
+        var d = lookup.utils.splitdate(datestr);
+        return lookup.utils.nicedate(d);
+    };
+
     _explain.describe_acris = function(taxlot) {
         var nice = {};
         nice.doctype = "[unknown doctype]";
         nice.effdate = "[unknown date]";
+        nice.mindate = "[unknown date]";
         nice.amount  = "an unknown amount";
         var acris = taxlot.acris;
         if (acris)  {
-            var d = lookup.utils.splitdate(acris.effdate);
-            nice.effdate = lookup.utils.nicedate(d);
+            nice.effdate = _nicedate(acris.effdate); 
+            nice.mindate = _nicedate(acris.mindate); 
             if (acris._complex)  {
                 // doctype won't get displayed; an the amount will
                 // be the default string above.
@@ -225,6 +233,7 @@
         taxlot.explain.doctype = nice.doctype; 
         taxlot.explain.doctype_art = indef_article(nice.doctype); 
         taxlot.explain.effdate = nice.effdate; 
+        taxlot.explain.mindate = nice.mindate; 
         taxlot.explain.amount  = nice.amount;
     };
 
