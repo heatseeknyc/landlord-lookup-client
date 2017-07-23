@@ -185,22 +185,22 @@
 
     // If we came in via a condo unit BBL, we need to say a few things about the baselot.
     _explain.describe_baselot = function(taxlot) {
-        var boro = "--unknown--";
-        var info = "--unknown--";
+        var boroname = "--unknown--";
+        var condotype = "--unknown--";
         var baselot = null;
         var condo = taxlot.condo;
         if (condo)  {  baselot = condo.baselot;  }
         if (baselot)  {
             var t = nycprop.bbl_info(condo.parent);
-            if (t) { boro = t.borough; } 
-            if (baselot.bldg_count === 1)  {
-                info = "building";
+            if (t) { boroname = t.borough; } 
+            if (baselot.is_resi)  {
+                condotype = "residential"
             }  else  {
-                info = "project";
+                condotype = "commercial"
             }
         }
-        taxlot.explain.condo_what = info;
-        taxlot.explain.boroname   = boro;
+        taxlot.explain.condotype = condotype; 
+        taxlot.explain.boroname  = boroname;
     };
 
     _explain.describe_acris = function(taxlot) {
