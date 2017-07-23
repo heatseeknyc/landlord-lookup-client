@@ -141,13 +141,13 @@
     var _intpat = new RegExp('^-?[0-9]+$');
     var _isInt = function(n)  {
         return _intpat.test(n);
-    }
+    };
 
     // Given an integer, return its natural expansion into base 1000.
     // It it's not an integer, we return null.
     var _radix = function(n)  {
         if (!_isInt(n))  { return null; }
-        if (n === 0) { return [0] }
+        if (n === 0) { return [0]; }
         if (n < 0)  {
             var r = _radix(-n);
             r[0] = -r[0];
@@ -161,13 +161,13 @@
         }
         r.push(n);
         return r.reverse();
-    }
+    };
 
     // where's lpad when you need it?
     // (yes it's brittle, but should work for us)
     var _lpad = function (s,c,k)  { 
         while (s.length < k)  { s = c+s; }
-        return s
+        return s;
     }
 
     // Given an integer, return a stringified version with commas added 
@@ -179,10 +179,35 @@
             r[i] = _lpad(''+r[i],'0',3);
         }
         return r.join(',');
-        // return _radix(n).join(',');
     };
 
-    lookup.utils.zoomlevel = function(radius,scale) {
+    // 
+    // Interpreted to mean "find the highest zoom level such that an 
+    // object of the given radius, expanded by scale factor alpha,
+    // still fits in the screen width of that soom level." 
+    //
+    // Keep in mind that the zoomleels scale out at varying rates 
+    // from one level to the next (2-3).  So if you pick alpha = 3.0, 
+    // you might see your object covering 11%-33% of the screen at  
+    // that zoom level (which is actually probably an ideal range).
+    //
+    // From: http://wiki.openstreetmap.org/wiki/Zoom_levels
+    // The values represent the screen width (in degrees) for the zoom level
+    // corresponding to index position (0-19).
+    var _z = [ 
+        360, 180, 90, 45, 22.5, 11.25, 5.625, 2.813, 1.406, 0.703, 0.352, 
+        0.176, 0.088, 0.044, 0.022, 0.011, 0.005, 0.003, 0.001, 0.0005];  
+    lookup.utils.zoomlevel = function(radius,alpha) {
+        var n = _z.length; // should be 20
+        // Do something to protect against garbage inputs. 
+        if (!alpha || !radius || alpha >= 1000000.0 || alpha <= 0.0000001 || 
+            radius > 360 || radius < 0)  { return null; }
+        for (j=n; j>=0; j--)  {
+            if (radius * alpha <= _z[j])  { return j; }
+        }
+        return j; // if we get down here, it'll be 0 
     };
 
 })();
+
+
