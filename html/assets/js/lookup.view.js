@@ -279,7 +279,6 @@
     // and genrates the implied partition into distinct lists of coordinate pairs.
     var sift = function(points,parts) {
         var n = points.length / 2;
-        lookup.log(2,'sifting n = '+n);
         var q = new Array(parts.length);
         prevk = 0;
         for (var i=0; i<parts.length; i++)  {
@@ -288,19 +287,14 @@
             }  else  {
                 k = n; 
             }
-            // lookup.log(2,'sifting k = '+k);
             var width = k-prevk;
-            // lookup.log(2,'sifting width = '+width);
             q[i] = new Array(width);
             for (var j=0; j<width; j++)  {
                 var off = 2*(prevk+j);
                 q[i][j] = [points[off+1],points[off]]
             }
-            // lookup.log(2,'sifting length = '+q[i].length);
-            // lookup.log(2,q);
             prevk = k;
         }
-        // lookup.log(2,'sifting - done');
         return q;
     };
 
