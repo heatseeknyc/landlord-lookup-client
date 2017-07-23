@@ -138,8 +138,14 @@
         return _mon[d.month]+' '+d.day+', '+d.year;
     };
 
+    var _isInt = function(n) {
+        return Number(n) === n && n % 1 === 0;
+    }
+
     // Given an integer, return its natural expansion into base 1000.
+    // It it's not an integer, we return null.
     var _radix = function(n)  {
+        if (!_isInt(n))  { return null; }
         if (n === 0) { return [0] }
         if (n < 0)  {
             var r = _radix(-n);
@@ -167,6 +173,7 @@
     // between powers of 1000.  If we aren't an integer, return null. 
     lookup.utils.provide_commas = function(n) {
         var r = _radix(n);
+        if (!r)  { return null; }
         for (i=1; i<r.length; i++)  {
             r[i] = _lpad(''+r[i],'0',3);
         }
