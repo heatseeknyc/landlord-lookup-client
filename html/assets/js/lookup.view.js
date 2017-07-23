@@ -374,8 +374,8 @@
     lookup.view.showContacts = function() {
         var r = lookup.model.contacts;
         $(".panel-lower").hide();
-        lookup.log(1,'show contacts!');
-        lookup.log(2,r);
+        lookup.log(3,'show contacts!');
+        lookup.log(4,r);
         var keys = [
             'registration_id','contact_id','contact_name','contact_type',
             'description','corpname','business_address' 
@@ -384,19 +384,19 @@
         $("#tbody-contacts")[0].innerHTML = html.join('');
         $("#panel-data").show();
         // $("#popup-almost").show();
-        lookup.log(1,':: done show contacts.')
+        lookup.log(3,':: done show contacts.')
     };
 
     lookup.view.showBuildings = function() {
         var blist = lookup.model.buildings;
-        lookup.log(1,':: show buildings!');
-        lookup.log(2,blist);
+        lookup.log(3,':: show buildings!');
+        lookup.log(4,blist);
         lookup.view.cleanup('building');
         for (var i=0; i<blist.length; i++)  {
             var spec ={color:'orange',fillColor:'#ff3',fillOpacity:0.5};
             lookup.view.showObject('building',blist[i],spec);
         }
-        lookup.log(1,':: done show buildings.')
+        lookup.log(3,':: done show buildings.')
     };
 
 
