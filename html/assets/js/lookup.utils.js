@@ -138,8 +138,9 @@
         return _mon[d.month]+' '+d.day+', '+d.year;
     };
 
-    var _isInt = function(n) {
-        return Number(n) === n && n % 1 === 0;
+    var _intpat = new RegExp('^-?[0-9]+$');
+    var _isInt = function(n)  {
+        return _intpat.test(n);
     }
 
     // Given an integer, return its natural expansion into base 1000.
