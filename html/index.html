@@ -190,6 +190,12 @@
 <script id="tmpl-section-owner-acris" type="text/html">
    <p class="section">
 
+   {?acris._mortonly}
+      This lot apparently has no record of deed conveyances of any kind 
+      (in ACRIS, anyway).  We're working on inferring ownership information 
+      from mortgage transactions, but we're not there yet.<br>
+   {/acris._mortonly}
+
    {?acris._vanilla}
      {?acris._multiparty}
      <span class="nifty">(multiple parties)</span><p>

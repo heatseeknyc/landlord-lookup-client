@@ -126,7 +126,9 @@
         lookup.view.hide('section-owner-condo');
         if (meta.is_bank)  {
             lookup.view.render('section-owner-condo',taxlot);
-        } else if (acris && acris.code > 0)  {
+        } else if (acris)  {
+            // This will default to showing Pluto, if we're in ACRIS but
+            // we still can't identify ownership. 
             lookup.view.render('section-owner-acris',taxlot);
         } else if (pluto && pluto.owner)  {
             lookup.view.render('section-owner-pluto',taxlot);
@@ -181,14 +183,14 @@
         };
         var acris = taxlot.acris;
         if (acris)  {
+            if (acris.code === 0)   { acris._mortonly = 1; }
             if (acris.code === 1)   { acris._vanilla = 1; };
             if (acris.code === 2)   { acris._partial = 1; };
             if (acris.code === 3)   { acris._complex = 1; };
             if (acris.party2_count > 1) { acris._multiparty = 1; };
-            // A special flag to show the Pluto owner, 
-            // because the ACRIS records are too sketchy. 
-            if ((acris._partial || acris._complex) && pluto)  {
-                acris._showpluto = 1; 
+            // A special flag to default to the Pluto owner (if present)
+            if (acris._mortonly || acris._partial || acris._complex)  {
+                if (pluto && pluto.owner)  { acris._showpluto = 1; }
             };
         };
     };
