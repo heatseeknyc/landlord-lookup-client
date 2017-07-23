@@ -173,6 +173,8 @@
         return r.join(',');
         // return _radix(n).join(',');
     };
-    // lookup.utils.radix = _radix; 
+
+    lookup.utils.zoomlevel = function(radius,scale) {
+    };
 
 })();
