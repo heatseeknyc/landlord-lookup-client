@@ -206,9 +206,14 @@
    {pluto.owner} &nbsp; <span class="detail">(from Pluto)</span><p>
    {/acris._showpluto}
    {?acris._partial}
-      The most recent deed transaction on this lot (on <strong>{explain.effdate}</strong>) 
-      was a <strong>partial sale</strong> (of {acris.percent}%) &ndash;
-      so the owernship is a bit tricky to determine.<br> 
+     The most recent transaction on this lot was a <strong>partial sale</strong><br>
+     for a share of <strong>{acris.percent}%</strong>, 
+     filed on <strong>{explain.effdate}</strong>.  
+     <span class="detail"> 
+         (<a target="_blank" href="http://a836-acris.nyc.gov/DS/DocumentSearch/DocumentDetail?doc_id={acris.docid}">det</a>|<a 
+             target="_blank" href="http://a836-acris.nyc.gov/DS/DocumentSearch/DocumentImageView?doc_id={acris.docid}">img</a>)
+     </span><br>
+     So the current ownership is a bit tricky to determine.<br>
    {/acris._partial}
    {?acris._complex}
      <span class="regular">Acquired for:</span> <strong>{explain.amount}</strong><br>
