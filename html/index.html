@@ -150,8 +150,8 @@
 <script id="tmpl-section-header-pad-only" type="text/html">
    <strong>BBL</strong> = <a href="/taxlot/{meta.bbl}">{meta.bbl}</a> 
        <span class="detail">(boro {deco.boro}, block {deco.block}, lot {deco.lot})</span><br>
-       This is a lot in PAD (not not in ACIRS or Pluto).<br>
-       That's about all we know.
+       This a physical lot, currently de-mapped.<br>
+       <span class="detail">(It's in PAD, but nowhere else).</span><br>
 </script>
 
 <script id="tmpl-section-header-acris-only" type="text/html">
@@ -202,7 +202,7 @@
       <span class="regular">Acquired for:</span> <strong>an unknown amount</strong><br>
       <span class="regular">Sometime before</span> <strong>{explain.mindate}</strong><br>
       While this lot is in ACRIS, it apparently no deed transfers on record (at least 
-      not on or after the above date, the date on which it first appears in ACRIS). 
+      not on or after the above date, which is when it first appears in ACRIS). 
       That's all we know.<br> 
    {/acris._mortonly}
 
