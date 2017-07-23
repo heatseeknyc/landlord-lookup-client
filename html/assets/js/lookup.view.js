@@ -276,7 +276,7 @@
 
 
     // Takes the 'points' and 'parts' lists as they appear in shapefiile structs,
-    // and genrates the implied partition into distinct lists.
+    // and genrates the implied partition into distinct lists of coordinate pairs.
     var sift = function(points,parts) {
         var n = points.length / 2;
         var q = new Array(parts.length);
