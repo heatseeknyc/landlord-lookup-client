@@ -178,7 +178,8 @@
         var j = stable.taxbill_unitcount;
         if (j)  {
             var en = conj(j);
-            unit_info = ""+j+" stabilized unit"+en._pl;
+            var nicenum = lookup.utils.provide_commas(j);
+            unit_info = ""+nicenum+" stabilized unit"+en._pl;
         }
         taxlot.explain.taxbill_unitcount = unit_info;
         
