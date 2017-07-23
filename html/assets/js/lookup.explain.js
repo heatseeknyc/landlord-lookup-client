@@ -167,8 +167,9 @@
             info = "The building"+en._pl+" on this lot "+en.is+" recognized under the Loft Law, "+ 
                 "which provides a form of rent stabilization.";
         } else if (code == 11)  {
-            info = "The "+en.bldg+" on this lot "+en.is+" enrolled in an unspecified HPD management program, "
-                "which probably provides some form of rent stabilization.";
+            info = "The building"+en._pl+" on this lot "+en.is+" enrolled in a 'miscellaneous' HPD special program " +
+                "(or that is, of some type we haven't categorized yet), " +
+                "which in any case probably provides some form of rent stabilization.";
         }  
         taxlot.explain.stable = info;
         
