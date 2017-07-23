@@ -211,9 +211,11 @@
       so the owernship is a bit tricky to determine.<br> 
    {/acris._partial}
    {?acris._complex}
-      The most recent deed transaction on this lot (on <strong>{explain.effdate}</strong>) 
-      involved <strong>multiple transfers</strong> on the same day &ndash; 
-      so the owernship is a bit tricky to determine.<br> 
+     <span class="regular">Acquired for:</span> <strong>{explain.amount}</strong><br>
+     <span class="regular">via a <strong>complex deed transaction</strong>  
+     <span class="regular">filed on</span> <strong>{explain.effdate}</strong><br>
+     The most change in ownership for this lot involved multiple transfers 
+     on the same day, so the current owner cannot be easily determined.<br>
    {/acris._complex}
    <span class="detail">Detailed transaction history available from</span> <a id="link-acris" target="_blank"
         href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?{slug.acris}">ACRIS</a><br>
