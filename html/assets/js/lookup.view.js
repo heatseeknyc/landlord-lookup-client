@@ -279,19 +279,28 @@
     // and genrates the implied partition into distinct lists of coordinate pairs.
     var sift = function(points,parts) {
         var n = points.length / 2;
+        lookup.log(2,'sifting n = '+n);
         var q = new Array(parts.length);
+        prevk = 0;
         for (var i=0; i<parts.length; i++)  {
             if (i+1 < parts.length)  {
                 k = parts[i+1];
             }  else  {
                 k = n; 
             }
-            q[i] = new Array(k-i);
-            for (var j=0; j<k-i; j++)  {
-                var off = 2*(i+j);
+            // lookup.log(2,'sifting k = '+k);
+            var width = k-prevk;
+            // lookup.log(2,'sifting width = '+width);
+            q[i] = new Array(width);
+            for (var j=0; j<width; j++)  {
+                var off = 2*(prevk+j);
                 q[i][j] = [points[off+1],points[off]]
             }
+            // lookup.log(2,'sifting length = '+q[i].length);
+            // lookup.log(2,q);
+            prevk = k;
         }
+        // lookup.log(2,'sifting - done');
         return q;
     };
 
@@ -328,6 +337,8 @@
         lookup.log(4,shape);
         lookup.log(4,spec);
         var poly = sift(shape.points,shape.parts);
+        // lookup.log(2,'show object - sifted');
+        // lookup.log(2,poly);
         lookup.view.addPoly(tag,poly,spec);
         lookup.log(3,'show object done');
         return true;

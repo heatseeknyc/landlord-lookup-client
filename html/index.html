@@ -196,7 +196,11 @@
      {/acris._multiparty}
      <span class="regular">sale price</span>: <strong>{explain.amount}</strong><br>
      <span class="regular">via {explain.doctype_art}</span> <strong>{explain.doctype}</strong>  
-         <span class="regular">filed on</span> <strong>{explain.effdate}</strong><br>
+     <span class="regular">filed on</span> <strong>{explain.effdate}</strong> 
+     <span class="detail"> 
+         (<a target="_blank" href="http://a836-acris.nyc.gov/DS/DocumentSearch/DocumentDetail?doc_id={acris.docid}">det</a>|<a 
+             target="_blank" href="http://a836-acris.nyc.gov/DS/DocumentSearch/DocumentImageView?doc_id={acris.docid}">img</a>)
+     </span><br>
    {/acris._vanilla}
    {?acris._showpluto}
    {pluto.owner} &nbsp; <span class="detail">(from Pluto)</span><p>
