@@ -18,7 +18,9 @@ Basically it's just a very SPA (single-page application) that knows how to send 
   /buildings/<keyarg>
   /contats/<keyarg>
 
-That's it.  There's no "model" per se, and hardly any view state to keep track of (other than a few objects represent what's on the map, in the ``lookup.view`` namespace).  The CSS "design" as such is also extremely simple -- just a basic responsive grid (which we haven't exhaustively tested, but seems to look OK on most common browsers / tablets).  Accordingly, it uses no frameworks beyond jQuery + Leaflet.js.
+That's it.  There's no "model" per se, and hardly any view state to keep track of (other than a few objects represent what's on the map, in the ``lookup.view`` namespace).  The CSS "design" as such is also extremely simple -- just a basic responsive grid (which we haven't exhaustively tested, but seems to look OK on most common browsers / tablets).  
+
+Accordingly, its dependency footpring is quite minimal (jQuery, Leaflet, dustjs), and will hopefully stay that way.
 
 
 Mobile
