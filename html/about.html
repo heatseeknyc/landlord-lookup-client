@@ -15,39 +15,55 @@
     </div>
     <div id="otherstuff">
         <p> 
-        <h3>About the NYC Landlord Lookup tool</h3>
-        The <strong>NYC Landlord Lookup</strong> tool was created to provide easy access to
-        3 major open data sets regarding property ownership which are of general interest to NYC residents, 
-        but which (as of early 2016) are not easily accessible via the City's websites.
+        <h3>So what is this?</h3>
+        The <strong>NYC Landlord Lookup</strong> is an experimental tool  
+        created to provide easy access to various information sources in the NYC real estate 
+        data ecosystem (some well known, others not well-known).<p>
 
-        It is an open source project sponsored by <a href="https://heatseeknyc.com">Heat Seek NYC</a>
-        and maintained by volunteers.
-        <h3>Data Sources</h3>
+        It doesn't do a whole lot, at present -- but what it does do, it tries to do
+        very accurately.  The primary area of focus is on what we call the "backbone" 
+        (making sense of, and smoothing over gaps in the City's somewhat archaic numbering 
+        system for tax lots and buildings), and on (rigorously) identifying current
+        propery ownership.<p>
 
-        <h4>Taxbill Summaries</h4>
-        ...
-        <h4>DHCR Rent Stablization Status</h4>
-        ...
-        <h4>HPD Registered Contacts</h4>
-        ...
-        <h3>Correctness and Completeness</h3>
+        And the second area of focus is on identifying properties that have some form
+        of rent stabilization (or are otherwise enrolled with the city as "affordiable"). 
+        This is somewhat tricky (especially in regard to identifying stabilized properties),
+        because while it's easy to tell if a building <em>might</em> be stabilized,   
+        to tell whether it actually <em>is</em> stabilized you have to cross-check various 
+        obscure datasets.  So far as we know, this the only search portal that provides 
+        this category of information.<p>
 
-        Best efforts have been made to present the city's datasets as-is, and importantly, to avoid
-        innacurate record matches.  That said, the city's datasets themselves are, we have found, simply 
-        broken in various ways for a small but significant portion of properties (around 1-2% for each source, 
-        compounding to about 5% across all sources combined).  To the extent that we've been able to identify 
-        this "brokenness", we've chosen to omit certain properties and buildings from our searches 
-        (rather than return false or ambiguous matches). <p>
+        And finally, we put it all on a map.  Because everyone likes looking at maps.
 
-        So if you've typed an address that you're pretty sure corresponds to a property you know
-        about directly, but aren't gettting at least lat/lon hit and basic ownership status, that's
-        the most likely reason.  Specific datasets also have gaps in coverage, as detailed in the 
-        section on <strong>Data Sources</strong> above.<p>
-        
-        (Further description of dataset accuracy needed).
+        <h3>Credits</h3>
 
-        <h3>Technical Details</h3>
-        Please see the writeup on <a href="/technical.html">technical details</a>.
+        Currently the portal makes use of some 25+ datasets, taken from various city agencies.
+        We'll be providing a detailed list in the near future, but special credit and thanks
+        go to:
+        <ul>
+          <li> Socrata for hosting most of the city-provided datasets
+          <li> Local Law 48 (aka the "Open Data Law") for making those datasets possible
+          <li> <a href="http://taxbills.nyc">John Krauss</a> for his crucial DOF taxbill 
+              scrapes (which provide the most current and detailed counts of stabilized 
+              properties and units, "in the large").
+        </ul>
+
+        <h3>Usage + Caveats</h3> 
+        By this point most address searches seem to go through, and when they go through
+        they're quite accurate (if in fact they describe a valid address).  That said we're 
+        currently entirely dependendent on the City's Geoclient services to do the actual
+        address-to-BBL conversion -- which, while quite good, has been seen to fail on 
+        valid addresses, occasionally.<p>
+
+        And when it does identify a property, there are still various glitches in the 
+        city's numbering system -- particularly as applies to recently built or demolished
+        buildings, and recently registered condominium projects.  Statistically speaking
+        these "holes" are quite rare, but because they apply to newer development projects
+        (that you're more likely to do searches on), they appear often enough.  
+        So this is one of the areas we're currently working on smoothing over at the
+        data aggregation level. 
     </div>
 </body>
 </html>
+
