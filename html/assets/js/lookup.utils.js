@@ -198,11 +198,14 @@
         360, 180, 90, 45, 22.5, 11.25, 5.625, 2.813, 1.406, 0.703, 0.352, 
         0.176, 0.088, 0.044, 0.022, 0.011, 0.005, 0.003, 0.001, 0.0005];  
     lookup.utils.zoomlevel = function(radius,alpha) {
+        lookup.log(1,"zoomlevel .. ");
+        lookup.log(1,{'radius':radius,'alpha':alpha});
         var n = _z.length; // should be 20
         // Do something to protect against garbage inputs. 
         if (!alpha || !radius || alpha >= 1000000.0 || alpha <= 0.0000001 || 
             radius > 360 || radius < 0)  { return null; }
-        for (j=n; j>=0; j--)  {
+        for (j=n-1; j>=0; j--)  {
+            lookup.log(1,{"j":j,"z[j]":_z[j],"product":radius*alpha});
             if (radius * alpha <= _z[j])  { return j; }
         }
         return j; // if we get down here, it'll be 0 

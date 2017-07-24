@@ -86,17 +86,20 @@
 
     // Pans to the current shape, magically adjusting zoom level
     lookup.view.panTo = function(shape) {
+        lookup.log(1,'panTo ..');
+        lookup.log(1,shape);
         var map = lookup.view.map;
-        if (map)  { return false; }
+        if (!map)  { return false; }
         if (lookup.view.marker)  { map.removeLayer(lookup.view.marker); }
-        var alpha = 3.0;
+        var alpha = 0.5;
         var radius = shape.radius;
         var center = [shape.lat_ctr,shape.lon_ctr];
         var level = lookup.utils.zoomlevel(shape.radius,alpha);
-        lookup.log(2,'panTo ..');
-        lookup.log(2,center);
-        lookup.log(2,{'radius':radius,'level':level});
-        map.panTo(center,level);
+        lookup.log(1,'panTo center');
+        lookup.log(1,center);
+        lookup.log(1,{'alpha':alpha,'radius':radius,'level':level});
+        map.setView(center,level);
+        // map.panTo(center,level);
         return true;
     };
 
@@ -119,10 +122,10 @@
         var spec ={color:'magenta',fillColor:'#f3f',fillOpacity:0.3};
         if (pluto)  {
             lookup.view.showObject('taxlot',pluto,spec);
-            lookup.view.moveTo(pluto);
+            lookup.view.panTo(pluto);
         } else if (baselot)  {
             lookup.view.showObject('taxlot',baselot,spec);
-            lookup.view.moveTo(baselot);
+            lookup.view.panTo(baselot);
         }  else  {
             lookup.log(2,'display abort - no lot struct');
             return false;
