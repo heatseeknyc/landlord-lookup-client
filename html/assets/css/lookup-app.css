@@ -80,11 +80,15 @@ a.lokal {
     color: #f00;
     cursor: pointer; 
 }
+a.invite { 
+    color: #393;
+    cursor: pointer; 
+}
 a.discreet { 
     color: #933;
     cursor: pointer; 
 }
-a.descreet:hover   { 
+a.discreet:hover   { 
     color:#f0c; 
 }
 
