@@ -91,7 +91,7 @@
         var map = lookup.view.map;
         if (!map)  { return false; }
         if (lookup.view.marker)  { map.removeLayer(lookup.view.marker); }
-        var alpha = 0.5;
+        var alpha = 1.5;
         var radius = shape.radius;
         var center = [shape.lat_ctr,shape.lon_ctr];
         var level = lookup.utils.zoomlevel(shape.radius,alpha);
