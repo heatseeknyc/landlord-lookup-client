@@ -152,7 +152,7 @@
                 "(DHCR list; DOF taxbills).";
         } else if (code == 3)  {
             info = "There are no public records confirming that the "+en.bldg+" on this lot "+en.is+
-                " under any form of rent-stabilizatin (or control).  However, the build year and physical " +
+                " under any form of rent-stabilization (or control).  However, the build year and physical " +
                 "characteristics indicate that "+en.it+" may have stablized units (but the city isn't tracking them).";
         } else if (code == 7)  {
             info = "The building"+en._pl+" on this lot "+en.is+" managed by the HPD's Section 7A "+ 
