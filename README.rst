@@ -36,4 +36,6 @@ Installation is also extremely simple; you just need to push the files out to th
 
    bin/push-site.sh
 
-The install for the REST gateway (on the same host) is a bit more involved, and described in the repo for that comonent.
+The install for the REST gateway (on the same host) is a bit more involved, and described in the repo for that component.
+
+
