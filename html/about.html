@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="header">
-        <span class="legend">NYC Landlord Lookup</span> &nbsp; &nbsp;
+        <a class="invite" href="/">NYC Landlord Lookup</a> &nbsp; &nbsp;
         <span class="legend2">About</span> &nbsp; 
         <span class="legend2">Contact</span> &nbsp; 
     </div>
@@ -18,13 +18,18 @@
         <h3>So what is this?</h3>
         The <strong>NYC Landlord Lookup</strong> is an experimental tool  
         created to provide easy access to various information sources in the NYC real estate 
-        data ecosystem (some well known, others not well-known).<p>
+        data ecosystem (some well known, others not well-known).  It's a project run by volunteers, 
+        and ultimately intended to be open source.
 
+        <h3>Features and Scope</h3>
         It doesn't do a whole lot, at present -- but what it does do, it tries to do
         very accurately.  The primary area of focus is on what we call the "backbone" 
         (making sense of, and smoothing over gaps in the City's somewhat archaic numbering 
         system for tax lots and buildings), and on (rigorously) identifying current
-        propery ownership.<p>
+        property ownership.  Importantly, it aims to capture <em>every</em> taxlot and building
+        in the system, and to work on any (reasonably) valid address or property identifier
+        you might wish to feed it in the search bar.
+        <p>
 
         And the second area of focus is on identifying properties that have some form
         of rent stabilization (or are otherwise enrolled with the city as "affordiable"). 
@@ -52,7 +57,7 @@
         <h3>Usage + Caveats</h3> 
         By this point most address searches seem to go through, and when they go through
         they're quite accurate (if in fact they describe a valid address).  That said we're 
-        currently entirely dependendent on the City's Geoclient services to do the actual
+        currently entirely dependent on the City's Geoclient services to do the actual
         address-to-BBL conversion -- which, while quite good, has been seen to fail on 
         valid addresses, occasionally.<p>
 
