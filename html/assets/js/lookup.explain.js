@@ -126,7 +126,12 @@
     // Provides a description of the rent stabilization status for this property,
     // appropriately phrased cased for lots with multiple (or no) buildings. 
     _explain.describe_stable = function(taxlot) {
-        var info = "--unknown--"; 
+        lookup.log(3,'describe stable ..');
+        // This message can bubble up in certain non-entirely broken conditions,
+        // such as when we've been given a non-Pluto lot that still show up as residential
+        // for some reason (for example, it has HPD registration even though it probably
+        // shouldn't).
+        var info = "Cannot be determined at present.";
         var pluto = taxlot.pluto;
         var stable = taxlot.stable;
         // If we call this function, both of these structs should definitely be 
