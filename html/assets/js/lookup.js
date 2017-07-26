@@ -2,12 +2,12 @@
 
     // Namespace for all globals specific to the Landlord Lookup application. 
     lookup = {};
-    lookup.version = '007a';
+    lookup.version = '001a';
     lookup.model = {}
 
     // Application specific configuration.
     lookup.config = {
-        'debug': 2,
+        'debug': 1,
         'autocomplete': {
             'active': true,
             'bounds': false
