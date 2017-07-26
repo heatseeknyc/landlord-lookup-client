@@ -14,6 +14,10 @@
         },
         'ajaxsetup': {
             'timeout': 20000
+        },
+        'leaflet': {
+            'center': [40.742054, -73.987984],
+            'zoom': 16
         }
     };
 

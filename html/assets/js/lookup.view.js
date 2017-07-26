@@ -51,11 +51,14 @@
             return false;
         }
 
-        var center = [40.726389, -73.981667];
+        // var center = [40.726389, -73.981667];
+        // var center = [40.742054, -73.987984];
+        var center = lookup.config.leaflet.center.slice(0); 
+        var zoom   = lookup.config.leaflet.zoom;
         var map = L.map(mapname,{
             center: center, 
             zoomControl: false,
-            zoom: 18 
+            zoom: zoom 
         });
 
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
