@@ -292,7 +292,15 @@
         // lookup.view.showExternalLinks();
         lookup.view.showTaxlot(r.taxlot);
         $('#panel-summary').show();
+        lookup.view.pushState(r.keytup);
         lookup.log(2,'show lookup done');
+    };
+
+    lookup.view.pushState = function(keytup) {
+        if (window.history.pushState) {
+            var newpath = '/taxlot/'+keytup.bbl;
+            window.history.pushState(null, null, newpath);
+        }
     };
 
 
