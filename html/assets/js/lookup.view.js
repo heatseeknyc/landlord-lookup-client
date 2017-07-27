@@ -98,9 +98,9 @@
         var radius = shape.radius;
         var center = [shape.lat_ctr,shape.lon_ctr];
         var level = lookup.utils.zoomlevel(shape.radius,alpha);
-        lookup.log(1,'panTo center');
-        lookup.log(1,center);
-        lookup.log(1,{'alpha':alpha,'radius':radius,'level':level});
+        lookup.log(2,'panTo center');
+        lookup.log(2,center);
+        lookup.log(2,{'alpha':alpha,'radius':radius,'level':level});
         map.setView(center,level);
         // map.panTo(center,level);
         return true;
