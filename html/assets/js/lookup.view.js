@@ -11,7 +11,7 @@
     // Very soon we'll find a way to discover these templates, rather than 
     // having to specify them here.  But for now, we'll just repeat ourselves.
     lookup.view.initDust = function() {
-        lookup.log(1,':: getting dusty...');
+        lookup.log(3,':: getting dusty...');
         dusty.load('section-header-pad-only');
         dusty.load('section-header-acris-only');
         dusty.load('section-header-acris-with-pad');
@@ -25,7 +25,7 @@
         dusty.load('section-owner-hpdreg');
         dusty.load('section-rentstable');
         dusty.load('section-compliance');
-        lookup.log(1,':: all dusty now.');
+        lookup.log(3,':: all dusty now.');
     };
 
     lookup.view.render = function(divname,object) {
