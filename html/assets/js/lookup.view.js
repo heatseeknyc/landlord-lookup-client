@@ -259,24 +259,6 @@
         return true;
     };
 
-    // DEPRECATED
-    lookup.view.__showExternalLinks = function() {
-        var r = lookup.model.summary;
-        var bbl = r.keytup.bbl;
-        if (!bbl)  {
-            console.log(2,'show external - no bbl');
-            return false;
-        }
-        var slug = lookup.utils.bbl2slug(bbl);
-        var acris = lookup.utils.bbl2acris(bbl);
-        var bisweb = lookup.utils.bbl2bisweb(bbl);
-        $('#link-taxbills-nyc').attr('href','http://taxbills.nyc/'+slug);
-        $('#link-oasis').attr('href','http://www.oasisnyc.net/map.aspx?zoomto=lot:'+bbl);
-        $('#link-bisweb').attr('href','http://a810-bisweb.nyc.gov/bisweb/PropertyProfileOverviewServlet?'+bisweb);
-        $('#link-acris').attr('href','http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?'+acris);
-        return true;
-    };
-
     lookup.view.showLookup = function() {
         lookup.log(2,'show lookup basics ..');
         var r = lookup.model.summary;
