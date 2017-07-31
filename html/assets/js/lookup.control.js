@@ -12,9 +12,6 @@
         $('#address-form').on('submit', function (e) {
             e.preventDefault();
             lookup.control.doSearch();
-            // var query = $('#address-input').val().trim();
-            // lookup.log(3,':: #address-form.submit at '+ new Date());
-            // lookup.control.doTaxlot(query);
         });
         $('form').each(function() {
             $(this).find('input').keypress(function(e) {
@@ -257,12 +254,3 @@
 
 })();
 
-/*
-        if (isViewable(r.taxlot))  {   
-            lookup.log(2,'show lookup display ..');
-            lookup.view.displayTaxlot(r.taxlot); 
-        }  else  {
-            lookup.log(2,'show lookup - bypass display');
-        }   
-
-        */
