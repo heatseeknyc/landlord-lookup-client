@@ -290,9 +290,6 @@
         $('#panel-message').hide();
         lookup.log(2,'keytup ..');
         lookup.log(2,r.keytup);
-        $('#var-keytup-bbl').text(''+r.keytup.bbl)
-        // $('#var-meta-bin').text(r.keytup.bin)
-        // lookup.view.showExternalLinks();
         lookup.view.showTaxlot(r.taxlot);
         $('#panel-summary').show();
         lookup.view.pushState(r.keytup);
