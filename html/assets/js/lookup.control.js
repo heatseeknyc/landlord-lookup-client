@@ -171,20 +171,6 @@
         return false;
     };
 
-    // DEPRECATED
-    lookup.control.___doSearch = function(query) {
-        lookup.log(2,'do-search ..');
-        $.when(lookup.control.doTaxlot(query)).done(
-            function(){
-                lookup.log(1,'YOW');
-                var r = lookup.model.summary;
-                lookup.log(1,r);
-                lookup.log(1,'OOK');
-            }
-        );
-        lookup.log(2,'do-search done');
-    };
-
     lookup.control.doTaxlot = function(query) {
         lookup.log(2,'do-taxlot ..');
         lookup.model = {}; 
