@@ -280,7 +280,6 @@
         return true;
     };
 
-
     lookup.view.showLookup = function() {
         lookup.log(2,'show lookup basics ..');
         var r = lookup.model.summary;
@@ -302,7 +301,6 @@
             window.history.pushState(null, null, newpath);
         }
     };
-
 
     // Takes the 'points' and 'parts' lists as they appear in shapefiile structs,
     // and genrates the implied partition into distinct lists of coordinate pairs.
