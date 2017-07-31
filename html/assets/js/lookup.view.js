@@ -51,8 +51,6 @@
             return false;
         }
 
-        // var center = [40.726389, -73.981667];
-        // var center = [40.742054, -73.987984];
         var center = lookup.config.leaflet.center.slice(0); 
         var zoom   = lookup.config.leaflet.zoom;
         var map = L.map(mapname,{
@@ -217,7 +215,6 @@
         };
     };
 
-
     // Refers to the taxlot info summary, not the lot shape. 
     lookup.view.showTaxlot = function(taxlot) {
         lookup.log(2,'show taxlot ..'); 
@@ -284,7 +281,6 @@
         lookup.log(2,'show lookup basics ..');
         var r = lookup.model.summary;
         $('#panel-data').hide();
-        // $('#popup-almost').hide();
         $('#panel-error').hide();
         $('#panel-message').hide();
         lookup.log(2,'keytup ..');
